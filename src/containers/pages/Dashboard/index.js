@@ -12,10 +12,10 @@ class Dashboard extends Component {
   state = {
     title: "",
     content: "",
-    date: "",
+    createdDate: "",
     createdBy: "",
     image: null,
-    url: ""
+    imageUrl: ""
   };
 
   componentDidMount() {
@@ -35,7 +35,7 @@ class Dashboard extends Component {
     const data = {
       title: this.state.title,
       content: this.state.content,
-      date: new Date().getTime(),
+      createdDate: new Date().getTime(),
       userId: userData.uid
     };
     this.props.saveNotes(data);
@@ -56,7 +56,7 @@ class Dashboard extends Component {
   };
 
   render() {
-    const { title, content, date, image, url } = this.state;
+    const { title, content, createdDate, image, url } = this.state;
     const { notes } = this.props;
     console.log("Hasil notes ", notes);
     return (
@@ -107,7 +107,7 @@ class Dashboard extends Component {
                     <Card.Body>
                       <Card.Title>{bebas.data.content}</Card.Title>
                       <Card.Text>
-                        {moment(bebas.data.date).format("LLLL")}
+                        {moment(bebas.data.createdDate).format("LLLL")}
                       </Card.Text>
                     </Card.Body>
                   </Card>
