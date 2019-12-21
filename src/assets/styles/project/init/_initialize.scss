@@ -1,0 +1,95 @@
+/* ==========================================================================
+   TEMPLATING
+   ========================================================================== */
+
+body {
+  font-family: 'lato';
+  font-weight: 300;
+
+  &.remoove-scroll{
+    overflow: hidden;
+  }
+}   
+
+.container {
+  width: 100%;
+  max-width: 1170px;
+  margin: auto;
+  
+  @include mq(1175px){
+    padding-left: 32px;
+    padding-right: 32px;
+  }
+}
+
+a {
+  text-decoration: none;
+  color: map-get($colors, black);
+}
+
+ul li {
+  display: inline-block;
+}
+
+.display-mobile-only{
+  display: none;
+  @include small {
+    display: block;
+  }
+}
+
+.display-desktop-only{
+  display: block;
+  @include small {
+    display: none;
+  }
+}
+
+/* ==========================================================================
+   FONT SIZING &  LINE HEIGHT
+   ========================================================================== */
+
+.a-h1 {
+  font-size: fz(h1);
+  line-height: lh(h1);
+
+  @include small{
+    font-size: fz(mh1);
+    line-height: lh(mh1);
+  }
+}
+.a-h2 {
+  font-size: fz(h2);
+  line-height: lh(h2);
+
+  @include small{
+    font-size: fz(mh2);
+    line-height: lh(mh2);
+  }
+}
+.a-h3 {
+  font-size: fz(h3);
+  line-height: lh(h3);
+
+  @include small{
+    font-size: fz(mh3);
+    line-height: lh(mh3);
+  }
+}
+.a-h4 {
+  font-size: fz(h4);
+  line-height: lh(h4);
+  @include small{
+    font-size: fz(mh4);
+    line-height: lh(mh4);
+  }
+}
+body {
+  font-size: fz(body);
+  line-height: lh(body);
+  @include small{
+    font-size: fz(mbody);
+    line-height: lh(mbody);
+  }
+}
+
