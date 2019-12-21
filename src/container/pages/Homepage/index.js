@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import logo from '../../../logo.svg';
 import './styles.scss';
 
-class Homepage extends Component {
+class HomePage extends Component {
   state = {
   };
 
@@ -43,5 +43,5 @@ class Homepage extends Component {
 }
 
 
-export default Homepage;
+export default HomePage;
 

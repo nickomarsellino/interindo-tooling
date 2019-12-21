@@ -1,11 +1,20 @@
-import Homepage from '../container/pages/Homepage';
+import {
+  HomePage,
+  DesignSystem
+} from '../container/pages';
 
 
 const AppRoutes = [
   {
     id: 1,
     path: '/',
-    component: Homepage,
+    component: HomePage,
+    exact: true
+  },
+  {
+    id: 2,
+    path: '/design-system',
+    component: DesignSystem,
     exact: true
   }
 ]

@@ -1,0 +1,25 @@
+// import mixin and variables
+@import "../../../assets/styles/project/init/variable",
+"../../../assets/styles/helpers/function",
+"../../../assets/styles/helpers/mixins";
+
+
+.a-button{
+  display: inline-block;
+  outline: 0;
+  text-align: center;
+  min-width: 120px;
+  min-height: 40px;
+  padding: 7px 32px;
+  font-size: fz(button-default);
+  font-weight: fw(reguler);
+  line-height: lh(button-default);
+  letter-spacing: 0.12px;
+  border: solid 1px color(primary, 100);
+  background-color: color(primary, 100);
+  color: color(black);
+  border-radius: 1rem;
+  transition: all 0.25s ease;
+  text-decoration: none;
+  cursor: pointer;
+}
