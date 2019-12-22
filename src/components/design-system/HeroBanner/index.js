@@ -4,6 +4,8 @@ import PropTypes from 'prop-types';
 import classname from 'classnames';
 import './styles.scss';
 
+import { H1 } from '../../../components';
+
 // data dummy
 import bannerImg from '../../../assets/images/dummy/hero-banner.jpg';
 
@@ -19,7 +21,11 @@ class HeroBanner extends Component {
     return (
       <div className={classNames}>
         <img class="hero-banner-cover" src={bannerImage} alt="Image Title" />
-        <div class="container"></div>
+        <div class="container">
+          <div className="content-item">
+            <H1 color="white" weight='light'>HOMEPAGE</H1>
+          </div>
+        </div>
       </div>
     );
   }
