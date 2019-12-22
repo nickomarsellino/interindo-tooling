@@ -13,7 +13,7 @@ class DesignSystem extends Component {
 
   // handleClosePage onClick
   handleClosePage = () => {
- 
+
   };
 
   // render
@@ -27,6 +27,10 @@ class DesignSystem extends Component {
       <div className="p-design-system">
         <h2>BUTTON</h2>
         <Button>Default</Button>
+        <Button color='secondary'>Secondary</Button>
+        <Button disabled>Disabled</Button>
+        <Button type='link' variant='text'>Default</Button>
+        <Button type='link' variant='text' color='white'>White</Button>
       </div>
     );
   }

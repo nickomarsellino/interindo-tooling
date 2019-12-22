@@ -13,11 +13,12 @@ const Button = ({
   to,
   size,
   color,
+  variant,
   onClick,
   disabled,
-  content
+  children
 }) => {
-  const classNames = classname('a-button', className, size, color);
+  const classNames = classname('a-button', className, size, color, variant);
   return (
     <Fragment>
       {type === 'link' && (
@@ -26,7 +27,7 @@ const Button = ({
           className={classNames}
           onClick={onClick}
         >
-          {content}
+          {children}
         </a>
       )}
       {type === 'link-dom' && (
@@ -35,7 +36,7 @@ const Button = ({
           className={classNames}
           onClick={onClick}
         >
-          {content}
+          {children}
         </Link>
       )}
       {(type === 'button' || type === 'submit') && (
@@ -46,7 +47,7 @@ const Button = ({
           onClick={onClick}
           disabled={disabled}
         >
-          {content}
+          {children}
         </button>
       )}
     </Fragment>
@@ -59,9 +60,10 @@ Button.propTypes = {
   to: PropTypes.string,
   size: PropTypes.string,
   color: PropTypes.string,
+  variant: PropTypes.string,
   onClick: PropTypes.func,
   disabled: PropTypes.bool,
-  content: PropTypes.node
+  children: PropTypes.node
 };
 
 Button.defaultProps = {
@@ -70,9 +72,10 @@ Button.defaultProps = {
   to: '',
   size: '',
   color: '',
+  variant: '',
   onClick: () => {},
-  disabled: true,
-  content: 'button'
+  disabled: false,
+  content: ''
 };
 
 export default Button;

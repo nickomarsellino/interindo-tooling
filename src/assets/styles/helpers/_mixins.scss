@@ -95,16 +95,17 @@
 
 
 @mixin hover-button($type) {
-  // &:hover {
-  //   color: color(white);
-  //   .a-system-icon {
-  //     color: color(white);
-  //   }
-  // }
   @if $type == "primary" {
     &:hover {
-      background-color: color(primary, 150);
-      border-color: color(primary, 150);
+      background-color: darken(color(primary, 100), 10%);
+      border-color: darken(color(primary, 100), 10%);
+    }
+  }
+  @else if $type == "primary-secondary" {
+    &:hover {
+      color: color(white);
+      background-color: color(primary, 50);
+      border-color: color(primary, 50);
     }
   }
 }
