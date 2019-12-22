@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
-import logo from '../../../logo.svg';
 import './styles.scss';
+
+
+import { Header, HeroBanner } from '../../../components';
 
 class HomePage extends Component {
   state = {
@@ -11,7 +13,7 @@ class HomePage extends Component {
 
   // handleClosePage onClick
   handleClosePage = () => {
- 
+
   };
 
   // render
@@ -22,21 +24,9 @@ class HomePage extends Component {
     } = this;
 
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-        </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-        </a>
-        </header>
+      <div className="p-homepage">
+        <Header/>
+        <HeroBanner/>
       </div>
     );
   }
