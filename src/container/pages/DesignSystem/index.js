@@ -27,7 +27,7 @@ class DesignSystem extends Component {
       <div className="p-design-system">
         <h2>ATOMS</h2>
         <div>
-          <h4>Heading 1 </h4>
+          <h4 className="title">Heading 1 </h4>
           <H1>Heading 1 Default</H1>
           <H1 weight='light'>Heading 1 Light</H1>
           <H1 weight='reguler'>Heading 1 Reguler</H1>
@@ -39,7 +39,7 @@ class DesignSystem extends Component {
           <H1 color='grey125'>Heading 1 Default Grey 125</H1>
         </div>
         <div>
-          <h4>Heading 2 </h4>
+          <h4 className="title">Heading 2 </h4>
           <H2>Heading 2 Default</H2>
           <H2 weight='light'>Heading 2 Light</H2>
           <H2 weight='reguler'>Heading 2 Reguler</H2>
@@ -51,7 +51,7 @@ class DesignSystem extends Component {
           <H2 color='grey125'>Heading 2 Default Grey 125</H2>
         </div>
         <div>
-          <h4>Heading 3 </h4>
+          <h4 className="title">Heading 3 </h4>
           <H3>Heading 3 Default</H3>
           <H3 weight='light'>Heading 3 Light</H3>
           <H3 weight='reguler'>Heading 3 Reguler</H3>
@@ -63,7 +63,7 @@ class DesignSystem extends Component {
           <H3 color='grey125'>Heading 3 Default Grey 125</H3>
         </div>
         <div>
-          <h4>Heading 4 </h4>
+          <h4 className="title">Heading 4 </h4>
           <H4>Heading 4 Default</H4>
           <H4 weight='light'>Heading 4 Light</H4>
           <H4 weight='reguler'>Heading 4 Reguler</H4>
@@ -75,7 +75,7 @@ class DesignSystem extends Component {
           <H4 color='grey125'>Heading 4 Default Grey 125</H4>
         </div>
         <div>
-          <h4>TextBodyCopy </h4>
+          <h4 className="title">TextBodyCopy </h4>
           <TextBodyCopy>TextBodyCopy Default</TextBodyCopy>
           <TextBodyCopy weight='light'>TextBodyCopy Light</TextBodyCopy>
           <TextBodyCopy weight='reguler'>TextBodyCopy Reguler</TextBodyCopy>
@@ -87,7 +87,7 @@ class DesignSystem extends Component {
           <TextBodyCopy color='grey125'>TextBodyCopy Default Grey 125</TextBodyCopy>
         </div>
         <div>
-          <h4>BUTTON</h4>
+          <h4 className="title">BUTTON</h4>
           <Button type='link-dom' to='/example'>Default</Button>
           <Button color='secondary'>Secondary</Button>
           <Button disabled>Disabled</Button>
