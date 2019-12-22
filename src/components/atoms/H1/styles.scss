@@ -1,0 +1,21 @@
+/* ==========================================================================
+Styles for H1 component
+========================================================================== */
+
+// import mixin and variables
+// import mixin and variables
+@import "../../../assets/styles/project/init/variable", "../../../assets/styles/helpers/function",
+  "../../../assets/styles/helpers/mixins";
+
+
+// Start styles H1 component
+.a-h1 {
+  font-size: fz(h1);
+  line-height: lh(h1);
+  @include font-weight-heading;
+  @include colors-all-font;
+  @include small {
+    font-size: fz(mh1);
+    line-height: lh(mh1);
+  }
+}

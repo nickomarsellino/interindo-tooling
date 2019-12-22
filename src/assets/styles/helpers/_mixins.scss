@@ -45,10 +45,45 @@
   }
 }
 
+@mixin font-weight-heading {
+  font-weight: fw(bold);
+  &.light {
+    font-weight: fw(light);
+  }
+  &.reguler {
+    font-weight: fw(reguler);
+  }
+  &.black {
+    font-weight: fw(black);
+  }
+}
+
+@mixin font-weight-default-reguler {
+  font-weight: fw(reguler);
+  &.light {
+    font-weight: fw(light);
+  }
+  &.bold {
+    font-weight: fw(bold);
+  }
+  &.black {
+    font-weight: fw(black);
+  }
+}
+
 @mixin colors-all-font {
   color: color(black);
-  &.grey {
+  &.primary {
+    color: color(primary, 100);
+  }
+  &.grey125 {
+    color: color(grey, 125);
+  }
+  &.grey100 {
     color: color(grey, 100);
+  }
+  &.grey50 {
+    color: color(grey, 50);
   }
   &.white {
     color: color(white);
@@ -109,4 +144,21 @@
       border-color: color(primary, 50);
     }
   }
+}
+
+// ellipsis
+@mixin ellipsis {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+// multiline-ellipsis
+@mixin multiline-ellipsis($row) {
+  overflow: hidden;
+  display: block;
+  display: -webkit-box;
+  -webkit-line-clamp: $row;
+  -webkit-box-orient: vertical;
+  text-overflow: ellipsis;
 }

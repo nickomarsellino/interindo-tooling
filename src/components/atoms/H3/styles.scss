@@ -1,0 +1,18 @@
+// import mixin and variables
+// import mixin and variables
+@import "../../../assets/styles/project/init/variable", "../../../assets/styles/helpers/function",
+  "../../../assets/styles/helpers/mixins";
+
+
+  // Start styles H3 component
+.a-h3 {
+  font-size: fz(h3);
+  line-height: lh(h3);
+  @include font-weight-heading;
+  @include colors-all-font;
+  @include small{
+    font-size: fz(mh3);
+    line-height: lh(mh3);
+    font-weight: fw(light);
+  }
+}
