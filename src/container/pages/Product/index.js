@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
 import './styles.scss';
 
-class DesignSystem extends Component {
+
+import { HeroBanner } from '../../../components';
+
+class Product extends Component {
   state = {
   };
 
@@ -21,13 +24,13 @@ class DesignSystem extends Component {
     } = this;
 
     return (
-      <div className="p-design-system">
-       <h1>DESIGN </h1>
+      <div className="p-product">
+        <HeroBanner bannerTitle="Out Product"/>
       </div>
     );
   }
 }
 
 
-export default DesignSystem;
+export default Product;
 

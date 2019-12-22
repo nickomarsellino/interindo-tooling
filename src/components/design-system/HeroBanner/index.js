@@ -14,7 +14,8 @@ class HeroBanner extends Component {
     const {
       props: {
         className,
-        bannerImage
+        bannerImage,
+        bannerTitle
       }
     } = this;
     const classNames = classname('ds-hero-banner', className);
@@ -23,7 +24,7 @@ class HeroBanner extends Component {
         <img class="hero-banner-cover" src={bannerImage} alt="Image Title" />
         <div class="container">
           <div className="content-item">
-            <H1 color="white" weight='light'>HOMEPAGE</H1>
+            <H1 color="white" weight='light'>{bannerTitle}</H1>
           </div>
         </div>
       </div>
@@ -34,11 +35,13 @@ class HeroBanner extends Component {
 HeroBanner.propTypes = {
   className: PropTypes.string,
   bannerImage: PropTypes.string,
+  bannerTitle: PropTypes.string,
 }
 
 HeroBanner.defaultProps = {
   className: '',
   bannerImage: bannerImg,
+  bannerTitle: '',
 }
 
 export default HeroBanner;

@@ -8,9 +8,12 @@ import {
 
 import AppRoutes from '../../routes';
 
+import { Header } from '../../components';
+
 function App() {
   return (
     <Router>
+      <Header/>
       <Switch>
         {AppRoutes.map((route) => (
           <Route key={route.id} {...route} />

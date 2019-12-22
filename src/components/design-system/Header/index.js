@@ -63,9 +63,9 @@ class Header extends Component {
           </div>
           <div class="navbar-menu">
             <ul class="menu-content">
-              <li class="content-item active"><a class="active" href="/Home">Home</a></li>
-              <li class="content-item"><a href="/Product">Our Product</a></li>
-              <li class="content-item"><a href="/About-Us">About Us</a></li>
+              <li class="content-item active"><a class="active" href=".">Home</a></li>
+              <li class="content-item"><a href="/our-product">Our Product</a></li>
+              <li class="content-item"><a href="/about-us">About Us</a></li>
             </ul>
           </div>
         </div>

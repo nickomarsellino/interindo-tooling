@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './styles.scss';
 
 
-import { Header, HeroBanner } from '../../../components';
+import { HeroBanner } from '../../../components';
 
 class HomePage extends Component {
   state = {
@@ -25,8 +25,7 @@ class HomePage extends Component {
 
     return (
       <div className="p-homepage">
-        <Header/>
-        <HeroBanner/>
+        <HeroBanner bannerTitle="HomePage"/>
       </div>
     );
   }
