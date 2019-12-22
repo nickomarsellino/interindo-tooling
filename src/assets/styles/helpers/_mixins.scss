@@ -97,6 +97,7 @@
 @mixin hover-button($type) {
   @if $type == "primary" {
     &:hover {
+      color: color(white);
       background-color: darken(color(primary, 100), 10%);
       border-color: darken(color(primary, 100), 10%);
     }
