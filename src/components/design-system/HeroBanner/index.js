@@ -2,6 +2,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classname from 'classnames';
+import Fade from 'react-reveal/Fade';
 import './styles.scss';
 
 import { H1 } from '../../../components';
@@ -20,14 +21,16 @@ class HeroBanner extends Component {
     } = this;
     const classNames = classname('ds-hero-banner', className);
     return (
-      <div className={classNames}>
-        <img class="hero-banner-cover" src={bannerImage} alt="Image Title" />
-        <div class="container">
-          <div className="content-item">
-            <H1 color="white" weight='light'>{bannerTitle}</H1>
+      <Fade>
+        <div className={classNames}>
+          <img class="hero-banner-cover" src={bannerImage} alt="Image Title" />
+          <div class="container">
+            <div className="content-item">
+              <H1 color="white" weight='light'>{bannerTitle}</H1>
+            </div>
           </div>
         </div>
-      </div>
+      </Fade>
     );
   }
 }
