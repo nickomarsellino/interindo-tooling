@@ -2,23 +2,19 @@ import React, { Component } from 'react';
 import './styles.scss';
 
 class DesignSystem extends Component {
-  state = {
-  };
+  // state = {
+  // };
 
-  componentDidMount() {
-  }
+  // componentDidMount() {
+  // }
 
-  // handleClosePage onClick
-  handleClosePage = () => {
-
-  };
 
   // render
   render() {
-    const {
-      // handleClosePage,
-      // state: { showSteps }
-    } = this;
+    // const {
+    //   // handleClosePage,
+    //   // state: { showSteps }
+    // } = this;
 
     return (
       <div className="p-design-system">

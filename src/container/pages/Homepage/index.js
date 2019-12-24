@@ -16,16 +16,28 @@ class HomePage extends Component {
 
   };
 
+  handleClickNavigation = (e) => {
+    this.props.history.push({
+      pathname: `/our-product`,
+      state: {
+          productId: "14045"
+      }
+  })
+  }
+
   // render
   render() {
-    const {
-      // handleClosePage,
-      // state: { showSteps }
-    } = this;
+    // const {
+    //   // handleClosePage,
+    //   // state: { showSteps }
+    // } = this;
 
     return (
       <div className="p-homepage">
-        <HeroBanner bannerTitle="HomePage"/>
+        <HeroBanner bannerTitle="HomePage" />
+        <li className="jjj" onClick={this.handleClickNavigation}>
+          Our Product With history
+        </li>
       </div>
     );
   }

@@ -5,23 +5,18 @@ import './styles.scss';
 import { HeroBanner } from '../../../components';
 
 class aboutUs extends Component {
-  state = {
-  };
+  // state = {
+  // };
 
-  componentDidMount() {
-  }
-
-  // handleClosePage onClick
-  handleClosePage = () => {
-
-  };
+  // componentDidMount() {
+  // }
 
   // render
   render() {
-    const {
-      // handleClosePage,
-      // state: { showSteps }
-    } = this;
+    // const {
+    //   // handleClosePage,
+    //   // state: { showSteps }
+    // } = this;
 
     return (
       <div className="p-about-us">

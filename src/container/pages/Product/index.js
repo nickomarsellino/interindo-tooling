@@ -5,23 +5,20 @@ import './styles.scss';
 import { HeroBanner } from '../../../components';
 
 class Product extends Component {
-  state = {
-  };
+  // state = {
+  // };
 
-  componentDidMount() {
-  }
+  // componentDidMount() {
+  // }
 
-  // handleClosePage onClick
-  handleClosePage = () => {
-
-  };
 
   // render
   render() {
-    const {
-      // handleClosePage,
-      // state: { showSteps }
-    } = this;
+    console.log("Data Dari Home Lempar Ke Page ini: ",this.props.location);
+    // const {
+    //   // handleClosePage,
+    //   // state: { showSteps }
+    // } = this;
 
     return (
       <div className="p-product">

@@ -23,8 +23,8 @@ class HeroBanner extends Component {
     return (
       <Fade>
         <div className={classNames}>
-          <img class="hero-banner-cover" src={bannerImage} alt="Image Title" />
-          <div class="container">
+          <img className="hero-banner-cover" src={bannerImage} alt={bannerTitle}/>
+          <div className="container">
             <div className="content-item">
               <H1 color="white" weight='light'>{bannerTitle}</H1>
             </div>

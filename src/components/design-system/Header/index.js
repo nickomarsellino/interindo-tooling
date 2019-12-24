@@ -3,7 +3,7 @@
 
 import React, { Component } from 'react';
 import classname from 'classnames';
-import Fade from 'react-reveal/Fade';
+import { Link } from 'react-router-dom';
 import './styles.scss';
 
 // data dummy
@@ -14,21 +14,22 @@ class Header extends Component {
 
   state = {
     showMobileNavigation: false,
-    scrolled: false
+    scrolled: false,
+    isActive: 'homepage'
   };
 
   componentDidMount() {
-    this.updatePredicate();
-    window.addEventListener("resize", this.updatePredicate);
+    this.handleResizeWindow();
+    window.addEventListener("resize", this.handleResizeWindow);
   }
 
   componentWillUnmount() {
-    window.removeEventListener("resize", this.updatePredicate);
+    window.removeEventListener("resize", this.handleResizeWindow);
   }
 
   handleWindowScroll = () => {
     const scroll = window.scrollY;
-    if (scroll == 0) {
+    if (scroll === 0) {
       if (window.innerWidth <= 768) {
         this.setState({ scrolled: true });
       }
@@ -57,13 +58,23 @@ class Header extends Component {
     }));
   }
 
-  updatePredicate = () => {
+  handleResizeWindow = () => {
     if (window.innerWidth <= 768) {
       this.setState({ scrolled: true });
     }
     else {
       this.setState({ scrolled: false });
       window.addEventListener('scroll', this.handleWindowScroll);
+    }
+  }
+
+  handleClickNavigation = (e) => {
+    const clicked = e.target.id;
+
+    if (this.state.isActive === clicked) {
+      this.setState({ isActive: clicked });
+    } else {
+      this.setState({ isActive: clicked })
     }
   }
 
@@ -78,28 +89,31 @@ class Header extends Component {
     });
 
     return (
-      <Fade>
-        <div className={classNames}>
-          <div class="container">
-            <div class="navbar-logo">
-              <a class="logo-image" href=".">
-                <img src={logoImage} alt="navbar-logo" />
-              </a>
-              <a class="logo-image-fixed" href=".">
-                <img src={logoImageFixed} alt="navbar-logo-fixed" /></a>
-              <div class="hamburger-menu display-mobile-only" onClick={this.addMobileNavigation}><i>icon</i></div>
-            </div>
-            <div class="navbar-menu">
-              <ul class="menu-content">
-                <li class="content-item active"><a class="active" href=".">Home</a></li>
-                <li class="content-item"><a href="/our-product">Our Product</a></li>
-                <li class="content-item"><a href="/about-us">About Us</a></li>
-              </ul>
-            </div>
+      <div className={classNames}>
+        <div className="container">
+          <div className="navbar-logo">
+            <a className="logo-image" href=".">
+              <img src={logoImage} alt="navbar-logo" />
+            </a>
+            <a className="logo-image-fixed" href=".">
+              <img src={logoImageFixed} alt="navbar-logo-fixed" /></a>
+            <div className="hamburger-menu display-mobile-only" onClick={this.addMobileNavigation}><i>icon</i></div>
           </div>
-
+          <div className="navbar-menu">
+            <ul className="menu-content">
+              <li className={`content-item ${this.state.isActive === "our-product" ? 'active' : ''}`}>
+                <Link to='/our-product' id="our-product" onClick={this.handleClickNavigation}>Our Product</Link>
+              </li>
+              <li className={`content-item ${this.state.isActive === "about-us" ? 'active' : ''}`}>
+                <Link to='/about-us' id="about-us" onClick={this.handleClickNavigation}>About Us</Link >
+              </li>
+              <li className={`content-item ${this.state.isActive === "contact-us" ? 'active' : ''}`}>
+                <Link to='/contact-us' id="contact-us" onClick={this.handleClickNavigation}>Contact Us</Link>
+              </li>
+            </ul>
+          </div>
         </div>
-      </Fade>
+      </div>
     );
   }
 }
