@@ -2,6 +2,7 @@ import {
   HomePage,
   DesignSystem,
   AboutUs,
+  ContactUs,
   Product
 } from '../container/pages';
 
@@ -29,6 +30,12 @@ const AppRoutes = [
     id: 4,
     path: '/about-us',
     component: AboutUs,
+    exact: true
+  },
+  {
+    id: 5,
+    path: '/contact-us',
+    component: ContactUs,
     exact: true
   }
 ]

@@ -29,6 +29,9 @@ class App extends Component {
         <Redirect from='*' to='/error-404' /> */}
         </Switch>
         <Footer/>
+        <Switch>
+          
+        </Switch>
       </Router>
     );
   }
