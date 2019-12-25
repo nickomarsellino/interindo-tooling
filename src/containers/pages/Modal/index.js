@@ -2,11 +2,13 @@ import React, { Component } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Button, Modal } from "react-bootstrap";
 import { storage } from "../../../config/firebase";
+import { connect } from "react-redux";
+import { addProductsDetail } from "../../../config/redux/action";
 
 class ImageModal extends Component {
   state = {
     isTrueOrFalse: this.props.onModalShow,
-    image: [],
+    imageUrl: [],
     createdDate: new Date().getTime()
   };
 
@@ -34,13 +36,38 @@ class ImageModal extends Component {
     console.log("userData after parse json ", userData);
     // Handle Multiple Image to Firebase
     // https://stackoverflow.com/questions/50785465/how-to-multiple-image-upload-with-react-js-to-firebase
-    //   const detailData = {
-    //     createdDate: this.state.createdDate,
-    //     userId: userData.uid,
-    //     productsId: this.props.productsId
-    //   };
-    //   console.log("Detail Data ", detailData);
+    const { image } = this.state;
+    const uploadTask = storage.ref(`images/${image.name}`).put(image);
+    uploadTask.on(
+      "state_changed",
+      snapshot => {
+        // progress function ....
+      },
+      error => {
+        // error function ....
+        console.log(error);
+      },
+      () => {
+        // complete function ....
+        storage
+          .ref("images")
+          .child(image.name)
+          .getDownloadURL()
+          .then(imageUrl => {
+            console.log(imageUrl);
+            this.setState({ imageUrl });
 
+          const detailData = {
+            createdDate: this.state.createdDate,
+            userId: userData.uid,
+            productsId: this.props.productsId,
+            imageUrl: this.state.imageUrl
+          };
+
+          this.props.saveProductsDetail(detailData);
+          });
+      }
+    );
   };
 
   render() {
@@ -97,4 +124,12 @@ class ImageModal extends Component {
   }
 }
 
-export default ImageModal;
+const reduxState = state => ({
+  detailProducts : state.detailProducts
+})
+
+const reduxDispatch = dispatch => ({
+  saveProductsDetail: data => dispatch(addProductsDetail(data))
+});
+
+export default connect(reduxState, reduxDispatch)(ImageModal);

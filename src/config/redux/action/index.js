@@ -73,15 +73,9 @@ export const getDataFromAPI = (userId) => (dispatch) => {
     })
 }
 
-export const addDetailProducts = (data) => (dispatch) => {
-    // database.ref('Products/' + data.userId + '/' + ).push({
-    //     title: data.title,
-    //     content: data.content,
-    //     imageUrl: data.imageUrl,
-    //     Info : {
-    //         createdDate: data.createdDate,
-    //         createdBy: data.userId
-    //     }
-    // })
-    // console.log("result action ", data)
+export const addProductsDetail = (data) => (dispatch) => {
+     database.ref('Products/' + data.userId + '/' + data.productsId ).push({
+        moreImage: data.imageUrl
+    })
+    console.log("result action ", data)
 }

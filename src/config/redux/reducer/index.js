@@ -4,7 +4,8 @@ const initialState = {
   isLoading: false,
   user: {},
   errorMessage: '',
-  notes: []
+  notes: [],
+  detailProducts: []
 }
 
 const reducer = (state = initialState, action) => {
@@ -47,6 +48,13 @@ const reducer = (state = initialState, action) => {
     return {
       ...state,
       notes: action.value
+    }
+  }
+
+  if (action.type === 'SAVE_DETAIL_PRODUCTS') {
+    return {
+      ...state,
+      detailProducts: action.value
     }
   }
 
