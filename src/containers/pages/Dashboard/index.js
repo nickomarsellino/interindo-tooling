@@ -85,7 +85,7 @@ class Dashboard extends Component {
       const image = e.target.files[0];
       this.setState(() => ({ image }));
     }
-    // console.log(this.state.image)
+    console.log(this.state.image)
   };
 
   getDetail = e => {
@@ -166,7 +166,7 @@ class Dashboard extends Component {
                         <img
                           src={bebas.data.imageUrl}
                           alt=""
-                          height="100%%"
+                          height="250px"
                           width="100%"
                         ></img>
                       </a>
