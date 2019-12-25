@@ -3,14 +3,26 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { Button, Modal } from "react-bootstrap";
 import { storage } from "../../../config/firebase";
 import { connect } from "react-redux";
-import { addProductsDetail } from "../../../config/redux/action";
+import { addProductsDetail, getDetailProductImages } from "../../../config/redux/action";
 
 class ImageModal extends Component {
-  state = {
-    isTrueOrFalse: this.props.onModalShow,
-    imageUrl: [],
-    createdDate: new Date().getTime()
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      isTrueOrFalse: this.props.onModalShow,
+      imageUrl: [],
+      createdDate: new Date().getTime(),
+    };
+  }
+
+  showImageList = () => {
+    const detailData = {
+      createdDate: this.state.createdDate,
+      productsId: this.props.productsId,
+      imageUrl: this.state.imageUrl
+    };
+    console.log(detailData)
+  }
 
   handleClose = () => {
     this.setState({ isTrueOrFalse: false });
@@ -86,9 +98,30 @@ class ImageModal extends Component {
           </Modal.Header>
           <Modal.Body>
             <form style={{ left: 0 }}>
+                <img
+                src="https://firebasestorage.googleapis.com/v0/b/reactjs-firebase-e8649.appspot.com/o/images%2FTokyoDrift.jpg?alt=media&token=958fd006-7152-4ae1-86ca-c76f2cf25867"
+                alt=""
+                height="90px"
+                width="24%"
+                style = {{display: 'flex; display: -webkit-box', margin: '0.25%'}}
+              ></img>
+              <img
+                src="https://firebasestorage.googleapis.com/v0/b/reactjs-firebase-e8649.appspot.com/o/images%2FTokyoDrift.jpg?alt=media&token=958fd006-7152-4ae1-86ca-c76f2cf25867"
+                alt=""
+                height="90px"
+                width="25%"
+                style = {{display: 'flex; display: -webkit-box', margin: '0.25%'}}
+              ></img>
+              <img
+                src="https://firebasestorage.googleapis.com/v0/b/reactjs-firebase-e8649.appspot.com/o/images%2FTokyoDrift.jpg?alt=media&token=958fd006-7152-4ae1-86ca-c76f2cf25867"
+                alt=""
+                height="90px"
+                width="25%"
+                style = {{display: 'flex; display: -webkit-box', margin: '0.25%'}}
+              ></img>
               <div class="form-group">
                 <label
-                  for="exampleInputPassword1"
+                  for="description"
                   style={{ fontWeight: "bold" }}
                 >
                   Description
@@ -102,11 +135,11 @@ class ImageModal extends Component {
               <div>
                 <input type="file" onChange={this.handleImageChange} multiple />
               </div>
-            </form>{" "}
+            </form>
           </Modal.Body>
           <Modal.Footer>
-            <Button variant="secondary" onClick={onCloseClick}>
-              Close
+            <Button variant="info" onClick={() => {this.showImageList()}}>
+              Show Image
             </Button>
             <Button
               variant="primary"
@@ -125,11 +158,14 @@ class ImageModal extends Component {
 }
 
 const reduxState = state => ({
-  detailProducts : state.detailProducts
+  detailProducts : state.detailProducts,
+  moreImage: state.moreImage
+
 })
 
 const reduxDispatch = dispatch => ({
-  saveProductsDetail: data => dispatch(addProductsDetail(data))
+  saveProductsDetail: data => dispatch(addProductsDetail(data)),
+  showDetailProductImages: data => dispatch(getDetailProductImages(data))
 });
 
 export default connect(reduxState, reduxDispatch)(ImageModal);

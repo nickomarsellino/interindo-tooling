@@ -106,7 +106,7 @@ class Dashboard extends Component {
   render() {
     const { title, content, createdDate, image, imageUrl } = this.state;
     const { notes } = this.props;
-    console.log("Hasil notes ", notes);
+    // console.log("Hasil notes ", notes);
     return (
       <div className="container">
       <ImageModal onModalShow = {this.state.onModalShow} onCloseClick = {()=>this.onCloseClick()} productsId = {this.state.productsId}  productsDetail = {this.state.productsDetail} />

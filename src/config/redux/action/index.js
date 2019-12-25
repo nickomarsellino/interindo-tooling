@@ -79,3 +79,9 @@ export const addProductsDetail = (data) => (dispatch) => {
     })
     console.log("result action ", data)
 }
+
+// Get data api using redux
+export const getDetailProductImages = (data) => (dispatch) => {
+    console.log(data)
+    dispatch({type: 'SHOW_MORE_IMAGE', value: data})
+}

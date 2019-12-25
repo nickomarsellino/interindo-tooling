@@ -5,7 +5,8 @@ const initialState = {
   user: {},
   errorMessage: '',
   notes: [],
-  detailProducts: []
+  detailProducts: [],
+  moreImage: []
 }
 
 const reducer = (state = initialState, action) => {
@@ -48,6 +49,13 @@ const reducer = (state = initialState, action) => {
     return {
       ...state,
       notes: action.value
+    }
+  }
+
+  if (action.type === 'SHOW_MORE_IMAGE') {
+    return {
+      ...state,
+      moreImage: action.value
     }
   }
 
