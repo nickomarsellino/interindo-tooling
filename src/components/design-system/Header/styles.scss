@@ -47,6 +47,7 @@
           margin-left: 0;
         }
         a {
+          transition: all 0.3s ease;
           color: white;
         }
 
@@ -55,6 +56,7 @@
           display: block;
           padding-top: 4px;
           border-bottom: solid 1px rgba(255, 255, 255, 0.5);
+          // border-bottom: solid 1px rgb(255, 198, 0);
           transform: scaleX(0);
           transition: all 0.3s ease;
 
@@ -82,6 +84,7 @@
   //Handle Scroll Navbar
   &.on-scroll {
     color: black;
+    // background-color: #FFC600;
     background-color: white;
     box-shadow: 0 2px 2px -2px rgba(0, 0, 0, 0.2);
     padding: 12px 0 12px 0;
@@ -220,7 +223,8 @@
             }
           }
           &::after {
-            border-bottom: solid 1px rgba(44, 44, 44, 0.5);
+            border-bottom: solid 1px rgb(255, 198, 0);
+            // border-bottom: solid 1px rgba(44, 44, 44, 0.5);
           }
           @include small {
             padding: 0;
@@ -232,6 +236,12 @@
           }
           a {
             color: black;
+            &:hover {
+              color: #ffc600;
+              @include small {
+                color: black;
+              }
+            }
           }
         }
       }

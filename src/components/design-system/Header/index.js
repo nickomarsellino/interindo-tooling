@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 import './styles.scss';
 
 // data dummy
-import logoImageFixed from '../../../assets/images/logo/logo-fixed.svg';
+import logoImageFixed from '../../../assets/images/logo/logo-yellow-fixed.svg';
 import logoImage from '../../../assets/images/logo/logo.svg';
 
 class Header extends Component {

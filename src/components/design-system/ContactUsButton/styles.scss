@@ -4,10 +4,11 @@
 
 .ds-contact-us-button{
   position: fixed;
-  bottom: 25px;
+  bottom: 32px;
   right: 25px;
   transition: all .25s ease;
   transform: translateY(0px);
+  z-index: 1;
   @include extra-small{
     &.ui.button{
       display: none;
