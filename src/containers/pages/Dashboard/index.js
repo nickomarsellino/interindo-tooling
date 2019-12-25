@@ -4,18 +4,23 @@ import { connect } from "react-redux";
 import { Card, Button } from "react-bootstrap";
 import axios from "axios";
 import { saveAs } from "file-saver";
-import { storage } from '../../../config/firebase'
+import { storage } from "../../../config/firebase";
 import "bootstrap/dist/css/bootstrap.min.css";
 import * as moment from "moment";
+
+import ImageModal from '../Modal';
 
 class Dashboard extends Component {
   state = {
     title: "",
     content: "",
-    createdDate: "",
+    createdDate: new Date().getTime(),
     createdBy: "",
     image: null,
-    imageUrl: ""
+    imageUrl: "",
+    onModalShow: false,
+    productsDetail: "",
+    productsId: ""
   };
 
   componentDidMount() {
@@ -27,18 +32,46 @@ class Dashboard extends Component {
     this.props.getNotes(userData.uid);
   }
 
-  handleSaveNote = () => {
+  handleSaveNote = e => {
+    e.preventDefault();
     // GET LOCAL STORAGE
     const userData = JSON.parse(localStorage.getItem("userData"));
     console.log("userData after parse json ", userData);
 
-    const data = {
-      title: this.state.title,
-      content: this.state.content,
-      createdDate: new Date().getTime(),
-      userId: userData.uid
-    };
-    this.props.saveNotes(data);
+    const { image } = this.state;
+    const uploadTask = storage.ref(`images/${image.name}`).put(image);
+    uploadTask.on(
+      "state_changed",
+      snapshot => {
+        // progress function ....
+      },
+      error => {
+        // error function ....
+        console.log(error);
+      },
+      () => {
+        // complete function ....
+        storage
+          .ref("images")
+          .child(image.name)
+          .getDownloadURL()
+          .then(imageUrl => {
+            console.log(imageUrl);
+            this.setState({ imageUrl });
+
+            const data = {
+              title: this.state.title,
+              content: this.state.content,
+              createdDate: this.state.createdDate,
+              userId: userData.uid,
+              imageUrl: this.state.imageUrl
+            };
+            console.log("Data ", data);
+
+            this.props.saveNotes(data);
+          });
+      }
+    );
   };
 
   onInputChange = (e, type) => {
@@ -55,12 +88,28 @@ class Dashboard extends Component {
     // console.log(this.state.image)
   };
 
+  getDetail = e => {
+    this.setState({
+      onModalShow: true,
+      productsDetail: e.data,
+      productsId: e.id
+    })
+    console.log("Click", e);
+  };
+
+  onCloseClick = () => {
+    this.setState({
+      onModalShow: false
+    })
+  };
+
   render() {
-    const { title, content, createdDate, image, url } = this.state;
+    const { title, content, createdDate, image, imageUrl } = this.state;
     const { notes } = this.props;
     console.log("Hasil notes ", notes);
     return (
       <div className="container">
+      <ImageModal onModalShow = {this.state.onModalShow} onCloseClick = {()=>this.onCloseClick()} productsId = {this.state.productsId}  productsDetail = {this.state.productsDetail} />
         <form style={{ marginLeft: "25%", marginRight: "25%" }}>
           <div class="form-group">
             <label for="exampleInputEmail1">Title</label>
@@ -72,9 +121,6 @@ class Dashboard extends Component {
               value={title}
               onChange={e => this.onInputChange(e, "title")}
             />
-            <small id="emailHelp" class="form-text text-muted">
-              We'll never share your email with anyone else.
-            </small>
           </div>
           <div class="form-group">
             <label for="exampleInputPassword1">Content</label>
@@ -101,7 +147,14 @@ class Dashboard extends Component {
           <Fragment>
             {notes.map(bebas => {
               return (
-                <div key={bebas.id}>
+                <div
+                  key={bebas.id}
+                  style={{ width: "50%", cursor: "pointer" }}
+                  onClick={() => {
+                    this.getDetail(bebas);
+                  }}
+                  
+                >
                   <Card>
                     <Card.Header as="h5">{bebas.data.title}</Card.Header>
                     <Card.Body>
@@ -109,6 +162,14 @@ class Dashboard extends Component {
                       <Card.Text>
                         {moment(bebas.data.createdDate).format("LLLL")}
                       </Card.Text>
+                      <a href={bebas.data.imageUrl} target="_blank">
+                        <img
+                          src={bebas.data.imageUrl}
+                          alt=""
+                          height="100%%"
+                          width="100%"
+                        ></img>
+                      </a>
                     </Card.Body>
                   </Card>
                   <br />

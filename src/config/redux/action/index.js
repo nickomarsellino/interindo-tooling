@@ -41,9 +41,10 @@ export const loginUserAPI = (data) => (dispatch) => {
 
 // Post API from Dashboard -> Ini contoh yang pake redux yang bikin reducer dulu
 export const addDataToAPI = (data) => (dispatch) => {
-    database.ref('Productssssss/' + data.userId).push({
+    database.ref('Products/' + data.userId).push({
         title: data.title,
         content: data.content,
+        imageUrl: data.imageUrl,
         Info : {
             createdDate: data.createdDate,
             createdBy: data.userId
@@ -54,20 +55,20 @@ export const addDataToAPI = (data) => (dispatch) => {
 
 // Get data api using redux
 export const getDataFromAPI = (userId) => (dispatch) => {
-    // var urlNotes = firebase.database().ref('Products/' + userId);
-    // return new Promise((resolve, reject) => {
-    //     urlNotes.on('value', function(snapshot) {
-    //         // ubah object jadi Array
-    //         const data = [];
-    //         Object.keys( (snapshot.val()) &&  snapshot.val()).map(key => {
-    //             data.push({
-    //                 id: key,
-    //                 data: snapshot.val()[key]
-    //             })
-    //         })
-    //         console.log("Data pas getAPI ", data)
-    //         dispatch({type: 'SET_NOTES', value: data})
-    //         resolve(snapshot.val())
-    //     });
-    // })
+    var urlNotes = firebase.database().ref('Products/' + userId);
+    return new Promise((resolve, reject) => {
+        urlNotes.on('value', function(snapshot) {
+            // ubah object jadi Array
+            const data = [];
+            Object.keys( (snapshot.val()) &&  snapshot.val()).map(key => {
+                data.push({
+                    id: key,
+                    data: snapshot.val()[key]
+                })
+            })
+            console.log("Data pas getAPI ", data)
+            dispatch({type: 'SET_NOTES', value: data})
+            resolve(snapshot.val())
+        });
+    })
 }
