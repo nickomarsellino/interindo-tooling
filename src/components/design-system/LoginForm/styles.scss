@@ -1,0 +1,38 @@
+// import mixin and variables
+@import "../../../assets/styles/project/init/variable", "../../../assets/styles/helpers/function",
+  "../../../assets/styles/helpers/mixins";
+
+.ds-login-form {
+  vertical-align: middle;
+  display: table-cell;
+  text-align: center;
+  .card {
+    overflow: hidden;
+    position: relative;
+    margin-right: auto;
+    margin-left: auto;
+    width: fit-content;
+    padding: 48px;
+    .field {
+      label {
+        font-size: 16px;
+        text-align: left;
+        @include extra-small {
+          font-size: 12px;
+        }
+      }
+      .input {
+        font-size: 16px;
+        @include extra-small {
+          font-size: 12px;
+        }
+      }
+      .button {
+        font-size: 16px;
+        @include extra-small {
+          font-size: 12px;
+        }
+      }
+    }
+  }
+}

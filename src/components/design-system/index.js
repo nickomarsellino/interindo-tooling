@@ -9,6 +9,7 @@ import Header from './Header';
 import Footer from './Footer';
 import HeroBanner from './HeroBanner';
 import ContactUsButton from './ContactUsButton';
+import LoginForm from './LoginForm';
 
 
 export {
@@ -19,5 +20,6 @@ export {
   Header,
   Footer,
   HeroBanner,
-  ContactUsButton
+  ContactUsButton,
+  LoginForm
 };

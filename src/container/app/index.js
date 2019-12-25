@@ -8,7 +8,8 @@ import {
   Switch
   // Redirect
 } from 'react-router-dom';
-import AppRoutes from '../../routes';
+import AppRoutes from '../../routes/client';
+// import AdminRoutes from '../../routes/admin';
 import { Header, Footer, ContactUsButton } from '../../components';
 
 class App extends Component {
@@ -18,8 +19,8 @@ class App extends Component {
     // } = this;
     return (
       <Router>
-        <ContactUsButton/>
-        <Header/>
+        <ContactUsButton />
+        <Header />
         <Switch>
           {AppRoutes.map((route) => (
             <Route key={route.id} {...route} />
@@ -28,10 +29,7 @@ class App extends Component {
         <Redirect from='/design-system' to='/design-system/introduction' />
         <Redirect from='*' to='/error-404' /> */}
         </Switch>
-        <Footer/>
-        <Switch>
-          
-        </Switch>
+        <Footer />
       </Router>
     );
   }

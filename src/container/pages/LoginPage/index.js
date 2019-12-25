@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './styles.scss';
 
 
-import { HeroBanner } from '../../../components';
+import { LoginForm } from '../../../components';
 
 class LoginPage extends Component {
   // state = {
@@ -20,7 +20,7 @@ class LoginPage extends Component {
 
     return (
       <div className="p-login-page">
-        <HeroBanner bannerTitle="Login Page"/>
+        <LoginForm/>
       </div>
     );
   }

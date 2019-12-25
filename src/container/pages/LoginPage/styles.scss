@@ -1,0 +1,8 @@
+@import "../../../assets/styles/project/init/variable", "../../../assets/styles/helpers/function",
+  "../../../assets/styles/helpers/mixins";
+
+.p-login-page {
+  height: 500px;
+  display: table;
+  width: 100%;
+}
