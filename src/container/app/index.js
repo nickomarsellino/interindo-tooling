@@ -3,25 +3,23 @@
 
 import React, { Component } from 'react';
 import {
+  BrowserRouter as Router,
   Route,
   Switch
   // Redirect
 } from 'react-router-dom';
 import AppRoutes from '../../routes';
-import { Header } from '../../components';
+import { Header,ContactUsButton } from '../../components';
 
 class App extends Component {
-
-  state = {
-  };
-
   render() {
     // const {
     //   state: { showMobileNavigation, scrolled },
     // } = this;
     return (
-      <div>
-        <Header />
+      <Router>
+        <ContactUsButton/>
+        <Header/>
         <Switch>
           {AppRoutes.map((route) => (
             <Route key={route.id} {...route} />
@@ -30,7 +28,7 @@ class App extends Component {
         <Redirect from='/design-system' to='/design-system/introduction' />
         <Redirect from='*' to='/error-404' /> */}
         </Switch>
-      </div>
+      </Router>
     );
   }
 }

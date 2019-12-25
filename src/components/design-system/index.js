@@ -7,6 +7,7 @@ import H3 from './H3';
 import H4 from './H4';
 import Header from './Header';
 import HeroBanner from './HeroBanner';
+import ContactUsButton from './ContactUsButton';
 
 
 export {
@@ -15,5 +16,6 @@ export {
   H3,
   H4,
   Header,
-  HeroBanner
+  HeroBanner,
+  ContactUsButton
 };

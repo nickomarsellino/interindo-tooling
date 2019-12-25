@@ -1,0 +1,28 @@
+@import "../../../assets/styles/project/init/variable", "../../../assets/styles/helpers/function",
+  "../../../assets/styles/helpers/mixins";
+
+
+.ds-contact-us-button{
+  position: fixed;
+  bottom: 25px;
+  right: 25px;
+  transition: all .25s ease;
+  transform: translateY(0px);
+  @include extra-small{
+    &.ui.button{
+      display: none;
+    }
+  }
+  &.ui.button{
+    padding: 12px 25px 8px 25px;
+    transition: all .25s ease;
+  }
+  p{
+    position: relative;
+    display: inline-block;
+    top: -3px;
+  }
+  &:hover{
+    transform: translateY(-2px);
+  }
+}
