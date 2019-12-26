@@ -6,6 +6,12 @@
   float: left;
   width: 33.33%;
   padding: 12px 12px;
+  @include small{
+    width: 50%;
+  }
+  @include mq(600px){
+    width: 100%;
+  }
   .product-card-wrapper {
     position: relative;
     overflow: hidden;
@@ -63,6 +69,10 @@
     transition: all 0.3s ease;
     .product-title {
       margin: 0;
+      @include small{
+        font-weight: 400;
+        font-size: 2.4rem;
+      }
     }
   }
   .view-more-button {
