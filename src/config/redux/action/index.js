@@ -42,10 +42,10 @@ export const loginUserAPI = (data) => (dispatch) => {
 // Post API from Dashboard -> Ini contoh yang pake redux yang bikin reducer dulu
 export const addDataToAPI = (data) => (dispatch) => {
     database.ref('Products/' + data.userId).push({
-        title: data.title,
-        content: data.content,
-        imageUrl: data.imageUrl,
-        Info : {
+        DataUtama : {
+            title: data.title,
+            content: data.content,
+            imageUrl: data.imageUrl,        
             createdDate: data.createdDate,
             createdBy: data.userId
         }
@@ -55,7 +55,7 @@ export const addDataToAPI = (data) => (dispatch) => {
 
 // Get data api using redux
 export const getDataFromAPI = (userId) => (dispatch) => {
-    var urlNotes = firebase.database().ref('Products/' + userId);
+    var urlNotes = firebase.database().ref('Products/' + userId );
     return new Promise((resolve, reject) => {
         urlNotes.on('value', function(snapshot) {
             // ubah object jadi Array
@@ -66,7 +66,7 @@ export const getDataFromAPI = (userId) => (dispatch) => {
                     data: snapshot.val()[key]
                 })
             })
-            console.log("Data pas getAPI ", data)
+            // console.log("Data pas getAPI ", data)
             dispatch({type: 'SET_NOTES', value: data})
             resolve(snapshot.val())
         });
@@ -75,7 +75,7 @@ export const getDataFromAPI = (userId) => (dispatch) => {
 
 export const addProductsDetail = (data) => (dispatch) => {
      database.ref('Products/' + data.userId + '/' + data.productsId ).push({
-        moreImage: data.imageUrl
+        imageUrl: data.imageUrl
     })
     console.log("result action ", data)
 }
@@ -83,5 +83,20 @@ export const addProductsDetail = (data) => (dispatch) => {
 // Get data api using redux
 export const getDetailProductImages = (data) => (dispatch) => {
     console.log(data)
-    dispatch({type: 'SHOW_MORE_IMAGE', value: data})
+    var urlNotes = firebase.database().ref('Products/' + data.userId + '/' + data.productsId);
+    return new Promise((resolve, reject) => {
+        urlNotes.on('value', function(snapshot) {
+            // ubah object jadi Array
+            const data = [];
+            Object.keys( (snapshot.val()) &&  snapshot.val()).map(key => {
+                data.push({
+                    id: key,
+                    data: snapshot.val()[key]
+                })
+            })
+            console.log("Data untuk di Modal ", data)
+            dispatch({type: 'SHOW_MORE_IMAGE', value: data})
+            resolve(snapshot.val())
+        });
+    })
 }

@@ -106,7 +106,7 @@ class Dashboard extends Component {
   render() {
     const { title, content, createdDate, image, imageUrl } = this.state;
     const { notes } = this.props;
-    // console.log("Hasil notes ", notes);
+    console.log("Hasil notes ", notes);
     return (
       <div className="container">
       <ImageModal onModalShow = {this.state.onModalShow} onCloseClick = {()=>this.onCloseClick()} productsId = {this.state.productsId}  productsDetail = {this.state.productsDetail} />
@@ -156,15 +156,15 @@ class Dashboard extends Component {
                   
                 >
                   <Card>
-                    <Card.Header as="h5">{bebas.data.title}</Card.Header>
+                    <Card.Header as="h5">{bebas.data.DataUtama.title}</Card.Header>
                     <Card.Body>
-                      <Card.Title>{bebas.data.content}</Card.Title>
+                      <Card.Title>{bebas.data.DataUtama.content}</Card.Title>
                       <Card.Text>
-                        {moment(bebas.data.createdDate).format("LLLL")}
+                        {moment(bebas.data.DataUtama.createdDate).format("LLLL")}
                       </Card.Text>
-                      <a href={bebas.data.imageUrl} target="_blank">
+                      <a href={bebas.data.DataUtama.imageUrl} target="_blank">
                         <img
-                          src={bebas.data.imageUrl}
+                          src={bebas.data.DataUtama.imageUrl}
                           alt=""
                           height="250px"
                           width="100%"

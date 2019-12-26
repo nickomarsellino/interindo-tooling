@@ -1,9 +1,12 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Button, Modal } from "react-bootstrap";
 import { storage } from "../../../config/firebase";
 import { connect } from "react-redux";
-import { addProductsDetail, getDetailProductImages } from "../../../config/redux/action";
+import {
+  addProductsDetail,
+  getDetailProductImages
+} from "../../../config/redux/action";
 
 class ImageModal extends Component {
   constructor(props) {
@@ -11,18 +14,22 @@ class ImageModal extends Component {
     this.state = {
       isTrueOrFalse: this.props.onModalShow,
       imageUrl: [],
-      createdDate: new Date().getTime(),
+      createdDate: new Date().getTime()
     };
   }
 
   showImageList = () => {
+    const userData = JSON.parse(localStorage.getItem("userData"));
+
     const detailData = {
       createdDate: this.state.createdDate,
       productsId: this.props.productsId,
-      imageUrl: this.state.imageUrl
+      imageUrl: this.state.imageUrl,
+      userId: userData.uid
     };
-    console.log(detailData)
-  }
+
+    this.props.showDetailProductImages(detailData);
+  };
 
   handleClose = () => {
     this.setState({ isTrueOrFalse: false });
@@ -69,14 +76,14 @@ class ImageModal extends Component {
             console.log(imageUrl);
             this.setState({ imageUrl });
 
-          const detailData = {
-            createdDate: this.state.createdDate,
-            userId: userData.uid,
-            productsId: this.props.productsId,
-            imageUrl: this.state.imageUrl
-          };
+            const detailData = {
+              createdDate: this.state.createdDate,
+              userId: userData.uid,
+              productsId: this.props.productsId,
+              imageUrl: this.state.imageUrl
+            };
 
-          this.props.saveProductsDetail(detailData);
+            this.props.saveProductsDetail(detailData);
           });
       }
     );
@@ -87,58 +94,50 @@ class ImageModal extends Component {
       onModalShow,
       onCloseClick,
       productsId,
-      productsDetail
+      productsDetail,
+      moreImage
     } = this.props;
-    console.log("detail id", productsId);
+    console.log("more image ", moreImage);
+    console.log("Detail ", productsDetail);
     return (
       <div className="modal">
         <Modal show={onModalShow} onHide={onCloseClick}>
           <Modal.Header closeButton>
-            <Modal.Title>Insert More for {productsDetail.title}</Modal.Title>
+            <Modal.Title>Insert More for</Modal.Title>
           </Modal.Header>
           <Modal.Body>
             <form style={{ left: 0 }}>
-                <img
-                src="https://firebasestorage.googleapis.com/v0/b/reactjs-firebase-e8649.appspot.com/o/images%2FTokyoDrift.jpg?alt=media&token=958fd006-7152-4ae1-86ca-c76f2cf25867"
-                alt=""
-                height="90px"
-                width="24%"
-                style = {{display: 'flex; display: -webkit-box', margin: '0.25%'}}
-              ></img>
-              <img
-                src="https://firebasestorage.googleapis.com/v0/b/reactjs-firebase-e8649.appspot.com/o/images%2FTokyoDrift.jpg?alt=media&token=958fd006-7152-4ae1-86ca-c76f2cf25867"
-                alt=""
-                height="90px"
-                width="25%"
-                style = {{display: 'flex; display: -webkit-box', margin: '0.25%'}}
-              ></img>
-              <img
-                src="https://firebasestorage.googleapis.com/v0/b/reactjs-firebase-e8649.appspot.com/o/images%2FTokyoDrift.jpg?alt=media&token=958fd006-7152-4ae1-86ca-c76f2cf25867"
-                alt=""
-                height="90px"
-                width="25%"
-                style = {{display: 'flex; display: -webkit-box', margin: '0.25%'}}
-              ></img>
-              <div class="form-group">
-                <label
-                  for="description"
-                  style={{ fontWeight: "bold" }}
-                >
-                  Description
-                </label>
-                <input
-                  type="text"
-                  class="form-control"
-                  onChange={e => this.onInputChange(e, "title")}
-                />
-              </div>
+              {moreImage.length > 0 ? (
+                <Fragment>
+                  {moreImage.map(bebas => {
+                    return (
+                      <div key={bebas.id} >
+                        
+                        <img
+                        style={{ display: "flex; display: -webkit-flex", margin: "1.5%" }}
+                          src={bebas.data.imageUrl}
+                          alt=""
+                          height="90px"
+                          width="32%"
+                        ></img>
+                      </div>
+                    );
+                  })}
+                </Fragment>
+              ) : null}
+              <br />
               <div>
                 <input type="file" onChange={this.handleImageChange} multiple />
               </div>
             </form>
           </Modal.Body>
           <Modal.Footer>
-            <Button variant="info" onClick={() => {this.showImageList()}}>
+            <Button
+              variant="info"
+              onClick={() => {
+                this.showImageList();
+              }}
+            >
               Show Image
             </Button>
             <Button
@@ -158,10 +157,9 @@ class ImageModal extends Component {
 }
 
 const reduxState = state => ({
-  detailProducts : state.detailProducts,
+  detailProducts: state.detailProducts,
   moreImage: state.moreImage
-
-})
+});
 
 const reduxDispatch = dispatch => ({
   saveProductsDetail: data => dispatch(addProductsDetail(data)),
