@@ -8,8 +8,10 @@ const ContactUsButton = () => (
     size='huge'
     color="green"
     className='ds-contact-us-button'>
-    <Icon name="whatsapp" size='large' />
-    <p>Contact Us</p>
+    <a href="http://bit.ly/2RTwvTi">
+      <Icon name="whatsapp" size='large' />
+      Contact Us
+    </a>
   </Button>
 )
 

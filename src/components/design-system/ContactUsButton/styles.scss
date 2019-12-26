@@ -17,11 +17,15 @@
   &.ui.button{
     padding: 12px 25px 8px 25px;
     transition: all .25s ease;
+    .icon{
+      position: relative;
+      top: -1px;
+    }
   }
-  p{
+  a{
+    color: color(white);
     position: relative;
     display: inline-block;
-    top: -3px;
   }
   &:hover{
     transform: translateY(-2px);

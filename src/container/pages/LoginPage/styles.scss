@@ -2,6 +2,8 @@
   "../../../assets/styles/helpers/mixins";
 
 .p-login-page {
+  position: relative;
+  z-index: 4;
   height: 500px;
   display: table;
   width: 100%;
