@@ -13,21 +13,21 @@ import bannerImg from '../../../assets/images/dummy/hero-banner.jpg';
 
 class LoginForm extends Component {
   state = {
-    name: '',
-    email: ''
+    email: '',
+    password: ''
   }
 
   handleChange = (e, { name, value }) => this.setState({ [name]: value })
 
   handleSubmit = () => {
-    const { name, password } = this.state
-    console.log(this.state.name, this.state.password);
-    this.setState({ name: name, email: password })
+    const { email, password } = this.state
+    console.log(this.state.email, this.state.password);
+    this.setState({ email: email, email: password })
   }
 
   render() {
     const {
-      state: { name, password },
+      state: { email, password },
       // props: {
       //   bannerImage,
       //   bannerTitle
@@ -41,15 +41,18 @@ class LoginForm extends Component {
             <H2>LOGIN FORM</H2>
             <Form onSubmit={this.handleSubmit}>
               <Form.Input
-                label='Username'
-                placeholder='Username'
-                name='name'
-                value={name}
+                required
+                label='E-mail'
+                placeholder='Input E-mail'
+                type='email'
+                name='email'
+                value={email}
                 onChange={this.handleChange}
               />
               <Form.Input
+                required
                 label='Password'
-                placeholder='Password'
+                placeholder='Input Password'
                 type='password'
                 name='password'
                 value={password}
