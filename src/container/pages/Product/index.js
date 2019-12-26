@@ -22,7 +22,7 @@ class Product extends Component {
 
     return (
       <div className="p-product">
-        <HeroBanner bannerTitle="Out Product"/>
+        <HeroBanner bannerTitle="Our Product"/>
       </div>
     );
   }

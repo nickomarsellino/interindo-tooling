@@ -10,6 +10,8 @@ import Footer from './Footer';
 import HeroBanner from './HeroBanner';
 import ContactUsButton from './ContactUsButton';
 import LoginForm from './LoginForm';
+import ProductCard from './ProductCard';
+import ProductCardList from './ProductCardList';
 
 
 export {
@@ -21,5 +23,7 @@ export {
   Footer,
   HeroBanner,
   ContactUsButton,
-  LoginForm
+  LoginForm,
+  ProductCard,
+  ProductCardList
 };

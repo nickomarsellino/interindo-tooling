@@ -1,0 +1,80 @@
+// import mixin and variables
+@import "../../../assets/styles/project/init/variable", "../../../assets/styles/helpers/function",
+  "../../../assets/styles/helpers/mixins";
+
+.ds-product-card {
+  float: left;
+  width: 33.33%;
+  padding: 12px 12px;
+  .product-card-wrapper {
+    position: relative;
+    overflow: hidden;
+    height: 250px;
+    border-radius: 10px;
+    &::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      transition: all 0.3s ease;
+      opacity: 0.4;
+      background-image: linear-gradient(180deg, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0.75) 100%);
+      // background-image: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.75) 100%);
+    }
+    &:hover {
+      .product-information {
+        transform: translateY(-30px);
+        opacity: 0;
+      }
+      .view-more-button {
+        opacity: 1;
+        transform: translate(-50%, -70%);
+      }
+      &::after {
+        opacity: 0.8;
+        // background-image: linear-gradient(180deg, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0.75) 100%);
+      }
+    }
+  }
+  .product-image {
+    height: 100%;
+    width: 100%;
+    position: relative;
+    object-fit: cover;
+  }
+  .click-area {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    z-index: 3;
+    text-indent: -99999px;
+  }
+  .product-information {
+    position: absolute;
+    z-index: 2;
+    bottom: 0;
+    width: 100%;
+    padding: 20px;
+    opacity: 1;
+    transition: all 0.3s ease;
+    .product-title {
+      margin: 0;
+    }
+  }
+  .view-more-button {
+    position: absolute;
+    transition: all 0.3s ease;
+    width: 50%;
+    left: 50%;
+    bottom: 0;
+    z-index: 3;
+    transform: translate(-50%, -40%);
+    padding: 10px 20px;
+    font-size: 16px;
+    opacity: 0;
+  }
+}

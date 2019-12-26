@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './styles.scss';
 
 
-import { HeroBanner } from '../../../components';
+import { HeroBanner, ProductCardList, H2 } from '../../../components';
 
 class HomePage extends Component {
   state = {
@@ -20,9 +20,9 @@ class HomePage extends Component {
     this.props.history.push({
       pathname: `/our-product`,
       state: {
-          productId: "14045"
+        productId: "14045"
       }
-  })
+    })
   }
 
   // render
@@ -38,6 +38,12 @@ class HomePage extends Component {
         <li className="jjj" onClick={this.handleClickNavigation}>
           Our Product With history
         </li>
+        <div>
+          <div className='container'>
+            <H2>Our Product</H2>
+            <ProductCardList/>
+          </div>
+        </div>
       </div>
     );
   }
