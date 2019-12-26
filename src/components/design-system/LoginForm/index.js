@@ -37,7 +37,6 @@ class LoginForm extends Component {
       <Fade>
         <div className="ds-login-form">
           <Card>
-            {/* <img className="form-bg" src={bannerImg} /> */}
             <H2>LOGIN FORM</H2>
             <Form onSubmit={this.handleSubmit}>
               <Form.Input

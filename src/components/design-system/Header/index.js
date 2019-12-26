@@ -104,11 +104,11 @@ class Header extends Component {
               <li className={`content-item ${this.state.isActive === "our-product" ? 'active' : ''}`}>
                 <Link to='/our-product' id="our-product" onClick={this.handleClickNavigation}>Our Product</Link>
               </li>
-              <li className={`content-item ${this.state.isActive === "about-us" ? 'active' : ''}`}>
-                <Link to='/about-us' id="about-us" onClick={this.handleClickNavigation}>About Us</Link >
-              </li>
               <li className={`content-item ${this.state.isActive === "contact-us" ? 'active' : ''}`}>
                 <Link to='/contact-us' id="contact-us" onClick={this.handleClickNavigation}>Contact Us</Link>
+              </li>
+              <li className={`content-item ${this.state.isActive === "about-us" ? 'active' : ''}`}>
+                <Link to='/about-us' id="about-us" onClick={this.handleClickNavigation}>About Us</Link >
               </li>
             </ul>
           </div>
