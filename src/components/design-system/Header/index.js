@@ -72,9 +72,18 @@ class Header extends Component {
     const clicked = e.target.id;
 
     if (this.state.isActive === clicked) {
+      document.body.classList.toggle('remove-scroll');
       this.setState({ isActive: clicked });
-    } else {
+      this.setState(prevState => ({
+        showMobileNavigation: !prevState.showMobileNavigation
+      }));
+    }
+    else {
+      document.body.classList.toggle('remove-scroll');
       this.setState({ isActive: clicked })
+      this.setState(prevState => ({
+        showMobileNavigation: !prevState.showMobileNavigation
+      }));
     }
   }
 
