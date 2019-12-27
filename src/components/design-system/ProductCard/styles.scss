@@ -6,10 +6,10 @@
   float: left;
   width: 33.33%;
   padding: 12px 12px;
-  @include small{
+  @include small {
     width: 50%;
   }
-  @include mq(600px){
+  @include mq(600px) {
     width: 100%;
   }
   .product-card-wrapper {
@@ -51,8 +51,9 @@
     object-fit: cover;
     object-position: center;
 
-    @include iphone{
-      object-fit: contain;
+    @include iphone {
+      object-fit: fill;
+      object-position: center;
     }
   }
   .click-area {
@@ -74,7 +75,7 @@
     transition: all 0.3s ease;
     .product-title {
       margin: 0;
-      @include small{
+      @include small {
         font-weight: 400;
         font-size: 2.4rem;
       }

@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import './styles.scss';
 
-
 import { HeroBanner, ProductCardList, H2 } from '../../../components';
 import { Header, Footer, ContactUsButton } from '../../../components';
 

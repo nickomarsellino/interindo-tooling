@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import classname from 'classnames';
 import FadeIn from 'react-fade-in';
 import './styles.scss';
-
+import LazyLoad from 'react-lazyload';
 import { ProductCard } from '../../../components';
 
 // data dummy
@@ -50,42 +50,276 @@ class ProductCardList extends Component {
               productTitle={value.productTitle}
             />
           ))} */}
-          <ProductCard
-            handleClickProductCard={this.handleClickProductCard}
-            productId='product-1'
-            productImage={productImg1}
-            productTitle='Lorem Ipsum 1'
-          />
-          <ProductCard
-            handleClickProductCard={this.handleClickProductCard}
-            productId='product-2'
-            productImage={productImg2}
-            productTitle='Lorem Ipsum 2'
-          />
-          <ProductCard
-            handleClickProductCard={this.handleClickProductCard}
-            productId='product-3'
-            productImage={productImg1}
-            productTitle='Lorem Ipsum 3'
-          />
-          <ProductCard
-            handleClickProductCard={this.handleClickProductCard}
-            productId='product-4'
-            productImage={productImg2}
-            productTitle='Lorem Ipsum 4'
-          />
-          <ProductCard
-            handleClickProductCard={this.handleClickProductCard}
-            productId='product-5'
-            productImage={productImg1}
-            productTitle='Lorem Ipsum 5'
-          />
-          <ProductCard
-            handleClickProductCard={this.handleClickProductCard}
-            productId='product-6'
-            productImage={productImg2}
-            productTitle='Lorem Ipsum 6'
-          />
+          <LazyLoad height={300} debounce={200} offset={300}>
+            <ProductCard
+              handleClickProductCard={this.handleClickProductCard}
+              productId='product-1'
+              productImage={productImg1}
+              productTitle='Lorem Ipsum 1'
+            />
+          </LazyLoad>
+
+          <LazyLoad height={300} debounce={200} offset={300}>
+            <ProductCard
+              handleClickProductCard={this.handleClickProductCard}
+              productId='product-2'
+              productImage={productImg2}
+              productTitle='Lorem Ipsum 2'
+            />
+          </LazyLoad>
+
+          <LazyLoad height={300} debounce={200} offset={300}>
+            <ProductCard
+              handleClickProductCard={this.handleClickProductCard}
+              productId='product-3'
+              productImage={productImg1}
+              productTitle='Lorem Ipsum 3'
+            />
+          </LazyLoad>
+
+          <LazyLoad height={300} debounce={200} offset={300}>
+            <ProductCard
+              handleClickProductCard={this.handleClickProductCard}
+              productId='product-4'
+              productImage={productImg2}
+              productTitle='Lorem Ipsum 4'
+            />
+          </LazyLoad>
+
+          <LazyLoad height={300} debounce={200} offset={300}>
+            <ProductCard
+              handleClickProductCard={this.handleClickProductCard}
+              productId='product-5'
+              productImage={productImg1}
+              productTitle='Lorem Ipsum 5'
+            />
+          </LazyLoad>
+
+          <LazyLoad height={300} debounce={200} offset={300}>
+            <ProductCard
+              handleClickProductCard={this.handleClickProductCard}
+              productId='product-6'
+              productImage={productImg2}
+              productTitle='Lorem Ipsum 6'
+            />
+          </LazyLoad>
+          <LazyLoad height={300} debounce={200} offset={300}>
+            <ProductCard
+              handleClickProductCard={this.handleClickProductCard}
+              productId='product-6'
+              productImage={productImg2}
+              productTitle='Lorem Ipsum 6'
+            />
+          </LazyLoad>
+          <LazyLoad height={300} debounce={200} offset={300}>
+            <ProductCard
+              handleClickProductCard={this.handleClickProductCard}
+              productId='product-6'
+              productImage={productImg2}
+              productTitle='Lorem Ipsum 6'
+            />
+          </LazyLoad>
+          <LazyLoad height={300} debounce={200} offset={300}>
+            <ProductCard
+              handleClickProductCard={this.handleClickProductCard}
+              productId='product-6'
+              productImage={productImg2}
+              productTitle='Lorem Ipsum 6'
+            />
+          </LazyLoad>
+          <LazyLoad height={300} debounce={200} offset={300}>
+            <ProductCard
+              handleClickProductCard={this.handleClickProductCard}
+              productId='product-6'
+              productImage={productImg2}
+              productTitle='Lorem Ipsum 6'
+            />
+          </LazyLoad>
+          <LazyLoad height={300} debounce={200} offset={300}>
+            <ProductCard
+              handleClickProductCard={this.handleClickProductCard}
+              productId='product-6'
+              productImage={productImg2}
+              productTitle='Lorem Ipsum 6'
+            />
+          </LazyLoad>
+          <LazyLoad height={300} debounce={200} offset={300}>
+            <ProductCard
+              handleClickProductCard={this.handleClickProductCard}
+              productId='product-6'
+              productImage={productImg2}
+              productTitle='Lorem Ipsum 6'
+            />
+          </LazyLoad>
+          <LazyLoad height={300} debounce={200} offset={300}>
+            <ProductCard
+              handleClickProductCard={this.handleClickProductCard}
+              productId='product-6'
+              productImage={productImg2}
+              productTitle='Lorem Ipsum 6'
+            />
+          </LazyLoad>
+          <LazyLoad height={300} debounce={200} offset={300}>
+            <ProductCard
+              handleClickProductCard={this.handleClickProductCard}
+              productId='product-6'
+              productImage={productImg2}
+              productTitle='Lorem Ipsum 6'
+            />
+          </LazyLoad>
+          <LazyLoad height={300} debounce={200} offset={300}>
+            <ProductCard
+              handleClickProductCard={this.handleClickProductCard}
+              productId='product-6'
+              productImage={productImg2}
+              productTitle='Lorem Ipsum 6'
+            />
+          </LazyLoad>
+          <LazyLoad height={300} debounce={200} offset={300}>
+            <ProductCard
+              handleClickProductCard={this.handleClickProductCard}
+              productId='product-6'
+              productImage={productImg2}
+              productTitle='Lorem Ipsum 6'
+            />
+          </LazyLoad>
+          <LazyLoad height={300} debounce={200} offset={300}>
+            <ProductCard
+              handleClickProductCard={this.handleClickProductCard}
+              productId='product-6'
+              productImage={productImg2}
+              productTitle='Lorem Ipsum 6'
+            />
+          </LazyLoad>
+          <LazyLoad height={300} debounce={200} offset={300}>
+            <ProductCard
+              handleClickProductCard={this.handleClickProductCard}
+              productId='product-6'
+              productImage={productImg2}
+              productTitle='Lorem Ipsum 6'
+            />
+          </LazyLoad>
+          <LazyLoad height={300} debounce={200} offset={300}>
+            <ProductCard
+              handleClickProductCard={this.handleClickProductCard}
+              productId='product-6'
+              productImage={productImg2}
+              productTitle='Lorem Ipsum 6'
+            />
+          </LazyLoad>
+          <LazyLoad height={300} debounce={200} offset={300}>
+            <ProductCard
+              handleClickProductCard={this.handleClickProductCard}
+              productId='product-6'
+              productImage={productImg2}
+              productTitle='Lorem Ipsum 6'
+            />
+          </LazyLoad>
+          <LazyLoad height={300} debounce={200} offset={300}>
+            <ProductCard
+              handleClickProductCard={this.handleClickProductCard}
+              productId='product-6'
+              productImage={productImg2}
+              productTitle='Lorem Ipsum 6'
+            />
+          </LazyLoad>
+          <LazyLoad height={300} debounce={200} offset={300}>
+            <ProductCard
+              handleClickProductCard={this.handleClickProductCard}
+              productId='product-6'
+              productImage={productImg2}
+              productTitle='Lorem Ipsum 6'
+            />
+          </LazyLoad>
+          <LazyLoad height={300} debounce={200} offset={300}>
+            <ProductCard
+              handleClickProductCard={this.handleClickProductCard}
+              productId='product-6'
+              productImage={productImg2}
+              productTitle='Lorem Ipsum 6'
+            />
+          </LazyLoad>
+          <LazyLoad height={300} debounce={200} offset={300}>
+            <ProductCard
+              handleClickProductCard={this.handleClickProductCard}
+              productId='product-6'
+              productImage={productImg2}
+              productTitle='Lorem Ipsum 6'
+            />
+          </LazyLoad>
+          <LazyLoad height={300} debounce={200} offset={300}>
+            <ProductCard
+              handleClickProductCard={this.handleClickProductCard}
+              productId='product-6'
+              productImage={productImg2}
+              productTitle='Lorem Ipsum 6'
+            />
+          </LazyLoad>
+          <LazyLoad height={300} debounce={200} offset={300}>
+            <ProductCard
+              handleClickProductCard={this.handleClickProductCard}
+              productId='product-6'
+              productImage={productImg2}
+              productTitle='Lorem Ipsum 6'
+            />
+          </LazyLoad>
+          <LazyLoad height={300} debounce={200} offset={300}>
+            <ProductCard
+              handleClickProductCard={this.handleClickProductCard}
+              productId='product-6'
+              productImage={productImg2}
+              productTitle='Lorem Ipsum 6'
+            />
+          </LazyLoad>
+          <LazyLoad height={300} debounce={200} offset={300}>
+            <ProductCard
+              handleClickProductCard={this.handleClickProductCard}
+              productId='product-6'
+              productImage={productImg2}
+              productTitle='Lorem Ipsum 6'
+            />
+          </LazyLoad>
+          <LazyLoad height={300} debounce={200} offset={300}>
+            <ProductCard
+              handleClickProductCard={this.handleClickProductCard}
+              productId='product-6'
+              productImage={productImg2}
+              productTitle='Lorem Ipsum 6'
+            />
+          </LazyLoad>
+          <LazyLoad height={300} debounce={200} offset={300}>
+            <ProductCard
+              handleClickProductCard={this.handleClickProductCard}
+              productId='product-6'
+              productImage={productImg2}
+              productTitle='Lorem Ipsum 6'
+            />
+          </LazyLoad>
+          <LazyLoad height={300} debounce={200} offset={300}>
+            <ProductCard
+              handleClickProductCard={this.handleClickProductCard}
+              productId='product-6'
+              productImage={productImg2}
+              productTitle='Lorem Ipsum 6'
+            />
+          </LazyLoad>
+          <LazyLoad height={300} debounce={200} offset={300}>
+            <ProductCard
+              handleClickProductCard={this.handleClickProductCard}
+              productId='product-6'
+              productImage={productImg2}
+              productTitle='Lorem Ipsum 6'
+            />
+          </LazyLoad>
+          <LazyLoad height={300} debounce={200} offset={300}>
+            <ProductCard
+              handleClickProductCard={this.handleClickProductCard}
+              productId='product-6'
+              productImage={productImg2}
+              productTitle='Lorem Ipsum 6'
+            />
+          </LazyLoad>
+
         </div>
       </FadeIn>
     );
