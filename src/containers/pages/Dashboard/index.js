@@ -7,6 +7,7 @@ import { saveAs } from "file-saver";
 import { storage } from "../../../config/firebase";
 import "bootstrap/dist/css/bootstrap.min.css";
 import * as moment from "moment";
+import NavbarAdmin from "../NavbarAdmin";
 
 import ImageModal from '../Modal';
 
@@ -28,15 +29,15 @@ class Dashboard extends Component {
     const userData = JSON.parse(localStorage.getItem("userData"));
     console.log("Didmount userData ", userData);
 
-    if (this.state.email === "") {
-      this.props.history.push('/login');
-    } else {
+    // if (this.state.email === "") {
+    //   this.props.history.push('/login');
+    // } else {
       this.setState({
         email : userData.email
       })
       // Call getDataAPI from props
       this.props.getNotes(userData.uid);
-    }
+    // }
 
     var storageRef = storage.ref();
   }
@@ -113,12 +114,12 @@ class Dashboard extends Component {
   };
 
   logOut = () => {
-    console.log("TEST")
+    console.log("TEST");
     this.props.logout();
     const { history } = this.props;
 
-    history.push('/login');
-  }
+    history.push("/login");
+  };
 
   render() {
     const { title, content, createdDate, image, imageUrl } = this.state;
@@ -128,10 +129,9 @@ class Dashboard extends Component {
     return (
       <div className="container">
       <ImageModal onModalShow = {this.state.onModalShow} onCloseClick = {()=>this.onCloseClick()} productsId = {this.state.productsId}  productsDetail = {this.state.productsDetail} />
-        <form style={{ marginLeft: "25%", marginRight: "25%" }}>
-        <Button variant="danger" onClick={this.logOut}>LOG OUT</Button>
-        <br/>
-        <p>Welcome, {this.state.email}</p>  
+      <NavbarAdmin userEmail = {this.state.email} onLogOutClick = {this.logOut} />  
+      <form style={{ marginLeft: "25%", marginRight: "25%" }}>
+          <br />
           <div class="form-group">
             <label for="exampleInputEmail1">Title</label>
             <input
