@@ -3,12 +3,14 @@ import './styles.scss';
 
 
 import { HeroBanner, ProductCardList, H2 } from '../../../components';
+import { Header, Footer, ContactUsButton } from '../../../components';
 
 class HomePage extends Component {
   state = {
   };
 
   componentDidMount() {
+    window.scrollTo(0,0);
   }
 
   // handleClosePage onClick
@@ -34,6 +36,8 @@ class HomePage extends Component {
 
     return (
       <div className="p-homepage">
+        <ContactUsButton />
+        <Header />
         <HeroBanner bannerTitle="HomePage" />
         <li className="jjj" onClick={this.handleClickNavigation}>
           Our Product With history
@@ -41,9 +45,10 @@ class HomePage extends Component {
         <div>
           <div className='container'>
             <H2>Our Product</H2>
-            <ProductCardList history={this.props.history}/>
+            <ProductCardList history={this.props.history} />
           </div>
         </div>
+        <Footer />
       </div>
     );
   }

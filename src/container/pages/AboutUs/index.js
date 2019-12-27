@@ -1,15 +1,15 @@
 import React, { Component } from 'react';
 import './styles.scss';
 
-
-import { HeroBanner } from '../../../components';
+import { HeroBanner, Header, Footer, ContactUsButton } from '../../../components';
 
 class aboutUs extends Component {
   // state = {
   // };
 
-  // componentDidMount() {
-  // }
+  componentDidMount() {
+    window.scrollTo(0,0)
+  }
 
   // render
   render() {
@@ -20,7 +20,10 @@ class aboutUs extends Component {
 
     return (
       <div className="p-about-us">
-        <HeroBanner bannerTitle="About Us"/>
+        <ContactUsButton />
+        <Header />
+        <HeroBanner bannerTitle="About Us" />
+        <Footer />
       </div>
     );
   }

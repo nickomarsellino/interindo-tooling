@@ -19,8 +19,6 @@ class App extends Component {
     // } = this;
     return (
       <Router>
-        <ContactUsButton />
-        <Header />
         <Switch>
           {AppRoutes.map((route) => (
             <Route key={route.id} {...route} />
@@ -29,7 +27,6 @@ class App extends Component {
         <Redirect from='/design-system' to='/design-system/introduction' />
         <Redirect from='*' to='/error-404' /> */}
         </Switch>
-        <Footer />
       </Router>
     );
   }

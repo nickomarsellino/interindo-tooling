@@ -2,14 +2,15 @@ import React, { Component } from 'react';
 import './styles.scss';
 
 
-import { HeroBanner } from '../../../components';
+import { HeroBanner, Header, Footer, ContactUsButton } from '../../../components';
 
 class ContactUs extends Component {
   // state = {
   // };
 
-  // componentDidMount() {
-  // }
+  componentDidMount() {
+    window.scrollTo(0,0)
+  }
 
   // render
   render() {
@@ -20,7 +21,10 @@ class ContactUs extends Component {
 
     return (
       <div className="p-contact-us">
-        <HeroBanner bannerTitle="Contact Us"/>
+        <ContactUsButton />
+        <Header />
+        <HeroBanner bannerTitle="Contact Us" />
+        <Footer />
       </div>
     );
   }
