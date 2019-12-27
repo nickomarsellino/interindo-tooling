@@ -111,16 +111,14 @@ class ImageModal extends Component {
                 <Fragment>
                   {moreImage.map(bebas => {
                     return (
-                      <div key={bebas.id} >
-                        
                         <img
-                        style={{ display: "flex; display: -webkit-flex", margin: "1.5%" }}
+                          key={bebas.id}
+                          style={{ display: "flex; display: -webkit-flex", margin: "1.5%" }}
                           src={bebas.data.imageUrl}
                           alt=""
                           height="90px"
-                          width="32%"
+                          width="30%"
                         ></img>
-                      </div>
                     );
                   })}
                 </Fragment>

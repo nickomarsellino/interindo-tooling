@@ -18,7 +18,7 @@ class Login extends Component {
 
     handleLoginSubmit = async () => {
         const { email, password } = this.state;
-        const { history } = this.props
+        const { history } = this.props;
         const res = await this.props.loginAPI({email, password}).catch(err => err);
         console.log(res);
         if(res) { 

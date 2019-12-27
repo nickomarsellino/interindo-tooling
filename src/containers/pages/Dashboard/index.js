@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from "react";
-import { addDataToAPI, getDataFromAPI } from "../../../config/redux/action";
+import { addDataToAPI, getDataFromAPI, logOutUser } from "../../../config/redux/action";
 import { connect } from "react-redux";
 import { Card, Button } from "react-bootstrap";
 import axios from "axios";
@@ -20,16 +20,25 @@ class Dashboard extends Component {
     imageUrl: "",
     onModalShow: false,
     productsDetail: "",
-    productsId: ""
+    productsId: "",
+    email: ""
   };
 
   componentDidMount() {
     const userData = JSON.parse(localStorage.getItem("userData"));
     console.log("Didmount userData ", userData);
-    var storageRef = storage.ref();
 
-    // Call getDataAPI from props
-    this.props.getNotes(userData.uid);
+    if (this.state.email === "") {
+      this.props.history.push('/login');
+    } else {
+      this.setState({
+        email : userData.email
+      })
+      // Call getDataAPI from props
+      this.props.getNotes(userData.uid);
+    }
+
+    var storageRef = storage.ref();
   }
 
   handleSaveNote = e => {
@@ -103,14 +112,26 @@ class Dashboard extends Component {
     })
   };
 
+  logOut = () => {
+    console.log("TEST")
+    this.props.logout();
+    const { history } = this.props;
+
+    history.push('/login');
+  }
+
   render() {
     const { title, content, createdDate, image, imageUrl } = this.state;
     const { notes } = this.props;
     console.log("Hasil notes ", notes);
+    console.log(this.state.email)
     return (
       <div className="container">
       <ImageModal onModalShow = {this.state.onModalShow} onCloseClick = {()=>this.onCloseClick()} productsId = {this.state.productsId}  productsDetail = {this.state.productsDetail} />
         <form style={{ marginLeft: "25%", marginRight: "25%" }}>
+        <Button variant="danger" onClick={this.logOut}>LOG OUT</Button>
+        <br/>
+        <p>Welcome, {this.state.email}</p>  
           <div class="form-group">
             <label for="exampleInputEmail1">Title</label>
             <input
@@ -191,7 +212,8 @@ const reduxState = state => ({
 
 const reduxDispatch = dispatch => ({
   saveNotes: data => dispatch(addDataToAPI(data)),
-  getNotes: data => dispatch(getDataFromAPI(data))
+  getNotes: data => dispatch(getDataFromAPI(data)),
+  logout: data => dispatch(logOutUser())
 });
 
 export default connect(reduxState, reduxDispatch)(Dashboard);
