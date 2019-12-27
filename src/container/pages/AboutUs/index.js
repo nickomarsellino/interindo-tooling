@@ -20,10 +20,10 @@ class aboutUs extends Component {
 
     return (
       <div className="p-about-us">
-        <ContactUsButton />
-        <Header />
+        <ContactUsButton/>
+        <Header isActive='about-us'/>
         <HeroBanner bannerTitle="About Us" />
-        <Footer />
+        <Footer/>
       </div>
     );
   }

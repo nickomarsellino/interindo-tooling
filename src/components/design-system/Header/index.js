@@ -3,6 +3,7 @@
 
 import React, { Component } from 'react';
 import classname from 'classnames';
+import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import './styles.scss';
 
@@ -14,8 +15,7 @@ class Header extends Component {
 
   state = {
     showMobileNavigation: false,
-    scrolled: false,
-    isActive: 'homepage'
+    scrolled: false
   };
 
   componentDidMount() {
@@ -99,6 +99,9 @@ class Header extends Component {
   render() {
     const {
       state: { showMobileNavigation, scrolled },
+      props: {
+        isActive
+      }
     } = this;
 
     const classNames = classname('ds-header', {
@@ -119,13 +122,13 @@ class Header extends Component {
           </div>
           <div className="navbar-menu">
             <ul className="menu-content">
-              <li className={`content-item ${this.state.isActive === "our-product" ? 'active' : ''}`}>
+              <li className={`content-item ${isActive === "our-product" ? 'active' : ''}`}>
                 <Link to='/our-product' id="our-product" onClick={this.handleClickNavigation}>Our Product</Link>
               </li>
-              <li className={`content-item ${this.state.isActive === "contact-us" ? 'active' : ''}`}>
+              <li className={`content-item ${isActive === "contact-us" ? 'active' : ''}`}>
                 <Link to='/contact-us' id="contact-us" onClick={this.handleClickNavigation}>Contact Us</Link>
               </li>
-              <li className={`content-item ${this.state.isActive === "about-us" ? 'active' : ''}`}>
+              <li className={`content-item ${isActive === "about-us" ? 'active' : ''}`}>
                 <Link to='/about-us' id="about-us" onClick={this.handleClickNavigation}>About Us</Link >
               </li>
             </ul>
@@ -135,5 +138,15 @@ class Header extends Component {
     );
   }
 }
+
+
+Header.propTypes = {
+  isActive: PropTypes.string
+}
+
+Header.defaultProps = {
+  isActive: ''
+}
+
 
 export default Header;

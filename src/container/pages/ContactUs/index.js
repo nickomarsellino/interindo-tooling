@@ -21,10 +21,10 @@ class ContactUs extends Component {
 
     return (
       <div className="p-contact-us">
-        <ContactUsButton />
-        <Header />
+        <ContactUsButton/>
+        <Header isActive='contact-us'/>
         <HeroBanner bannerTitle="Contact Us" />
-        <Footer />
+        <Footer/>
       </div>
     );
   }

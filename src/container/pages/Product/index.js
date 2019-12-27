@@ -23,10 +23,10 @@ class Product extends Component {
 
     return (
       <div className="p-product">
-        <ContactUsButton />
-        <Header />
+        <ContactUsButton/>
+        <Header isActive='our-product'/>
         <HeroBanner bannerTitle="Our Product" />
-        <Footer />
+        <Footer/>
       </div>
     );
   }
