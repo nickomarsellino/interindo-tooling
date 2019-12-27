@@ -8,13 +8,14 @@ class Product extends Component {
   // state = {
   // };
 
-  // componentDidMount() {
-  // }
-
+  componentDidMount() {
+    if(this.props.location.state !== undefined){
+      console.log("Data Dari Home Lempar Ke Page ini: ",this.props.location.state.productId);
+    }
+  }
 
   // render
   render() {
-    console.log("Data Dari Home Lempar Ke Page ini: ",this.props.location);
     // const {
     //   // handleClosePage,
     //   // state: { showSteps }

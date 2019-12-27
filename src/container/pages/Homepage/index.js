@@ -41,7 +41,7 @@ class HomePage extends Component {
         <div>
           <div className='container'>
             <H2>Our Product</H2>
-            <ProductCardList/>
+            <ProductCardList history={this.props.history}/>
           </div>
         </div>
       </div>
