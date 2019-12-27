@@ -49,6 +49,11 @@
     width: 100%;
     position: relative;
     object-fit: cover;
+    object-position: center;
+
+    @include iphone{
+      object-fit: contain;
+    }
   }
   .click-area {
     position: absolute;

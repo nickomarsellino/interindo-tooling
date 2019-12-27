@@ -20,7 +20,9 @@ class LoginPage extends Component {
 
     return (
       <div className="p-login-page">
-        <LoginForm/>
+        <div className='container'>
+          <LoginForm />
+        </div>
       </div>
     );
   }

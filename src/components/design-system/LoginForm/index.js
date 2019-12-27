@@ -22,7 +22,7 @@ class LoginForm extends Component {
   handleSubmit = () => {
     const { email, password } = this.state
     console.log(this.state.email, this.state.password);
-    this.setState({ email: email, email: password })
+    this.setState({ email: email, password: password })
   }
 
   render() {

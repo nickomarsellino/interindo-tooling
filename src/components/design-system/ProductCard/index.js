@@ -8,9 +8,6 @@ import './styles.scss';
 import { H3 } from '../../../components';
 import { Button } from 'semantic-ui-react'
 
-// data dummy
-import productImg from '../../../assets/images/dummy/hero-banner.jpg';
-
 class ProductCard extends Component {
   render() {
     const {
