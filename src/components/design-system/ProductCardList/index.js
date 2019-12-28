@@ -50,7 +50,7 @@ class ProductCardList extends Component {
               productTitle={value.productTitle}
             />
           ))} */}
-          <LazyLoad height={300} debounce={200} offset={300}>
+          <LazyLoad height={300} debounce={150} offset={300}>
             <ProductCard
               handleClickProductCard={this.handleClickProductCard}
               productId='product-1'
@@ -59,7 +59,7 @@ class ProductCardList extends Component {
             />
           </LazyLoad>
 
-          <LazyLoad height={300} debounce={200} offset={300}>
+          <LazyLoad height={300} debounce={150} offset={300}>
             <ProductCard
               handleClickProductCard={this.handleClickProductCard}
               productId='product-2'
@@ -68,7 +68,7 @@ class ProductCardList extends Component {
             />
           </LazyLoad>
 
-          <LazyLoad height={300} debounce={200} offset={300}>
+          <LazyLoad height={300} debounce={150} offset={300}>
             <ProductCard
               handleClickProductCard={this.handleClickProductCard}
               productId='product-3'
@@ -77,7 +77,7 @@ class ProductCardList extends Component {
             />
           </LazyLoad>
 
-          <LazyLoad height={300} debounce={200} offset={300}>
+          <LazyLoad height={300} debounce={150} offset={300}>
             <ProductCard
               handleClickProductCard={this.handleClickProductCard}
               productId='product-4'
@@ -86,7 +86,7 @@ class ProductCardList extends Component {
             />
           </LazyLoad>
 
-          <LazyLoad height={300} debounce={200} offset={300}>
+          <LazyLoad height={300} debounce={150} offset={300}>
             <ProductCard
               handleClickProductCard={this.handleClickProductCard}
               productId='product-5'
@@ -95,7 +95,7 @@ class ProductCardList extends Component {
             />
           </LazyLoad>
 
-          <LazyLoad height={300} debounce={200} offset={300}>
+          <LazyLoad height={300} debounce={150} offset={300}>
             <ProductCard
               handleClickProductCard={this.handleClickProductCard}
               productId='product-6'
@@ -103,7 +103,7 @@ class ProductCardList extends Component {
               productTitle='Lorem Ipsum 6'
             />
           </LazyLoad>
-          <LazyLoad height={300} debounce={200} offset={300}>
+          <LazyLoad height={300} debounce={150} offset={300}>
             <ProductCard
               handleClickProductCard={this.handleClickProductCard}
               productId='product-6'
@@ -111,7 +111,7 @@ class ProductCardList extends Component {
               productTitle='Lorem Ipsum 6'
             />
           </LazyLoad>
-          <LazyLoad height={300} debounce={200} offset={300}>
+          <LazyLoad height={300} debounce={150} offset={300}>
             <ProductCard
               handleClickProductCard={this.handleClickProductCard}
               productId='product-6'
@@ -119,7 +119,7 @@ class ProductCardList extends Component {
               productTitle='Lorem Ipsum 6'
             />
           </LazyLoad>
-          <LazyLoad height={300} debounce={200} offset={300}>
+          <LazyLoad height={300} debounce={150} offset={300}>
             <ProductCard
               handleClickProductCard={this.handleClickProductCard}
               productId='product-6'
@@ -127,7 +127,7 @@ class ProductCardList extends Component {
               productTitle='Lorem Ipsum 6'
             />
           </LazyLoad>
-          <LazyLoad height={300} debounce={200} offset={300}>
+          <LazyLoad height={300} debounce={150} offset={300}>
             <ProductCard
               handleClickProductCard={this.handleClickProductCard}
               productId='product-6'
@@ -135,7 +135,7 @@ class ProductCardList extends Component {
               productTitle='Lorem Ipsum 6'
             />
           </LazyLoad>
-          <LazyLoad height={300} debounce={200} offset={300}>
+          <LazyLoad height={300} debounce={150} offset={300}>
             <ProductCard
               handleClickProductCard={this.handleClickProductCard}
               productId='product-6'
@@ -143,7 +143,7 @@ class ProductCardList extends Component {
               productTitle='Lorem Ipsum 6'
             />
           </LazyLoad>
-          <LazyLoad height={300} debounce={200} offset={300}>
+          <LazyLoad height={300} debounce={150} offset={300}>
             <ProductCard
               handleClickProductCard={this.handleClickProductCard}
               productId='product-6'
@@ -151,7 +151,7 @@ class ProductCardList extends Component {
               productTitle='Lorem Ipsum 6'
             />
           </LazyLoad>
-          <LazyLoad height={300} debounce={200} offset={300}>
+          <LazyLoad height={300} debounce={150} offset={300}>
             <ProductCard
               handleClickProductCard={this.handleClickProductCard}
               productId='product-6'
@@ -159,7 +159,7 @@ class ProductCardList extends Component {
               productTitle='Lorem Ipsum 6'
             />
           </LazyLoad>
-          <LazyLoad height={300} debounce={200} offset={300}>
+          <LazyLoad height={300} debounce={150} offset={300}>
             <ProductCard
               handleClickProductCard={this.handleClickProductCard}
               productId='product-6'
@@ -167,7 +167,7 @@ class ProductCardList extends Component {
               productTitle='Lorem Ipsum 6'
             />
           </LazyLoad>
-          <LazyLoad height={300} debounce={200} offset={300}>
+          <LazyLoad height={300} debounce={150} offset={300}>
             <ProductCard
               handleClickProductCard={this.handleClickProductCard}
               productId='product-6'
@@ -175,7 +175,7 @@ class ProductCardList extends Component {
               productTitle='Lorem Ipsum 6'
             />
           </LazyLoad>
-          <LazyLoad height={300} debounce={200} offset={300}>
+          <LazyLoad height={300} debounce={150} offset={300}>
             <ProductCard
               handleClickProductCard={this.handleClickProductCard}
               productId='product-6'
@@ -183,7 +183,7 @@ class ProductCardList extends Component {
               productTitle='Lorem Ipsum 6'
             />
           </LazyLoad>
-          <LazyLoad height={300} debounce={200} offset={300}>
+          <LazyLoad height={300} debounce={150} offset={300}>
             <ProductCard
               handleClickProductCard={this.handleClickProductCard}
               productId='product-6'
@@ -191,7 +191,7 @@ class ProductCardList extends Component {
               productTitle='Lorem Ipsum 6'
             />
           </LazyLoad>
-          <LazyLoad height={300} debounce={200} offset={300}>
+          <LazyLoad height={300} debounce={150} offset={300}>
             <ProductCard
               handleClickProductCard={this.handleClickProductCard}
               productId='product-6'
@@ -199,7 +199,7 @@ class ProductCardList extends Component {
               productTitle='Lorem Ipsum 6'
             />
           </LazyLoad>
-          <LazyLoad height={300} debounce={200} offset={300}>
+          <LazyLoad height={300} debounce={150} offset={300}>
             <ProductCard
               handleClickProductCard={this.handleClickProductCard}
               productId='product-6'
@@ -207,7 +207,7 @@ class ProductCardList extends Component {
               productTitle='Lorem Ipsum 6'
             />
           </LazyLoad>
-          <LazyLoad height={300} debounce={200} offset={300}>
+          <LazyLoad height={300} debounce={150} offset={300}>
             <ProductCard
               handleClickProductCard={this.handleClickProductCard}
               productId='product-6'
@@ -215,7 +215,7 @@ class ProductCardList extends Component {
               productTitle='Lorem Ipsum 6'
             />
           </LazyLoad>
-          <LazyLoad height={300} debounce={200} offset={300}>
+          <LazyLoad height={300} debounce={150} offset={300}>
             <ProductCard
               handleClickProductCard={this.handleClickProductCard}
               productId='product-6'
@@ -223,7 +223,7 @@ class ProductCardList extends Component {
               productTitle='Lorem Ipsum 6'
             />
           </LazyLoad>
-          <LazyLoad height={300} debounce={200} offset={300}>
+          <LazyLoad height={300} debounce={150} offset={300}>
             <ProductCard
               handleClickProductCard={this.handleClickProductCard}
               productId='product-6'
@@ -231,7 +231,7 @@ class ProductCardList extends Component {
               productTitle='Lorem Ipsum 6'
             />
           </LazyLoad>
-          <LazyLoad height={300} debounce={200} offset={300}>
+          <LazyLoad height={300} debounce={150} offset={300}>
             <ProductCard
               handleClickProductCard={this.handleClickProductCard}
               productId='product-6'
@@ -239,7 +239,7 @@ class ProductCardList extends Component {
               productTitle='Lorem Ipsum 6'
             />
           </LazyLoad>
-          <LazyLoad height={300} debounce={200} offset={300}>
+          <LazyLoad height={300} debounce={150} offset={300}>
             <ProductCard
               handleClickProductCard={this.handleClickProductCard}
               productId='product-6'
@@ -247,7 +247,7 @@ class ProductCardList extends Component {
               productTitle='Lorem Ipsum 6'
             />
           </LazyLoad>
-          <LazyLoad height={300} debounce={200} offset={300}>
+          <LazyLoad height={300} debounce={150} offset={300}>
             <ProductCard
               handleClickProductCard={this.handleClickProductCard}
               productId='product-6'
@@ -255,7 +255,7 @@ class ProductCardList extends Component {
               productTitle='Lorem Ipsum 6'
             />
           </LazyLoad>
-          <LazyLoad height={300} debounce={200} offset={300}>
+          <LazyLoad height={300} debounce={150} offset={300}>
             <ProductCard
               handleClickProductCard={this.handleClickProductCard}
               productId='product-6'
@@ -263,7 +263,7 @@ class ProductCardList extends Component {
               productTitle='Lorem Ipsum 6'
             />
           </LazyLoad>
-          <LazyLoad height={300} debounce={200} offset={300}>
+          <LazyLoad height={300} debounce={150} offset={300}>
             <ProductCard
               handleClickProductCard={this.handleClickProductCard}
               productId='product-6'
@@ -271,7 +271,7 @@ class ProductCardList extends Component {
               productTitle='Lorem Ipsum 6'
             />
           </LazyLoad>
-          <LazyLoad height={300} debounce={200} offset={300}>
+          <LazyLoad height={300} debounce={150} offset={300}>
             <ProductCard
               handleClickProductCard={this.handleClickProductCard}
               productId='product-6'
@@ -279,7 +279,7 @@ class ProductCardList extends Component {
               productTitle='Lorem Ipsum 6'
             />
           </LazyLoad>
-          <LazyLoad height={300} debounce={200} offset={300}>
+          <LazyLoad height={300} debounce={150} offset={300}>
             <ProductCard
               handleClickProductCard={this.handleClickProductCard}
               productId='product-6'
@@ -287,7 +287,7 @@ class ProductCardList extends Component {
               productTitle='Lorem Ipsum 6'
             />
           </LazyLoad>
-          <LazyLoad height={300} debounce={200} offset={300}>
+          <LazyLoad height={300} debounce={150} offset={300}>
             <ProductCard
               handleClickProductCard={this.handleClickProductCard}
               productId='product-6'
@@ -295,7 +295,7 @@ class ProductCardList extends Component {
               productTitle='Lorem Ipsum 6'
             />
           </LazyLoad>
-          <LazyLoad height={300} debounce={200} offset={300}>
+          <LazyLoad height={300} debounce={150} offset={300}>
             <ProductCard
               handleClickProductCard={this.handleClickProductCard}
               productId='product-6'
@@ -303,7 +303,7 @@ class ProductCardList extends Component {
               productTitle='Lorem Ipsum 6'
             />
           </LazyLoad>
-          <LazyLoad height={300} debounce={200} offset={300}>
+          <LazyLoad height={300} debounce={150} offset={300}>
             <ProductCard
               handleClickProductCard={this.handleClickProductCard}
               productId='product-6'
@@ -311,7 +311,7 @@ class ProductCardList extends Component {
               productTitle='Lorem Ipsum 6'
             />
           </LazyLoad>
-          <LazyLoad height={300} debounce={200} offset={300}>
+          <LazyLoad height={300} debounce={150} offset={100}>
             <ProductCard
               handleClickProductCard={this.handleClickProductCard}
               productId='product-6'

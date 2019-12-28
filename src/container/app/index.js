@@ -10,7 +10,6 @@ import {
 } from 'react-router-dom';
 import AppRoutes from '../../routes/client';
 // import AdminRoutes from '../../routes/admin';
-import { Header, Footer, ContactUsButton } from '../../components';
 
 class App extends Component {
   render() {

@@ -26,7 +26,7 @@ class HeroBanner extends Component {
           <img className="hero-banner-cover" src={bannerImage} alt={bannerTitle}/>
           <div className="container">
             <div className="content-item">
-              <H1 color="white" weight='light'>{bannerTitle}</H1>
+              <H1 color="white" weight='bold'>{bannerTitle}</H1>
             </div>
           </div>
         </div>
