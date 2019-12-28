@@ -32,6 +32,12 @@
         .contact-us-item {
           display: block;
           margin-bottom: 24px;
+          &.display-mobile-only{
+            display: none;
+            @include mq(680px){
+              display: block;
+            }
+          }
           .item-title {
             margin-bottom: 0;
             font-weight: bold;
