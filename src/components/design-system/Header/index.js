@@ -10,6 +10,7 @@ import './styles.scss';
 // data dummy
 import logoImageFixed from '../../../assets/images/logo/logo-yellow-fixed.svg';
 import logoImage from '../../../assets/images/logo/logo.svg';
+import dataPdf from '../../../assets/files/sample.pdf';
 
 class Header extends Component {
 
@@ -130,6 +131,9 @@ class Header extends Component {
               </li>
               <li className={`content-item ${isActive === "about-us" ? 'active' : ''}`}>
                 <Link to='/about-us' id="about-us" onClick={this.handleClickNavigation}>About Us</Link >
+              </li>
+              <li className="content-item">
+                <Link to={dataPdf} id="e-book" target="_blank">E-Book</Link >
               </li>
             </ul>
           </div>

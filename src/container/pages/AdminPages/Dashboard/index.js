@@ -3,7 +3,7 @@ import { addDataToAPI, getDataFromAPI, logOutUser } from "../../../../config/red
 import { connect } from "react-redux";
 import { Card, Button } from "react-bootstrap";
 import { storage } from "../../../../config/firebase";
-import "bootstrap/dist/css/bootstrap.min.css";
+// import "bootstrap/dist/css/bootstrap.min.css";
 import * as moment from "moment";
 import NavbarAdmin from "../NavbarAdmin";
 

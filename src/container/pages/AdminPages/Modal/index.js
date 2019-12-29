@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from "react";
-import "bootstrap/dist/css/bootstrap.min.css";
+// import "bootstrap/dist/css/bootstrap.min.css";
 import { Button, Modal } from "react-bootstrap";
 import { storage } from "../../../../config/firebase";
 import { connect } from "react-redux";

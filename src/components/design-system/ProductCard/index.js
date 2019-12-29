@@ -35,7 +35,7 @@ class ProductCard extends Component {
               color='yellow'
               onClick={() => handleClickProductCard(productId)}
             >
-              View More
+              More Details
             </Button>
           </div>
         </div>
