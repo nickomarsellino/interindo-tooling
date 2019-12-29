@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './styles.scss';
 
 
-import { LoginForm } from '../../../components';
+import { LoginForm } from '../../../../components';
 
 class LoginPage extends Component {
   // state = {

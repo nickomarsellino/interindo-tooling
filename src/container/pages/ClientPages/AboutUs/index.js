@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './styles.scss';
 
-import { HeroBanner, Header, Footer, ContactUsButton } from '../../../components';
+import { HeroBanner, Header, Footer, ContactUsButton } from '../../../../components';
 
 class aboutUs extends Component {
   // state = {

@@ -1,11 +1,12 @@
-@import "../../../assets/styles/project/init/variable", "../../../assets/styles/helpers/function",
-  "../../../assets/styles/helpers/mixins";
+@import "../../../../assets/styles/project/init/variable", 
+  "../../../../assets/styles/helpers/function",
+  "../../../../assets/styles/helpers/mixins";
 
 .p-login-page {
   position: relative;
   z-index: 4;
   height: 100%;
-  background-image: url('../../../assets/images/dummy/bg.png');
+  background-image: url('../../../../assets/images/dummy/bg.png');
   background-repeat: repeat-y;
   background-position: center;
   background-size: cover;
