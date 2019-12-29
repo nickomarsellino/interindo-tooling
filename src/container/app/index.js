@@ -2,6 +2,9 @@
 // --------------------------------------------------------
 
 import React, { Component } from 'react';
+import firebase from "../../config/firebase";
+import { Provider } from 'react-redux';
+import { store } from '../../config/redux';
 import {
   BrowserRouter as Router,
   Route,
@@ -17,16 +20,18 @@ class App extends Component {
     //   state: { showMobileNavigation, scrolled },
     // } = this;
     return (
-      <Router>
-        <Switch>
-          {AppRoutes.map((route) => (
-            <Route key={route.id} {...route} />
-          ))}
-          {/* <Redirect from='/dashboard' to='/dashboard/home' />
+      <Provider store={store}>
+        <Router>
+          <Switch>
+            {AppRoutes.map((route) => (
+              <Route key={route.id} {...route} />
+            ))}
+            {/* <Redirect from='/dashboard' to='/dashboard/home' />
         <Redirect from='/design-system' to='/design-system/introduction' />
         <Redirect from='*' to='/error-404' /> */}
-        </Switch>
-      </Router>
+          </Switch>
+        </Router>
+      </Provider>
     );
   }
 }
