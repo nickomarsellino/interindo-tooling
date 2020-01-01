@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './styles.scss';
 
-import { HeroBanner, Header, Footer, ContactUsButton} from '../../../../components';
+import { HeroBanner, Header, Footer, ContactUsButton, ImageCardList} from '../../../../components';
 
 class Product extends Component {
   // state = {
@@ -26,6 +26,7 @@ class Product extends Component {
         <ContactUsButton/>
         <Header isActive='our-product'/>
         <HeroBanner bannerTitle="Our Product" />
+        <ImageCardList/>
         <Footer/>
       </div>
     );

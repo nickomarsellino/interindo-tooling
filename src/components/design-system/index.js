@@ -12,6 +12,8 @@ import ContactUsButton from './ContactUsButton';
 import LoginForm from './LoginForm';
 import ProductCard from './ProductCard';
 import ProductCardList from './ProductCardList';
+import ImageCard from './ImageCard';
+import ImageCardList from './ImageCardList';
 
 
 export {
@@ -25,5 +27,7 @@ export {
   ContactUsButton,
   LoginForm,
   ProductCard,
-  ProductCardList
+  ProductCardList,
+  ImageCard,
+  ImageCardList
 };

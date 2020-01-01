@@ -1,0 +1,9 @@
+@import "../../../assets/styles/project/init/variable", "../../../assets/styles/helpers/function",
+  "../../../assets/styles/helpers/mixins";
+
+.ds-image-card-list {
+  position: relative;
+  margin-left: -12px;
+  margin-right: -12px;
+  @include clearfix;
+}
