@@ -41,7 +41,7 @@ class HomePage extends Component {
         <li className="jjj" onClick={this.handleClickNavigation}>
           Our Product With history
         </li>
-        <div>
+        <div className='product-wrapper'>
           <div className='container'>
             <H2>Our Product</H2>
             <ProductCardList history={this.props.history} />

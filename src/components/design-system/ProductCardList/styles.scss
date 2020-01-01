@@ -1,9 +1,19 @@
 @import "../../../assets/styles/project/init/variable", "../../../assets/styles/helpers/function",
   "../../../assets/styles/helpers/mixins";
 
-
-.ds-product-card-list{
+.ds-product-card-list {
+  position: relative;
   margin-left: -12px;
   margin-right: -12px;
   @include clearfix;
+
+  .view-more-wrapper {
+    @include clearfix;
+    .view-more-button {
+      margin-top: 10px;
+      padding: 10px 20px;
+      font-size: 16px;
+      float: right;
+    }
+  }
 }

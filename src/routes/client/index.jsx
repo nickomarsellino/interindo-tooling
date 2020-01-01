@@ -5,7 +5,8 @@ import {
   ContactUs,
   Product,
   LoginPage,
-  Dashboard
+  Dashboard,
+  DetailProduct
 } from '../../container/pages';
 
 
@@ -50,6 +51,12 @@ const AppRoutes = [
     id: 7,
     path: '/auth/admin/dashboard',
     component: Dashboard,
+    exact: true
+  },
+  {
+    id: 8,
+    path: '/detail-product/:productName',
+    component: DetailProduct,
     exact: true
   }
 ]

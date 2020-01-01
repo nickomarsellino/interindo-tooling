@@ -25,7 +25,7 @@ class ProductCard extends Component {
         <div className={classNames}>
           <div className='product-card-wrapper'>
             <img className='product-image' src={productImage} alt={productTitle} />
-            <a className='click-area' onClick={() => handleClickProductCard(productId)}>{productTitle}</a>
+            <a className='click-area' onClick={() => handleClickProductCard(productId,productTitle)}>{productTitle}</a>
             <div className='product-information'>
               <H3 color='white' className='product-title' >{productTitle}</H3>
             </div>
@@ -33,7 +33,7 @@ class ProductCard extends Component {
               circular
               className='view-more-button'
               color='yellow'
-              onClick={() => handleClickProductCard(productId)}
+              onClick={() => handleClickProductCard(productId,productTitle)}
             >
               More Details
             </Button>
