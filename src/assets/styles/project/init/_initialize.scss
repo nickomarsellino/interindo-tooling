@@ -20,7 +20,8 @@ body {
 .container {
   width: 100%;
   max-width: 1170px;
-  margin: auto;
+  margin-left: auto;
+  margin-right: auto;
   
   @include mq(1175px){
     padding-left: 32px;

@@ -26,7 +26,13 @@ class Product extends Component {
         <ContactUsButton/>
         <Header isActive='our-product'/>
         <HeroBanner bannerTitle="Our Product" />
-        <ImageCardList/>
+        <div className='image-card'>
+          <div className='container'>
+            <ImageCardList 
+            // history={this.props.history}
+             />
+          </div>
+        </div>
         <Footer/>
       </div>
     );

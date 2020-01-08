@@ -20,10 +20,16 @@ class HeroBanner extends Component {
       }
     } = this;
     const classNames = classname('ds-hero-banner', className);
+    const divStyle = {
+      backgroundImage: 'url(' + bannerImg + ')',
+    };
     return (
       <FadeIn>
         <div className={classNames}>
-          <img className="hero-banner-cover" src={bannerImage} alt={bannerTitle}/>
+          <div className="hero-banner-cover" style={divStyle} 
+          src={bannerImage} 
+          alt={bannerTitle}
+          />
           <div className="container">
             <div className="content-item">
               <H1 color="white" weight='bold'>{bannerTitle}</H1>
