@@ -3,15 +3,15 @@
    ========================================================================== */
 
 body {
-  font-family: 'lato';
+  font-family: "lato";
   font-weight: 300;
 
-  &.remoove-scroll{
+  &.remoove-scroll {
     overflow: hidden;
   }
-}   
+}
 
-#root{
+#root {
   position: relative;
   width: 100%;
   height: 100%;
@@ -22,8 +22,8 @@ body {
   max-width: 1170px;
   margin-left: auto;
   margin-right: auto;
-  
-  @include mq(1175px){
+
+  @include mq(1175px) {
     padding-left: 32px;
     padding-right: 32px;
   }
@@ -38,14 +38,14 @@ ul li {
   display: inline-block;
 }
 
-.display-mobile-only{
+.display-mobile-only {
   display: none;
   @include small {
     display: block;
   }
 }
 
-.display-desktop-only{
+.display-desktop-only {
   display: block;
   @include small {
     display: none;
@@ -59,9 +59,69 @@ ul li {
 body {
   font-size: fz(body);
   line-height: lh(body);
-  @include small{
+  @include small {
     font-size: fz(mbody);
     line-height: lh(mbody);
   }
 }
 
+/* ==========================================================================
+   CUSTOM SECTION BORDER
+   ========================================================================== */
+.curve {
+  position: absolute;
+  z-index: 4;
+  &.curve-top {
+    left: 0;
+    top: -1px;
+    width: 100%;
+    &::before {
+      content: "";
+      left: 0;
+      width: 0;
+      height: 0;
+      position: absolute;
+      top: 0;
+      border-top: 50px solid #fff;
+      border-bottom: 0;
+      border-right: 30vw solid transparent;
+    }
+    &::after {
+      content: "";
+      width: 0;
+      height: 0;
+      border-bottom: 50px solid #fff;
+      position: absolute;
+      right: 0;
+      top: 0;
+      border-top: 50px solid #fff;
+      border-bottom: 0;
+      border-left: 70vw solid transparent;
+    }
+  }
+  &.curve-bottom {
+    left: 0;
+    bottom: -1px;
+    width: 100%;
+    &::before {
+      content: "";
+      bottom: 0;
+      width: 0;
+      height: 0;
+      border-bottom: 50px solid #fff;
+      position: absolute;
+      left: 0;
+      border-right: 70vw solid transparent;
+    }
+    &::after {
+      content: "";
+      width: 0;
+      height: 0;
+      border-bottom: 50px solid #fff;
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      border-left: 30vw solid transparent;
+    }
+  }
+}
