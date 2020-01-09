@@ -24,19 +24,18 @@ class HeroBanner extends Component {
       backgroundImage: 'url(' + bannerImg + ')',
     };
     return (
-      <FadeIn>
-        <div className={classNames}>
-          <div className="hero-banner-cover" style={divStyle} 
-          src={bannerImage} 
+      <div className={classNames}>
+        <div className="hero-banner-cover" style={divStyle}
+          src={bannerImage}
           alt={bannerTitle}
-          />
-          <div className="container">
-            <div className="content-item">
-              <H1 color="white" weight='bold'>{bannerTitle}</H1>
-            </div>
+        />
+        <div class="curve curve-bottom curve-center"></div>
+        <div className="container">
+          <div className="content-item">
+            <H1 color="white" weight='bold'>{bannerTitle}</H1>
           </div>
         </div>
-      </FadeIn>
+      </div>
     );
   }
 }

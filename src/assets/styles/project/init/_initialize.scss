@@ -123,5 +123,19 @@ body {
       right: 0;
       border-left: 30vw solid transparent;
     }
+    &.curve-center {
+      &::before {
+        border-right: 50vw solid transparent;
+        @include small {
+          border-right: 100vw solid transparent;
+        }
+      }
+      &::after {
+        border-left: 50vw solid transparent;
+        @include small {
+          border-left: 100vw solid transparent;
+        }
+      }
+    }
   }
 }

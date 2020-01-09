@@ -118,7 +118,8 @@ class Header extends Component {
               <img src={logoImage} alt="navbar-logo" />
             </a>
             <a className="logo-image-fixed" href=".">
-              <img src={logoImageFixed} alt="navbar-logo-fixed" /></a>
+              <img src={logoImageFixed} alt="navbar-logo-fixed" />
+            </a>
             <div className="hamburger-menu display-mobile-only" onClick={this.addMobileNavigation}><i>icon</i></div>
           </div>
           <div className="navbar-menu">
