@@ -7,7 +7,31 @@
 
   .about-us-section{
     position: relative;
-    padding-bottom: 48px;
+    height: 450px;
+    margin-top: 24px;
+    .section-background{
+      z-index: 1;
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      background-position: center right;
+      background-size: cover;
+    }
+    .container{
+      position: relative;
+      z-index: 2;
+      height: 100%;
+      width: 100%;
+      display: table;
+
+      .item-section{
+        display: table-cell;
+        vertical-align: middle;
+      }
+    }
+
   }
 
   .our-product-section {
