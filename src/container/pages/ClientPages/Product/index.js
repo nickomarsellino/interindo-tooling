@@ -25,7 +25,7 @@ class Product extends Component {
       <div className="p-product">
         <ContactUsButton/>
         <Header isActive='our-product'/>
-        <HeroBanner bannerTitle="Our Product" />
+        <HeroBanner bannerTitle="Our Product" className='half'/>
         <div className='image-card'>
           <div className='container'>
             <ImageCardList 

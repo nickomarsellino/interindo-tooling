@@ -22,7 +22,7 @@ class aboutUs extends Component {
       <div className="p-about-us">
         <ContactUsButton/>
         <Header isActive='about-us'/>
-        <HeroBanner bannerTitle="About Us" />
+        <HeroBanner bannerTitle="About Us" className='half'/>
         <Footer/>
       </div>
     );

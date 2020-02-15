@@ -47,13 +47,11 @@ class HomePage extends Component {
         <Header />
         <HeroBanner bannerTitle="HomePage" />
 
-        <div className='about-us-section'>
-          <div className='section-background' style={aboutUs} alt='about-us-background'></div>
+        <div className='about-us-section mt-24 mb-24'>
+          <div className='section-background'  alt='about-us-background'></div>
           <div className='container'>
-            <div className='item-section'>
               <H2>About Us</H2>
               <p>Raven is young initiative command, which includes professionals of his activity. Each member of the commands, is not just an employee, they are something more valuable to us.  Penetrating into a fairly large and modern activity, the company Raven provides each time clearer and perfected solutions for the task.  Every employee of our company has a great experience in working with customers and solving tasks, while keeping unlimited energy and initiative.  Every client, who had come to us, did not left without a well-provided service.  Let us work together - you will not regret!</p>
-            </div>
           </div>
         </div>
 
