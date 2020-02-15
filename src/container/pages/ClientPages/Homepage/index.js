@@ -70,14 +70,6 @@ class HomePage extends Component {
               </div>
           </div>
         </div>
-
-        <div className='contact-us-section'>
-          <div class="curve curve-top grey-bg"></div>
-          <div class="curve curve-bottom"></div>
-          <div className='contact-us-maps'>
-              <iframe title='maps' src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d126924.31750849163!2d106.5796336!3d-6.212859!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69fee3c2ce3e95%3A0x4f535926c0187aa3!2sPT%20Interindo%20Tooling!5e0!3m2!1sen!2sid!4v1577509254511!5m2!1sen!2sid" width="600" height="450" frameborder="0" allowfullscreen=""></iframe>
-          </div>
-        </div>
         <Footer />
       </div>
     );
