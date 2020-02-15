@@ -6,6 +6,7 @@ import FadeIn from 'react-fade-in';
 import './styles.scss';
 import LazyLoad from 'react-lazyload';
 import { ImageCard } from '../../../components';
+import { Button } from 'semantic-ui-react';
 
 // data dummy
 import productImg1 from '../../../assets/images/dummy/product-card-1.jpeg';
@@ -53,6 +54,24 @@ class ImageCardList extends Component {
               imageCard={productImg2}
             />
           </LazyLoad>
+          <LazyLoad height={300} debounce={150} offset={300}>
+            <ImageCard
+              imageId='product-1'
+              imageCard={productImg1}
+            />
+          </LazyLoad>
+
+          <div className='view-more-wrapper'>
+            <Button
+              circular
+              className='view-more-button'
+              color='yellow'
+              onClick={this.handleClickMoreButton}
+            >
+              View More
+            </Button>
+          </div>
+
         </div>
       </FadeIn>
     );

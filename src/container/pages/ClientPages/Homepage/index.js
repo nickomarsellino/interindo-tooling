@@ -1,10 +1,8 @@
 import React, { Component } from 'react';
 import './styles.scss';
-import bannerProduct from '../../../../assets/images/dummy/hero-banner.jpg';
-import aboutUsBg from '../../../../assets/images/dummy/wave-bg.png';
 
 import { HeroBanner, ProductCardList, H2 } from '../../../../components';
-import { Header, Footer, ContactUsButton } from '../../../../components';
+import { Header, Footer, ContactUsButton, ImageCardList } from '../../../../components';
 
 class HomePage extends Component {
   state = {
@@ -14,19 +12,15 @@ class HomePage extends Component {
     window.scrollTo(0, 0);
   }
 
-  // handleClosePage onClick
-  handleClosePage = () => {
 
-  };
-
-  handleClickNavigation = (e) => {
-    this.props.history.push({
-      pathname: `/our-product`,
-      state: {
-        productId: "14045"
-      }
-    })
-  }
+  // handleClickNavigation = (e) => {
+  //   this.props.history.push({
+  //     pathname: `/our-product`,
+  //     state: {
+  //       productId: "14045"
+  //     }
+  //   })
+  // }
 
   // render
   render() {
@@ -34,12 +28,6 @@ class HomePage extends Component {
     //   // handleClosePage,
     //   // state: { showSteps }
     // } = this;
-    const ourProductBg = {
-      backgroundImage: 'url(' + bannerProduct + ')',
-    };
-    const aboutUs = {
-      backgroundImage: 'url(' + aboutUsBg + ')',
-    };
 
     return (
       <div className="p-homepage">
@@ -56,9 +44,8 @@ class HomePage extends Component {
         </div>
 
         <div className='our-product-section'>
-          {/* <div className='section-background' style={ourProductBg} alt='product-background'></div> */}
             <div class="curve curve-top"></div>
-            <div className='container'>
+            {/* <div className='container'>
               <div className='header-section'>
                 <li className="jjj" onClick={this.handleClickNavigation}>
                   Our Product With history
@@ -68,6 +55,15 @@ class HomePage extends Component {
               <div className='content-section'>
                 <ProductCardList history={this.props.history} />
               </div>
+          </div> */}
+
+          <div className='image-card pt-24'>
+            <div className='container'>
+              <ImageCardList 
+                history={this.props.history}
+                // data={dataJSON}
+              />
+            </div>
           </div>
         </div>
         <Footer />
