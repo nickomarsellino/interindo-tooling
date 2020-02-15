@@ -3,7 +3,7 @@ import { Icon, Button } from 'semantic-ui-react';
 import FadeIn from 'react-fade-in';
 import './styles.scss';
 
-import logoImage from '../../../../assets/images/logo/logo-yellow-fixed.svg';
+import logoImage from '../../../../assets/images/logo/logo-yellow-fixed.png';
 import { HeroBanner, Header, Footer, ContactUsButton } from '../../../../components';
 
 class ContactUs extends Component {

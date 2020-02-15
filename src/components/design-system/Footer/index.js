@@ -10,7 +10,7 @@ import './styles.scss';
 import { H4 } from '../../../components';
 
 // image
-import logoImage from '../../../assets/images/logo/logo.svg';
+import logoImage from '../../../assets/images/logo/logo.png';
 
 class Header extends Component {
 
