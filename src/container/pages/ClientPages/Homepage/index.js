@@ -45,7 +45,7 @@ class HomePage extends Component {
       <div className="p-homepage">
         <ContactUsButton />
         <Header />
-        <HeroBanner bannerTitle="HomePage" />
+        <HeroBanner bannerTitle="HomePage" className='half'/>
 
         <div className='about-us-section mt-24 mb-24'>
           <div className='section-background'  alt='about-us-background'></div>
