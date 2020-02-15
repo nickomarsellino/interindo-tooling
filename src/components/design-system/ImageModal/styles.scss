@@ -1,0 +1,15 @@
+// import mixin and variables
+@import "../../../assets/styles/project/init/variable", "../../../assets/styles/helpers/function",
+  "../../../assets/styles/helpers/mixins";
+
+.ds-image-modal {
+  
+}
+
+//handle style pop up
+.ui.fullscreen.modal>.close {
+  top: 1.0535rem;
+  right: 1rem;
+  color: white;
+  font-size: 2.4rem;
+}

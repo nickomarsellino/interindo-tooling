@@ -14,6 +14,7 @@ import ProductCard from './ProductCard';
 import ProductCardList from './ProductCardList';
 import ImageCard from './ImageCard';
 import ImageCardList from './ImageCardList';
+import ImageModal from './ImageModal';
 
 
 export {
@@ -29,5 +30,6 @@ export {
   ProductCard,
   ProductCardList,
   ImageCard,
-  ImageCardList
+  ImageCardList,
+  ImageModal
 };

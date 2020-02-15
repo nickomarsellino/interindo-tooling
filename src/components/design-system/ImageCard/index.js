@@ -11,7 +11,8 @@ class ImageCard extends Component {
       props: {
         className,
         imageId,
-        imageCard
+        imageCard,
+        handleShowPopup
       }
     } = this;
     const classNames = classname('ds-image-card', className);
@@ -20,7 +21,7 @@ class ImageCard extends Component {
         <div className={classNames}>
           <div className='image-card-wrapper'>
             <img className='product-image' src={imageCard} alt={imageId} />
-            <a className='click-area'>{imageId}</a>
+            <a className='click-area' onClick={() => handleShowPopup(false)}>{imageId}</a>
           </div>
         </div>
       </FadeIn>
@@ -31,13 +32,16 @@ class ImageCard extends Component {
 ImageCard.propTypes = {
   className: PropTypes.string,
   imageId: PropTypes.string,
-  imageCard: PropTypes.string
+  imageCard: PropTypes.string,
+  handleShowPopup: PropTypes.func,
 }
 
 ImageCard.defaultProps = {
   className: '',
   imageId: '',
-  imageCard: ''
+  imageCard: '',
+  handleShowPopup: () => { }
+
 }
 
 export default ImageCard;

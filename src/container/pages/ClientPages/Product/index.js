@@ -29,7 +29,8 @@ class Product extends Component {
         <div className='image-card'>
           <div className='container'>
             <ImageCardList 
-            // history={this.props.history}
+              history={this.props.history}
+              // data={imageJSON}
              />
           </div>
         </div>
