@@ -2,7 +2,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classname from 'classnames';
-import { Modal } from 'semantic-ui-react';
+import { Modal, Image } from 'semantic-ui-react';
 
 import './styles.scss';
 
@@ -38,7 +38,7 @@ class ImageModal extends Component {
           closeOnDimmerClick= 'false'
           size= 'fullscreen'
         >
-         
+         <Image src='https://react.semantic-ui.com/images/wireframe/image.png' fluid />
         </Modal>
       </div>
     );
