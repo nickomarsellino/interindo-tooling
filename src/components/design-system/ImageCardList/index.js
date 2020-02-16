@@ -52,8 +52,6 @@ class ImageCardList extends Component {
     } = this;
     const classNames = classname('ds-image-card-list', className);
 
-    console.log(showPopup);
-
     return (
       <FadeIn>
         <div className={classNames}>

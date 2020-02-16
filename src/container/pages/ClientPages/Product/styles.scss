@@ -1,8 +1,45 @@
-.p-product{
+.p-product {
   position: relative;
   z-index: 4;
 
-  .image-card{
+  .image-card {
     padding: 24px 0;
+  }
+
+  .category-section-wrapper {
+    padding: 24px 0;
+
+    .text.menu {
+      .item {
+        font-size: 24px;
+        font-family: "Lato";
+        font-weight: 300;
+        position: relative;
+
+        &.active {
+          font-weight: normal;
+          &::after {
+            transform: scaleX(1);
+          }
+        }
+
+        &::after {
+          content: "";
+          position: absolute;
+          width: 80%;
+          bottom: 0;
+          display: block;
+          padding-top: 4px;
+          border-bottom: solid 2px black;
+          transition: all 0.3s ease;
+          transform: scaleX(0);
+        }
+      }
+    }
+
+    .ui.segment {
+      box-shadow: none;
+      border: none;
+    }
   }
 }
