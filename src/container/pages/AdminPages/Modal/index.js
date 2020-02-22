@@ -3,6 +3,9 @@ import React, { Component, Fragment } from "react";
 import { Button, Modal } from "react-bootstrap";
 import { storage } from "../../../../config/firebase";
 import { connect } from "react-redux";
+
+import './Modal.scss';
+
 import {
   addProductsDetail,
   getDetailProductImages

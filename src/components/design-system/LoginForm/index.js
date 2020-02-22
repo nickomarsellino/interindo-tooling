@@ -1,11 +1,10 @@
-
 import React, { Component } from 'react';
 import Fade from 'react-reveal/Fade';
 import PropTypes from 'prop-types';
 import './styles.scss';
-
+import { connect } from 'react-redux';
 import { Card, Form } from 'semantic-ui-react'
-
+import { loginUserAPI } from '../../../config/redux/action';
 import { H2 } from '../../../components'
 
 // data dummy
@@ -19,10 +18,23 @@ class LoginForm extends Component {
 
   handleChange = (e, { name, value }) => this.setState({ [name]: value })
 
-  handleSubmit = () => {
-    const { email, password } = this.state
-    console.log(this.state.email, this.state.password);
-    this.setState({ email: email, password: password })
+  handleSubmit = async () => {
+    const { email, password } = this.state;
+    const { history } = this.props;
+    const res = await this.props.loginAPI({email, password}).catch(err => err);
+    console.log(res);
+    if(res) { 
+        localStorage.setItem('userData', JSON.stringify(res))
+        this.setState ({
+            email: '',
+            password: '',
+            isLoginStatus: true
+        })
+        history.push('/auth/admin/dashboard');
+    }
+    else {
+        console.log("GAGAL !");
+    }
   }
 
   render() {
@@ -57,6 +69,7 @@ class LoginForm extends Component {
                 value={password}
                 onChange={this.handleChange}
               />
+              <p style={{fontSize: '14px', color: 'red'}}>{this.props.errorMessage}</p>
               <Form.Button color='yellow' content='Login' />
             </Form>
           </Card>
@@ -76,4 +89,14 @@ LoginForm.defaultProps = {
   bannerTitle: '',
 }
 
-export default LoginForm;
+const reduxState = (state) => ({
+  isLoading: state.isLoading,
+  errorMessage: state.errorMessage
+})
+
+const reduxDispatch = (dispatch) => ({
+  loginAPI: (data) => dispatch(loginUserAPI(data))
+})
+
+
+export default connect(reduxState, reduxDispatch)(LoginForm);

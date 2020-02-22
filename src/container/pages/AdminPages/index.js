@@ -1,5 +1,5 @@
 
-import LoginPage from './Login';
+import LoginPage from './LoginPage';
 import Dashboard from './Dashboard';
 
 export {

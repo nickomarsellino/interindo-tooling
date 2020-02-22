@@ -1,27 +1,47 @@
-import React, { Component, Fragment } from "react";
-import { addDataToAPI, getDataFromAPI, logOutUser } from "../../../../config/redux/action";
+import React, { Component, Fragment, useState, useEffect } from "react";
+import {
+  addDataToAPI,
+  getDataFromAPI,
+  logOutUser,
+  getDetailProductImages
+} from "../../../../config/redux/action";
 import { connect } from "react-redux";
-import { Card, Button } from "react-bootstrap";
 import { storage } from "../../../../config/firebase";
-// import "bootstrap/dist/css/bootstrap.min.css";
-import * as moment from "moment";
+// import * as moment from "moment";
 import NavbarAdmin from "../NavbarAdmin";
-
-import ImageModal from '../Modal';
+import ImageModal from "../Modal";
+import ConfirmDeleteModal from "../ConfirmDeleteModal";
+import {
+  Card,
+  Icon,
+  Image,
+  Dropdown,
+  Grid,
+  GridColumn
+} from "semantic-ui-react";
 
 class Dashboard extends Component {
-  state = {
+state = {
     title: "",
     content: "",
+    // Bingung kalo ga di ganti kategorinya langsung clic should be Arbor
+    category: "Arbor",
     createdDate: new Date().getTime(),
     createdBy: "",
     image: null,
     imageUrl: "",
     onModalShow: false,
+    onConfirmModalShow: false,
     productsDetail: "",
     productsId: "",
-    email: ""
+    email: "",
+    detailDataUtama: "",
+    isLoading: false,
+    loadingGif: "ui primary button",
+    data: []
   };
+
+  // const [posts, setPosts] = useState([]);
 
   componentDidMount() {
     const userData = JSON.parse(localStorage.getItem("userData"));
@@ -30,14 +50,22 @@ class Dashboard extends Component {
     // if (this.state.email === "") {
     //   this.props.history.push('/login');
     // } else {
-      this.setState({
-        email : userData.email
-      })
-      // Call getDataAPI from props
-      this.props.getNotes(userData.uid);
+    this.setState({
+      email: userData.email
+    });
+    // Call getDataAPI from props
+    this.props.getNotes(userData.uid);
     // }
 
     var storageRef = storage.ref();
+
+    // ***IGNORE***//
+    fetch("http://localhost:57698/api/student/getstudentdata").then(
+      async response => {
+        const data = await response.json();
+        console.log("Data API CH ", data);
+      }
+    );
   }
 
   handleSaveNote = e => {
@@ -51,7 +79,11 @@ class Dashboard extends Component {
     uploadTask.on(
       "state_changed",
       snapshot => {
-        // progress function ....
+        // progress function .... Disabled the button
+        this.setState({
+          isLoading: true,
+          loadingGif: "ui primary loading button"
+        });
       },
       error => {
         // error function ....
@@ -70,6 +102,7 @@ class Dashboard extends Component {
             const data = {
               title: this.state.title,
               content: this.state.content,
+              category: this.state.category,
               createdDate: this.state.createdDate,
               userId: userData.uid,
               imageUrl: this.state.imageUrl
@@ -77,6 +110,14 @@ class Dashboard extends Component {
             console.log("Data ", data);
 
             this.props.saveNotes(data);
+
+            // Enabled again the Button
+            this.setState({
+              image: "",
+              isLoading: false,
+              loadingGif: "ui primary button"
+              // clear form
+            });
           });
       }
     );
@@ -93,22 +134,46 @@ class Dashboard extends Component {
       const image = e.target.files[0];
       this.setState(() => ({ image }));
     }
-    console.log(this.state.image)
+    console.log(this.state.image);
   };
 
   getDetail = e => {
+    // this.setState({
+    //   onModalShow: true,
+    //   productsDetail: e.data,
+    //   productsId: e.id,
+    //   detailDataUtama: e.data.DataUtama
+    // });
+
+    // // Show the image list wihtout click button
+    // const productsId = {
+    //   productsId: e.id
+    // };
+
+
+    const data = {
+      category: e.id
+    };
+
+    this.props.showDetailProductImages(data);
+    console.log("E pas klik detail ", e);
+  };
+
+  onTrashIconClick = e => {
+    console.log(e);
+
     this.setState({
-      onModalShow: true,
-      productsDetail: e.data,
+      onConfirmModalShow: true,
+      detailDataUtama: e.data,
       productsId: e.id
-    })
-    console.log("Click", e);
+    });
   };
 
   onCloseClick = () => {
     this.setState({
-      onModalShow: false
-    })
+      onModalShow: false,
+      onConfirmModalShow: false
+    });
   };
 
   logOut = () => {
@@ -116,87 +181,160 @@ class Dashboard extends Component {
     this.props.logout();
     const { history } = this.props;
 
-    history.push("/login");
+    history.push("/auth/admin/login");
   };
 
   render() {
     const { title, content, createdDate, image, imageUrl } = this.state;
-    const { notes } = this.props;
-    console.log("Hasil notes ", notes);
-    console.log(this.state.email)
+    const { notes, moreImage } = this.props;
+    // console.log("Hasil notes ", notes.length);
+    console.log("Detail product image ", this.props.notes);
+    // console.log("this.state.isLoading ", this.state.isLoading);
     return (
       <div className="container">
-      <ImageModal onModalShow = {this.state.onModalShow} onCloseClick = {()=>this.onCloseClick()} productsId = {this.state.productsId}  productsDetail = {this.state.productsDetail} />
-      <NavbarAdmin userEmail = {this.state.email} onLogOutClick = {this.logOut} />  
-      <form style={{ marginLeft: "25%", marginRight: "25%" }}>
-          <br />
-          <div class="form-group">
-            <label for="exampleInputEmail1">Title</label>
+        <ImageModal
+          onModalShow={this.state.onModalShow}
+          onCloseClick={() => this.onCloseClick()}
+          productsId={this.state.productsId}
+          productsDetail={this.state.productsDetail}
+          detailDataUtama={this.state.detailDataUtama}
+        />
+
+        <ConfirmDeleteModal
+          onConfirmModalShow={this.state.onConfirmModalShow}
+          onCloseClick={() => this.onCloseClick()}
+          productsId={this.state.productsId}
+          detailDataUtama={this.state.detailDataUtama}
+          totalImage = {this.props.moreImage.length}
+        />
+
+        <NavbarAdmin userEmail={this.state.email} onLogOutClick={this.logOut} />
+
+        <form
+          className="ui form"
+          style={{ width: "40%", marginTop: "15px", fontSize: "14px" }}
+        >
+          <div className="field">
+            <label>Product Name</label>
             <input
               type="text"
-              class="form-control"
-              id="exampleInputEmail1"
-              aria-describedby="emailHelp"
-              value={title}
+              name="first-name"
               onChange={e => this.onInputChange(e, "title")}
+              required="true"
             />
           </div>
-          <div class="form-group">
-            <label for="exampleInputPassword1">Content</label>
-            <input
+          <div class="field">
+            <label>Description</label>
+            <textarea
               type="text"
-              class="form-control"
-              id="exampleInputPassword1"
-              value={content}
+              name="last-name"
               onChange={e => this.onInputChange(e, "content")}
+              required="true"
             />
           </div>
-          <div>
+          <div className="field" style={{ width: "50%" }}>
+            <label>Category</label>
+            <select
+              style={{ borderColor: "pink" }}
+              required="true"
+              onChange={e => this.onInputChange(e, "category")}
+            >
+              <option value="Arbor">Arbor</option>
+              <option value="CuttingTool">Cutting Tool</option>
+              <option value="GuidePin">Guide Pin</option>
+              <option value="Insert">Insert</option>
+              <option value="Milling">Milling</option>
+              <option value="PowerChuck">Power Chuck</option>
+              <option value="Spring">Spring</option>
+              <option value="Vise">Vise</option>
+            </select>
+          </div>
+          <div class="field">
             <input type="file" onChange={this.handleImageChange} />
           </div>
           <br />
-          <button class="btn btn-primary" onClick={this.handleSaveNote}>
+          <button
+            className={this.state.loadingGif}
+            type="submit"
+            style={{ fontSize: "14px" }}
+            onClick={this.handleSaveNote}
+            disabled={this.state.isLoading}
+          >
             Submit
           </button>
         </form>
         <br />
         <hr />
-        <br />
-        {notes.length > 0 ? (
+        {notes.length !== 0 ? (
           <Fragment>
             {notes.map(bebas => {
               return (
-                <div
-                  key={bebas.id}
-                  style={{ width: "50%", cursor: "pointer" }}
-                  onClick={() => {
-                    this.getDetail(bebas);
-                  }}
-                  
-                >
-                  <Card>
-                    <Card.Header as="h5">{bebas.data.DataUtama.title}</Card.Header>
-                    <Card.Body>
-                      <Card.Title>{bebas.data.DataUtama.content}</Card.Title>
-                      <Card.Text>
-                        {moment(bebas.data.DataUtama.createdDate).format("LLLL")}
-                      </Card.Text>
-                      <a href={bebas.data.DataUtama.imageUrl} target="_blank">
-                        <img
-                          src={bebas.data.DataUtama.imageUrl}
-                          alt=""
-                          height="250px"
-                          width="100%"
-                        ></img>
-                      </a>
-                    </Card.Body>
-                  </Card>
-                  <br />
+                <div className="gridContainer" key={bebas.id}>
+                  <div>
+                    <p
+                      style={{
+                        cursor: "pointer",
+                        backgroundColor: "cyan",
+                        width: "-webkit-max-content" /* Chrome */
+                      }}
+                      onClick={
+                        () => {this.getDetail(bebas);}
+                      }
+                    >
+                      {bebas.id}
+                    </p>
+                  </div>
                 </div>
               );
             })}
           </Fragment>
-        ) : null}
+        ) : (
+          <p>Tidak ada Dataaa</p>
+        )}
+
+        <hr />
+
+        <div style={{ left: "0" }}>
+          {moreImage.length > 0 ? (
+            <Fragment>
+              {moreImage.map(bebas => {
+                return (
+                  <div
+                    class="img-wrap"
+                    style={{
+                      // height: "195px",
+                      width: "30%",
+                      left: "0",
+                      marginLeft: "1.6%",
+                      marginRight: "1.6%"
+                      // marginTop: "5%"
+                    }}
+                  >
+                    <Card style={{ width: "100%" }}>
+                      <Image
+                        src={bebas.data.imageUrl}
+                        style={{ padding: "5px", height: "195px" }}
+                      />
+                      <Card.Content extra>
+                        <Card.Description>{bebas.data.title}</Card.Description>
+                      </Card.Content>
+                    </Card>
+                    <span className="close">
+                      <Icon
+                        onClick={() => {
+                          this.onTrashIconClick(bebas);
+                        }}
+                        name="trash alternate outline"
+                      ></Icon>
+                    </span>
+                  </div>
+                );
+              })}
+            </Fragment>
+          ) : (
+            <p>Tidak ada data tidak!</p>
+          )}
+        </div>
       </div>
     );
   }
@@ -204,14 +342,16 @@ class Dashboard extends Component {
 
 const reduxState = state => ({
   userData: state.user,
-  notes: state.notes
+  notes: state.notes,
+  moreImage: state.moreImage
   // Dari actionnya yang berhubung ke reducer
 });
 
 const reduxDispatch = dispatch => ({
   saveNotes: data => dispatch(addDataToAPI(data)),
   getNotes: data => dispatch(getDataFromAPI(data)),
-  logout: data => dispatch(logOutUser())
+  logout: data => dispatch(logOutUser()),
+  showDetailProductImages: data => dispatch(getDetailProductImages(data))
 });
 
 export default connect(reduxState, reduxDispatch)(Dashboard);

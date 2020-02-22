@@ -5,23 +5,14 @@ import './styles.scss';
 import { LoginForm } from '../../../../components';
 
 class LoginPage extends Component {
-  // state = {
-  // };
-
-  // componentDidMount() {
-  // }
-
-  // render
   render() {
-    // const {
-    //   // handleClosePage,
-    //   // state: { showSteps }
-    // } = this;
 
     return (
       <div className="p-login-page">
         <div className='container'>
-          <LoginForm />
+          <LoginForm 
+            history={this.props.history}
+          />
         </div>
       </div>
     );
@@ -30,4 +21,3 @@ class LoginPage extends Component {
 
 
 export default LoginPage;
-

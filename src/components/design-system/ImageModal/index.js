@@ -37,7 +37,7 @@ class ImageModal extends Component {
           closeIcon
           closeOnEscape= 'true'
           closeOnDimmerClick= 'false'
-          size= 'fullscreen'
+          size='large'
         >
          <Image src={image} fluid />
         </Modal>
