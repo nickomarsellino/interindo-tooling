@@ -21,15 +21,9 @@ import productImg2 from '../../../assets/images/dummy/product-card-2.jpeg';
 
 class ImageCardList extends Component {
 
-
   state = {
     showPopup: false,
     handleImageClicked: ''
-  }
-  
-  componentDidMount() {
-    const user = "user";
-    this.props.getNotes(user);
   }
 
   handleShowPopup = (status, imageData) => {
@@ -45,14 +39,6 @@ class ImageCardList extends Component {
     });
   };
 
-  getDetail = e => {
-    const data = {
-      category: e.id
-    };
-    this.props.showDetailProductImages(data);
-    console.log("E pas klik detail ", e);
-  };
-
   render() {
     const {
       handleShowPopup,
@@ -63,54 +49,22 @@ class ImageCardList extends Component {
       },
       props: {
         className,
-        data,
-        notes,
-        moreImage,
-
+        data
       }
     } = this;
     const classNames = classname('ds-image-card-list', className);
 
     return (
       <FadeIn>
-        <div className="categoryMenu">
-          {notes.length !== 0 ? (
-            <Fragment>
-              {notes.map(bebas => {
-                return (
-                  <div className="gridContainer" key={bebas.id}>
-                    <div>
-                      <p
-                        style={{
-                          cursor: "pointer",
-                          backgroundColor: "cyan",
-                          width: "-webkit-max-content" /* Chrome */
-                        }}
-                        onClick={() => {
-                          this.getDetail(bebas);
-                        }}
-                      >
-                        {bebas.id}
-                      </p>
-                    </div>
-                  </div>
-                );
-              })}
-            </Fragment>
-          ) : (
-              <p>Tidak ada Dataaa</p>
-            )}
-        </div>
-
         <div className={classNames}>
-          {moreImage.length > 0 ? (
+          {data.length > 0 ? (
             <Fragment>
-              {moreImage.map(bebas => {
+              {data.map(image => {
                 return (
                   <LazyLoad height={300} debounce={150} offset={300}>
                     <ImageCard
                       // imageId='product-1'
-                      imageCard={bebas.data.imageUrl}
+                      imageCard={image.data.imageUrl}
                       handleShowPopup={handleShowPopup}
                     />
                   </LazyLoad>
@@ -146,14 +100,4 @@ ImageCardList.defaultProps = {
   data: [],
 }
 
-const reduxState = state => ({
-  notes: state.notes,
-  moreImage: state.moreImage
-});
-
-const reduxDispatch = dispatch => ({
-  getNotes: data => dispatch(getDataFromAPI(data)),
-  showDetailProductImages: data => dispatch(getDetailProductImages(data))
-});
-
-export default connect(reduxState, reduxDispatch)(ImageCardList);
+export default ImageCardList;

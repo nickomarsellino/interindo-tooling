@@ -7,17 +7,9 @@ import { Modal, Image } from 'semantic-ui-react';
 import './styles.scss';
 
 class ImageModal extends Component {
-  state = {
-    closeOnEscape: true,
-    closeOnDimmerClick: false,
-  };
 
   render() {
     const {
-      state: {
-        closeOnEscape,
-        closeOnDimmerClick
-      },
       props: {
         className,
         showPopup,
