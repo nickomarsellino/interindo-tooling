@@ -1,127 +1,96 @@
-
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import classname from 'classnames';
-import FadeIn from 'react-fade-in';
-import './styles.scss';
-import LazyLoad from 'react-lazyload';
-import { ProductCard } from '../../../components';
-import { Button } from 'semantic-ui-react';
+import React, { Component, Fragment } from "react";
+import PropTypes from "prop-types";
+import classname from "classnames";
+import FadeIn from "react-fade-in";
+import "./styles.scss";
+import LazyLoad from "react-lazyload";
+import { ProductCard } from "../../../components";
+import {
+  getDataFromAPI,
+  getDetailProductImages
+} from "../../../config/redux/action";
+import { connect } from "react-redux";
 
 // data dummy
-import productImg1 from '../../../assets/images/dummy/product-card-1.jpeg';
-import productImg2 from '../../../assets/images/dummy/product-card-2.jpeg';
+// import isLoading from "../../../assets/images/Loading.jpg";
 
 class ProductCardList extends Component {
-
-
-  handleClickProductCard = (productId,productTitle) => {
+  handleClickProductCard = productId => {
     this.props.history.push({
-      pathname: `/detail-product/${productTitle}`.replace(' ', ''),
+      pathname: `/our-product`,
       state: {
         productId: productId
       }
-    })
+    });
+  };
+
+  componentDidMount() {
+    const user = "user";
+    this.props.getNotes(user);
   }
 
-  handleClickMoreButton = () => {
-    this.props.history.push({
-      pathname: `/our-product`
-    })
-  }
-
-  // componentDidMount(){
-  //   this.handleClickProductCard()
-  // }
-
-  // componentWillUnmount(){
-  //   this.handleClickProductCard()
-  // }
+  getDetail = e => {
+    const data = {
+      category: e.id
+    };
+    this.props.showDetailProductImages(data);
+    console.log("E pas klik detail ", e);
+  };
 
   render() {
     const {
-      props: {
-        className,
-        data
-      }
+      props: { className, notes, moreImage }
     } = this;
-    const classNames = classname('ds-product-card-list', className);
+    const classNames = classname("ds-product-card-list", className);
+    console.log(this.props.notes);
     return (
       <FadeIn>
+        <div className="categoryMenu">
+          {notes.length !== 0 ? (
+            <Fragment>
+              {notes.map(bebas => {
+                return (
+                  <div className="gridContainer" key={bebas.id}>
+                    <div>
+                      <p
+                        style={{
+                          cursor: "pointer",
+                          backgroundColor: "cyan",
+                          width: "-webkit-max-content" /* Chrome */
+                        }}
+                        onClick={() => {
+                          this.getDetail(bebas);
+                        }}
+                      >
+                        {bebas.id}
+                      </p>
+                    </div>
+                  </div>
+                );
+              })}
+            </Fragment>
+          ) : (
+            <p>Tidak ada Dataaa</p>
+          )}
+        </div>
         <div className={classNames}>
-          {/* {data.map((value, index) => (
-            <ProductCard
-              key={index}
-              productId={value.productId}
-              productImage={value.productImage}
-              productTitle={value.productTitle}
-            />
-          ))} */}
-          <LazyLoad height={300} debounce={150} offset={300}>
-            <ProductCard
-              handleClickProductCard={this.handleClickProductCard}
-              productId='product-1'
-              productImage={productImg1}
-              productTitle='Lorem Ipsum 1'
-            />
-          </LazyLoad>
-
-          <LazyLoad height={300} debounce={150} offset={300}>
-            <ProductCard
-              handleClickProductCard={this.handleClickProductCard}
-              productId='product-2'
-              productImage={productImg2}
-              productTitle='Lorem Ipsum 2'
-            />
-          </LazyLoad>
-
-          <LazyLoad height={300} debounce={150} offset={300}>
-            <ProductCard
-              handleClickProductCard={this.handleClickProductCard}
-              productId='product-3'
-              productImage={productImg1}
-              productTitle='Lorem Ipsum 3'
-            />
-          </LazyLoad>
-
-          <LazyLoad height={300} debounce={150} offset={300}>
-            <ProductCard
-              handleClickProductCard={this.handleClickProductCard}
-              productId='product-4'
-              productImage={productImg2}
-              productTitle='Lorem Ipsum 4'
-            />
-          </LazyLoad>
-
-          <LazyLoad height={300} debounce={150} offset={300}>
-            <ProductCard
-              handleClickProductCard={this.handleClickProductCard}
-              productId='product-5'
-              productImage={productImg1}
-              productTitle='Lorem Ipsum 5'
-            />
-          </LazyLoad>
-
-          <LazyLoad height={300} debounce={150} offset={300}>
-            <ProductCard
-              handleClickProductCard={this.handleClickProductCard}
-              productId='product-6'
-              productImage={productImg2}
-              productTitle='Lorem Ipsum 6'
-            />
-          </LazyLoad>
-
-          <div className='view-more-wrapper'>
-            <Button
-              circular
-              className='view-more-button'
-              color='yellow'
-              onClick={this.handleClickMoreButton}
-            >
-              View More
-            </Button>
-          </div>
-         
+          {moreImage.length > 0 ? (
+            <Fragment>
+              {moreImage.map(bebas => {
+                return (
+                  <LazyLoad height={300} debounce={150} offset={300}>
+                    <ProductCard
+                      // handleClickProductCard={this.handleClickProductCard}
+                      productImage={bebas.data.imageUrl}
+                      productTitle={bebas.data.title}
+                    />
+                  </LazyLoad>
+                );
+              })}
+            </Fragment>
+          ) : (       
+            <p>INI LOADING</p>
+          )}
         </div>
       </FadeIn>
     );
@@ -133,13 +102,23 @@ ProductCardList.propTypes = {
   data: PropTypes.shape({
     productId: PropTypes.string,
     productImage: PropTypes.string,
-    productTitle: PropTypes.string,
+    productTitle: PropTypes.string
   })
-}
+};
 
 ProductCardList.defaultProps = {
-  className: '',
-  data: [],
-}
+  className: "",
+  data: []
+};
 
-export default ProductCardList;
+const reduxState = state => ({
+  notes: state.notes,
+  moreImage: state.moreImage
+});
+
+const reduxDispatch = dispatch => ({
+  getNotes: data => dispatch(getDataFromAPI(data)),
+  showDetailProductImages: data => dispatch(getDetailProductImages(data))
+});
+
+export default connect(reduxState, reduxDispatch)(ProductCardList);

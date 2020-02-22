@@ -26,6 +26,7 @@ class ImageModal extends Component {
       }
     } = this;
     const classNames = classname('ds-image-modal', className);
+
     return (
       <div className={classNames}>
         <Modal
@@ -38,7 +39,7 @@ class ImageModal extends Component {
           closeOnDimmerClick= 'false'
           size= 'fullscreen'
         >
-         <Image src='https://react.semantic-ui.com/images/wireframe/image.png' fluid />
+         <Image src={image} fluid />
         </Modal>
       </div>
     );

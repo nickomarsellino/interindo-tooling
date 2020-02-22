@@ -1,6 +1,11 @@
 import React, { Component } from 'react';
 import './styles.scss';
+import {
+  getDataFromAPI,
+  getDetailProductImages
+} from "../../../../config/redux/action";
 import { Tab } from 'semantic-ui-react';
+import { connect } from "react-redux";
 import { HeroBanner, Header, Footer, ContactUsButton, ImageCardList } from '../../../../components';
 
 class Product extends Component {
@@ -23,7 +28,7 @@ class Product extends Component {
 
     const panes = [
       {
-        menuItem: 'Tab 1',
+        menuItem: 'gjhgfjhfj',
         render: () => 
         <Tab.Pane attached={false}>
           Tab 1
@@ -32,29 +37,7 @@ class Product extends Component {
             // data={imageJSON}
             />
         </Tab.Pane>,
-      },
-      {
-        menuItem: 'Tab 2',
-        render: () => 
-        <Tab.Pane attached={false}>
-           Tab 2
-          <ImageCardList
-            history={this.props.history}
-            // data={imageJSON}
-            />
-        </Tab.Pane>,
-      },
-      {
-        menuItem: 'Tab 3',
-        render: () => 
-        <Tab.Pane attached={false} loading={true}>
-           Tab 3
-          <ImageCardList
-            history={this.props.history}
-            // data={imageJSON}
-            />
-        </Tab.Pane>,
-      },
+      }
     ]
 
     const {
@@ -71,7 +54,6 @@ class Product extends Component {
           <div className='container'>
             <ImageCardList
               history={this.props.history}
-            // data={imageJSON}
             />
           </div>
         </div>
@@ -92,6 +74,14 @@ class Product extends Component {
   }
 }
 
+const reduxState = state => ({
+  notes: state.notes,
+  moreImage: state.moreImage
+});
 
-export default Product;
+const reduxDispatch = dispatch => ({
+  getNotes: data => dispatch(getDataFromAPI(data)),
+  showDetailProductImages: data => dispatch(getDetailProductImages(data))
+});
 
+export default connect(reduxState, reduxDispatch)(Product);

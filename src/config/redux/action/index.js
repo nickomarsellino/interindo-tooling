@@ -7,6 +7,7 @@ export const actionUserName = () => dispatch => {
 };
 
 export const loginUserAPI = data => dispatch => {
+  console.log(data)
   return new Promise((resolve, reject) => {
     dispatch({ type: "CHANGE_LOADING", value: true });
     firebase
@@ -56,32 +57,34 @@ export const logOutUser = data => dispatch => {
 
 // Post API from Dashboard -> Ini contoh yang pake redux yang bikin reducer dulu
 export const addDataToAPI = data => dispatch => {
-  database.ref("Products/").push({
-    DataUtama: {
-      // Entr bikin validasi untuk nama title cuma boleh 1 doang, unique
+  database.ref("Products/" + data.category).push({
+  //     // Entr bikin validasi untuk nama title cuma boleh 1 doang, unique
       title: data.title,
       content: data.content,
+      category: data.category,
       imageUrl: data.imageUrl,
       createdDate: data.createdDate,
       createdBy: data.userId
-    }
   });
   console.log("result action ", data);
 };
 
 // Get data api using redux
 export const getDataFromAPI = userId => dispatch => {
+  // var urlNotes = firebase.database().ref("Products/CuttingTool");
   var urlNotes = firebase.database().ref("Products/");
   return new Promise((resolve, reject) => {
     urlNotes.on("value", function(snapshot) {
       // ubah object jadi Array
       const data = [];
-      Object.keys(snapshot.val() && snapshot.val()).map(key => {
-        data.push({
-          id: key,
-          data: snapshot.val()[key]
+      if(snapshot.val()){
+        Object.keys(snapshot.val() && snapshot.val()).map(key => {
+          data.push({
+            id: key,
+            data: snapshot.val()[key]
+          });
         });
-      });
+      }
       console.log("DATA BUAT CEK GET API ", data)
       dispatch({ type: "SET_NOTES", value: data });
       resolve(snapshot.val());
@@ -99,22 +102,43 @@ export const addProductsDetail = data => dispatch => {
 // Get data api using redux
 export const getDetailProductImages = data => dispatch => {
   console.log(data);
-  var urlNotes = firebase
-    .database()
-    .ref("Products/" + data.productsId);
-  return new Promise((resolve, reject) => {
+  var urlNotes = firebase.database().ref("Products/" + data.category);
+  // return new Promise((resolve, reject) => {
     urlNotes.on("value", function(snapshot) {
       // ubah object jadi Array
       const data = [];
-      Object.keys(snapshot.val() && snapshot.val()).map(key => {
-        data.push({
-          id: key,
-          data: snapshot.val()[key]
+      if(snapshot.val()) {
+        Object.keys(snapshot.val()&&snapshot.val()).map(key => {
+          data.push({
+            id: key,
+            data: snapshot.val()[key]
+          });
         });
-      });
+      }
       console.log("Data untuk di Modal ", data);
       dispatch({ type: "SHOW_MORE_IMAGE", value: data });
-      resolve(snapshot.val());
-    });
+      // resolve(snapshot.val());
+    // });
   });
+};
+
+export const deleteMainProduct = data => dispatch => {
+  console.log("Deleted product data" ,data);
+  // Cannot delete the image when there is only one image left
+  if(data.totalImage == '1'){
+    alert("You must at least have 1 image for each category!")
+  }
+  else {
+    database.ref("Products/" + data.category + "/" + data.productId ).remove()
+  }
+};
+
+export const deleteImageProduct = data => dispatch => {
+  console.log("Deleted image ID" , data);
+  // if(data.productImageId === "DataUtama") {
+  //   alert("Cannot delete your main Image Product, this may cause error!")
+  // } 
+  // else {
+    // database.ref("Products/" + data.productId + "/" + data.productImageId ).remove()    
+  // }
 };

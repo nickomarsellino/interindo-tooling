@@ -1,12 +1,19 @@
 
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import classname from 'classnames';
 import FadeIn from 'react-fade-in';
 import './styles.scss';
 import LazyLoad from 'react-lazyload';
-import { ImageCard, ImageModal} from '../../../components';
+import { ImageCard, ImageModal } from '../../../components';
 import { Button } from 'semantic-ui-react';
+import {
+  getDataFromAPI,
+  getDetailProductImages
+} from "../../../config/redux/action";
+import { ProductCard } from "../../../components";
+import { connect } from "react-redux";
+
 
 // data dummy
 import productImg1 from '../../../assets/images/dummy/product-card-1.jpeg';
@@ -14,21 +21,21 @@ import productImg2 from '../../../assets/images/dummy/product-card-2.jpeg';
 
 class ImageCardList extends Component {
 
-  // componentDidMount(){
-  //   this.handleClickProductCard()
-  // }
-
-  // componentWillUnmount(){
-  //   this.handleClickProductCard()
-  // }
 
   state = {
-    showPopup: false
+    showPopup: false,
+    handleImageClicked: ''
+  }
+  
+  componentDidMount() {
+    const user = "user";
+    this.props.getNotes(user);
   }
 
-  handleShowPopup = (status) => {
+  handleShowPopup = (status, imageData) => {
     this.setState({
-      showPopup: !status
+      showPopup: !status,
+      handleImageClicked: imageData
     });
   };
 
@@ -38,74 +45,89 @@ class ImageCardList extends Component {
     });
   };
 
+  getDetail = e => {
+    const data = {
+      category: e.id
+    };
+    this.props.showDetailProductImages(data);
+    console.log("E pas klik detail ", e);
+  };
+
   render() {
     const {
       handleShowPopup,
       handleClosePopup,
       state: {
-        showPopup
+        showPopup,
+        handleImageClicked
       },
       props: {
         className,
-        data
+        data,
+        notes,
+        moreImage,
+
       }
     } = this;
     const classNames = classname('ds-image-card-list', className);
 
     return (
       <FadeIn>
-        <div className={classNames}>
-          {/* {data.map((value, index) => (
-            <ProductCard
-              key={index}
-              productId={value.productId}
-              productImage={value.productImage}
-              productTitle={value.productTitle}
-            />
-          ))} */}
-
-          <LazyLoad height={150} debounce={150} offset={150}>
-            <ImageCard
-              imageId='product-1'
-              imageCard={productImg1}
-              handleShowPopup={handleShowPopup}
-            />
-          </LazyLoad>
-          <LazyLoad height={150} debounce={150} offset={150}>
-            <ImageCard
-              imageId='product-1'
-              imageCard={productImg2}
-              onClick={() => handleShowPopup(showPopup)}
-              handleShowPopup={handleShowPopup}
-            />
-          </LazyLoad>
-          <LazyLoad height={150} debounce={150} offset={150}>
-            <ImageCard
-              imageId='product-1'
-              imageCard={productImg1}
-              handleShowPopup={handleShowPopup}
-            />
-          </LazyLoad>
-
-          {/* <div className='view-more-wrapper'>
-            <Button
-              circular
-              className='view-more-button'
-              color='yellow'
-              onClick={this.handleClickMoreButton}
-            >
-              View More
-            </Button>
-          </div> */}
-
-
-          {/* Pop Up Image */}
-          <ImageModal
-            showPopup= {showPopup}
-            handleClosePopup={handleClosePopup}
-          />
-
+        <div className="categoryMenu">
+          {notes.length !== 0 ? (
+            <Fragment>
+              {notes.map(bebas => {
+                return (
+                  <div className="gridContainer" key={bebas.id}>
+                    <div>
+                      <p
+                        style={{
+                          cursor: "pointer",
+                          backgroundColor: "cyan",
+                          width: "-webkit-max-content" /* Chrome */
+                        }}
+                        onClick={() => {
+                          this.getDetail(bebas);
+                        }}
+                      >
+                        {bebas.id}
+                      </p>
+                    </div>
+                  </div>
+                );
+              })}
+            </Fragment>
+          ) : (
+              <p>Tidak ada Dataaa</p>
+            )}
         </div>
+
+        <div className={classNames}>
+          {moreImage.length > 0 ? (
+            <Fragment>
+              {moreImage.map(bebas => {
+                return (
+                  <LazyLoad height={300} debounce={150} offset={300}>
+                    <ImageCard
+                      // imageId='product-1'
+                      imageCard={bebas.data.imageUrl}
+                      handleShowPopup={handleShowPopup}
+                    />
+                  </LazyLoad>
+                );
+              })}
+            </Fragment>
+          ) : (
+              <p>INI LOADING</p>
+            )}
+        </div>
+
+        {/* Pop Up Image */}
+        <ImageModal
+          image={handleImageClicked}
+          showPopup={showPopup}
+          handleClosePopup={handleClosePopup}
+        />
       </FadeIn>
     );
   }
@@ -124,4 +146,14 @@ ImageCardList.defaultProps = {
   data: [],
 }
 
-export default ImageCardList;
+const reduxState = state => ({
+  notes: state.notes,
+  moreImage: state.moreImage
+});
+
+const reduxDispatch = dispatch => ({
+  getNotes: data => dispatch(getDataFromAPI(data)),
+  showDetailProductImages: data => dispatch(getDetailProductImages(data))
+});
+
+export default connect(reduxState, reduxDispatch)(ImageCardList);
