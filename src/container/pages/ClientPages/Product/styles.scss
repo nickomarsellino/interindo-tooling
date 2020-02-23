@@ -8,38 +8,48 @@
 
   .category-section-wrapper {
     padding: 24px 0;
-
-    .text.menu {
-      .item {
-        font-size: 24px;
-        font-family: "Lato";
-        font-weight: 300;
+    .category-menu-wrapper {
+      .category-menu {
+        white-space: nowrap;
+        overflow-y: hidden;
+        overflow-x: auto;
         position: relative;
+        .item-list {
+          display: inline-block;
+          margin-right: 24px;
+          font-size: 24px;
+          font-family: "Lato";
+          font-weight: 300;
+          position: relative;
 
-        &.active {
-          font-weight: normal;
+          &:first-child {
+            margin-left: 24px;
+          }
+
+          &:last-child {
+            margin-right: 0;
+          }
+
+          &.active {
+            font-weight: normal;
+            &::after {
+              transform: scaleX(1);
+            }
+          }
+
           &::after {
-            transform: scaleX(1);
+            content: "";
+            position: absolute;
+            width: 100%;
+            bottom: 0;
+            display: block;
+            padding-top: 4px;
+            border-bottom: solid 2px black;
+            transition: all 0.3s ease;
+            transform: scaleX(0);
           }
         }
-
-        &::after {
-          content: "";
-          position: absolute;
-          width: 80%;
-          bottom: 0;
-          display: block;
-          padding-top: 4px;
-          border-bottom: solid 2px black;
-          transition: all 0.3s ease;
-          transform: scaleX(0);
-        }
       }
-    }
-
-    .ui.segment {
-      box-shadow: none;
-      border: none;
     }
   }
 }

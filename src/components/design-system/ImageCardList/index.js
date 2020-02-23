@@ -61,7 +61,7 @@ class ImageCardList extends Component {
             <Fragment>
               {data.map(image => {
                 return (
-                  <LazyLoad height={300} debounce={150} offset={300}>
+                  <LazyLoad height={50} debounce={150} offset={50} key={image.data.imageUrl}>
                     <ImageCard
                       // imageId='product-1'
                       imageCard={image.data.imageUrl}
