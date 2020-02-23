@@ -6,18 +6,6 @@ import FadeIn from 'react-fade-in';
 import './styles.scss';
 import LazyLoad from 'react-lazyload';
 import { ImageCard, ImageModal } from '../../../components';
-import { Button } from 'semantic-ui-react';
-import {
-  getDataFromAPI,
-  getDetailProductImages
-} from "../../../config/redux/action";
-import { ProductCard } from "../../../components";
-import { connect } from "react-redux";
-
-
-// data dummy
-import productImg1 from '../../../assets/images/dummy/product-card-1.jpeg';
-import productImg2 from '../../../assets/images/dummy/product-card-2.jpeg';
 
 class ImageCardList extends Component {
 

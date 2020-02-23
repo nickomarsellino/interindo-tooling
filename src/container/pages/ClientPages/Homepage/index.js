@@ -2,8 +2,11 @@ import React, { Component } from 'react';
 import './styles.scss';
 
 import { HeroBanner, ProductCardList, H2 } from '../../../../components';
-import { Header, Footer, ContactUsButton, ImageCardList } from '../../../../components';
+import { Header, Footer, ContactUsButton, ImageCardList, ImageCard } from '../../../../components';
 
+// data dummy
+import productImg1 from '../../../../assets/images/dummy/product-card-1.jpeg';
+import productImg2 from '../../../../assets/images/dummy/product-card-2.jpeg';
 class HomePage extends Component {
   state = {
   };
@@ -57,12 +60,17 @@ class HomePage extends Component {
               </div>
           </div> */}
 
-          <div className='image-card pt-24'>
+          <div className='ds-image-card-list pt-24'>
             <div className='container'>
-              <ImageCardList 
-                history={this.props.history}
-                // data={dataJSON}
-              />
+                <ImageCard
+                  imageCard={productImg1}
+                />
+                <ImageCard
+                  imageCard={productImg2}
+                />
+                <ImageCard
+                  imageCard={productImg1}
+                />
             </div>
           </div>
         </div>

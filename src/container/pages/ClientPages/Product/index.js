@@ -10,6 +10,10 @@ import { HeroBanner, Header, Footer, ContactUsButton, ImageCardList } from '../.
 
 class Product extends Component {
 
+  state = {
+    isActive: ''
+  };
+
   componentDidMount() {
     window.scrollTo(0, 0)
     if (this.props.location.state !== undefined) {
@@ -26,12 +30,18 @@ class Product extends Component {
     };
     //props redux
     this.props.showDetailProductImages(data);
+
+    //handle active tab
+    this.setState({ isActive: e.id });
   };
 
   // render
   render() {
     const {
       getDetailImages,
+      state: {
+        isActive
+      },
       props: {
         notes,
         moreImage,
@@ -52,15 +62,17 @@ class Product extends Component {
                   <Fragment>
                     {notes.map(data => {
                       return (
-                        <div className="item-list" key={data.id}>
-                          <p
-                            className="menu-item"
-                            onClick={() => {
-                              getDetailImages(data);
-                            }}
-                          >
-                            {data.id}
-                          </p>
+                        <div 
+                          className={`item-list ${isActive === `${data.id}` ? 'active' : ''}`}
+                          key={data.id}>
+                            <p
+                              className="menu-item"
+                              onClick={() => {
+                                getDetailImages(data);
+                              }}
+                            >
+                              {data.id}
+                            </p>
                         </div>
                       );
                     })}
