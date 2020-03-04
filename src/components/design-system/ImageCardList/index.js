@@ -48,19 +48,25 @@ class ImageCardList extends Component {
           {data.length > 0 ? (
             <Fragment>
               {data.map(image => {
-                return (
-                  <LazyLoad height={50} debounce={150} offset={50} key={image.data.imageUrl}>
-                    <ImageCard
-                      // imageId='product-1'
-                      imageCard={image.data.imageUrl}
-                      handleShowPopup={handleShowPopup}
-                    />
-                  </LazyLoad>
-                );
+                if(image.data.imageUrl === 'null'){
+                  return (
+                    <div></div>
+                  )
+                }
+                else {
+                  return (
+                    <LazyLoad height={50} debounce={150} offset={50} key={image.data.imageUrl}>
+                      <ImageCard
+                        imageCard={image.data.imageUrl}
+                        handleShowPopup={handleShowPopup}
+                      />
+                    </LazyLoad>
+                  );
+                }
               })}
             </Fragment>
           ) : (
-              <p>INI LOADING</p>
+              <center></center>
             )}
         </div>
 

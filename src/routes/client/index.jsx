@@ -8,6 +8,7 @@ import {
   DetailProduct
 } from '../../container/pages';
 
+import { Category} from '../../container/pages';
 
 const AppRoutes = [
   {
@@ -51,7 +52,13 @@ const AppRoutes = [
     path: '/detail-product/:productName',
     component: DetailProduct,
     exact: true
-  }
+  },
+  {
+    id: 8,
+    path: '/auth/admin/category',
+    component: Category,
+    exact: true
+  },
 ]
 
 

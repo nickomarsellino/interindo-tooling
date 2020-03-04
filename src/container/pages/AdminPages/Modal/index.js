@@ -100,8 +100,6 @@ class ImageModal extends Component {
       productsDetail,
       moreImage
     } = this.props;
-    console.log("more image ", moreImage);
-    console.log("Detail ", productsDetail);
     return (
       <div className="modal">
         <Modal show={onModalShow} onHide={onCloseClick}>

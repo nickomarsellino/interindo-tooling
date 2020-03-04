@@ -27,7 +27,7 @@ class ConfirmDeleteModal extends Component {
       totalImage
     } = this.props;
     // console.log("Product Detail ", productsId)
-    console.log("total image data ", totalImage)
+    // console.log("total image data ", totalImage)
     return (
       <Modal
           style={{fontSize: "16px"}}

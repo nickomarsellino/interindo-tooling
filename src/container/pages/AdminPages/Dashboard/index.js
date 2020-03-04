@@ -3,7 +3,8 @@ import {
   addDataToAPI,
   getDataFromAPI,
   logOutUser,
-  getDetailProductImages
+  getDetailProductImages,
+  deleteMainProduct
 } from "../../../../config/redux/action";
 import { connect } from "react-redux";
 import { storage } from "../../../../config/firebase";
@@ -11,17 +12,18 @@ import { storage } from "../../../../config/firebase";
 import NavbarAdmin from "../NavbarAdmin";
 import ImageModal from "../Modal";
 import ConfirmDeleteModal from "../ConfirmDeleteModal";
+import Category from "../Category"
 import {
   Card,
   Icon,
   Image,
-  Dropdown,
-  Grid,
+  Popup,
+  Button,
   GridColumn
 } from "semantic-ui-react";
 
 class Dashboard extends Component {
-state = {
+  state = {
     title: "",
     content: "",
     // Bingung kalo ga di ganti kategorinya langsung clic should be Arbor
@@ -43,29 +45,27 @@ state = {
 
   // const [posts, setPosts] = useState([]);
 
-  componentDidMount() {
+  componentDidMount() {  
     const userData = JSON.parse(localStorage.getItem("userData"));
-    console.log("Didmount userData ", userData);
 
-    // if (this.state.email === "") {
-    //   this.props.history.push('/login');
-    // } else {
-    this.setState({
-      email: userData.email
-    });
-    // Call getDataAPI from props
-    this.props.getNotes(userData.uid);
-    // }
+    if (userData) {
+      this.setState({
+        email: userData.email
+      });
+      this.props.getNotes(userData.uid);
+    } else {
+      this.props.history.push("/auth/admin/login");
+    }
 
     var storageRef = storage.ref();
 
-    // ***IGNORE***//
-    fetch("http://localhost:57698/api/student/getstudentdata").then(
-      async response => {
-        const data = await response.json();
-        console.log("Data API CH ", data);
-      }
-    );
+    // // ******IGNORE******//
+    // fetch("http://localhost:57698/api/student/getstudentdata").then(
+    //   async response => {
+    //     const data = await response.json();
+    //     console.log("Data API CH ", data);
+    //   }
+    // );
   }
 
   handleSaveNote = e => {
@@ -137,31 +137,19 @@ state = {
     console.log(this.state.image);
   };
 
-  getDetail = e => {
-    // this.setState({
-    //   onModalShow: true,
-    //   productsDetail: e.data,
-    //   productsId: e.id,
-    //   detailDataUtama: e.data.DataUtama
-    // });
-
-    // // Show the image list wihtout click button
-    // const productsId = {
-    //   productsId: e.id
-    // };
-
-
+  getDetail = (e) => {
+    const {notes} = this.props;
     const data = {
       category: e.id
-    };
-
+    }  
+    console.log("this.props.notes ", e)
+    console.log("NOTES, ",notes);
+    this.props.deleteOneProduct("-M1UrAGNg0NkVqIlBH5U")
     this.props.showDetailProductImages(data);
-    console.log("E pas klik detail ", e);
   };
 
   onTrashIconClick = e => {
     console.log(e);
-
     this.setState({
       onConfirmModalShow: true,
       detailDataUtama: e.data,
@@ -188,7 +176,7 @@ state = {
     const { title, content, createdDate, image, imageUrl } = this.state;
     const { notes, moreImage } = this.props;
     // console.log("Hasil notes ", notes.length);
-    console.log("Detail product image ", this.props.notes);
+    // console.log("Detail product image ", moreImage);
     // console.log("this.state.isLoading ", this.state.isLoading);
     return (
       <div className="container">
@@ -205,14 +193,14 @@ state = {
           onCloseClick={() => this.onCloseClick()}
           productsId={this.state.productsId}
           detailDataUtama={this.state.detailDataUtama}
-          totalImage = {this.props.moreImage.length}
+          totalImage={this.props.moreImage.length}
         />
 
         <NavbarAdmin userEmail={this.state.email} onLogOutClick={this.logOut} />
 
         <form
           className="ui form"
-          style={{ width: "40%", marginTop: "15px", fontSize: "14px" }}
+          style={{ width: "40%", marginTop: "15px", fontSize: "14px", left:'0' }}
         >
           <div className="field">
             <label>Product Name</label>
@@ -234,20 +222,21 @@ state = {
           </div>
           <div className="field" style={{ width: "50%" }}>
             <label>Category</label>
-            <select
-              style={{ borderColor: "pink" }}
-              required="true"
-              onChange={e => this.onInputChange(e, "category")}
-            >
-              <option value="Arbor">Arbor</option>
-              <option value="CuttingTool">Cutting Tool</option>
-              <option value="GuidePin">Guide Pin</option>
-              <option value="Insert">Insert</option>
-              <option value="Milling">Milling</option>
-              <option value="PowerChuck">Power Chuck</option>
-              <option value="Spring">Spring</option>
-              <option value="Vise">Vise</option>
-            </select>
+            {notes.length !== 0 ? (
+              <Fragment>
+                <select
+                  style={{ borderColor: "pink" }}
+                  required="true"
+                  onChange={e => this.onInputChange(e, "category")}
+                >
+                  {notes.map(bebas => {
+                    return <option value={bebas.id}>{bebas.id}</option>;
+                  })}
+                </select>
+              </Fragment>
+            ) : (
+              <p>Loading.....</p>
+            )}
           </div>
           <div class="field">
             <input type="file" onChange={this.handleImageChange} />
@@ -269,17 +258,24 @@ state = {
           <Fragment>
             {notes.map(bebas => {
               return (
-                <div className="gridContainer" key={bebas.id}>
+                <div
+                  className="gridContainer"
+                  key={bebas.id}
+                  style={{
+                    display: "inline-block",
+                    width: "25%",
+                    "text-align": "-webkit-center"
+                  }}
+                >
                   <div>
                     <p
                       style={{
                         cursor: "pointer",
-                        backgroundColor: "cyan",
                         width: "-webkit-max-content" /* Chrome */
                       }}
-                      onClick={
-                        () => {this.getDetail(bebas);}
-                      }
+                      onClick={() => {
+                        this.getDetail(bebas);
+                      }}
                     >
                       {bebas.id}
                     </p>
@@ -289,7 +285,7 @@ state = {
             })}
           </Fragment>
         ) : (
-          <p>Tidak ada Dataaa</p>
+          <p>Loading...</p>
         )}
 
         <hr />
@@ -298,41 +294,52 @@ state = {
           {moreImage.length > 0 ? (
             <Fragment>
               {moreImage.map(bebas => {
-                return (
-                  <div
-                    class="img-wrap"
-                    style={{
-                      // height: "195px",
-                      width: "30%",
-                      left: "0",
-                      marginLeft: "1.6%",
-                      marginRight: "1.6%"
-                      // marginTop: "5%"
-                    }}
-                  >
-                    <Card style={{ width: "100%" }}>
-                      <Image
-                        src={bebas.data.imageUrl}
-                        style={{ padding: "5px", height: "195px" }}
-                      />
-                      <Card.Content extra>
-                        <Card.Description>{bebas.data.title}</Card.Description>
-                      </Card.Content>
-                    </Card>
-                    <span className="close">
-                      <Icon
-                        onClick={() => {
-                          this.onTrashIconClick(bebas);
-                        }}
-                        name="trash alternate outline"
-                      ></Icon>
-                    </span>
-                  </div>
-                );
+                console.log("moreImage ", moreImage)
+                if(bebas.data.imageUrl === 'null'){
+                  return (
+                    <div></div>
+                  )
+                }
+                else{
+                  return (
+                    <div
+                      class="img-wrap"
+                      style={{
+                        // height: "195px",
+                        width: "30%",
+                        left: "0",
+                        marginLeft: "1.6%",
+                        marginRight: "1.6%"
+                        // marginTop: "5%"
+                      }}
+                    >
+                      <Card style={{ width: "100%" }}>
+                        <Image
+                          src={bebas.data.imageUrl}
+                          style={{ padding: "5px", height: "195px" }}
+                        />
+                        <Card.Content extra>
+                          <Card.Description>{bebas.data.title}</Card.Description>
+                        </Card.Content>
+                      </Card>
+                      <span className="close">
+                        <Icon
+                          onClick={() => {
+                            this.onTrashIconClick(bebas);
+                          }}
+                          name="trash alternate outline"
+                        ></Icon>
+                      </span>
+                    </div>
+                  );
+                }
+                
               })}
             </Fragment>
           ) : (
-            <p>Tidak ada data tidak!</p>
+            <div style={{ textAlign: "center" }}>
+              <p>Please click the category to load the result..</p>
+            </div>
           )}
         </div>
       </div>
@@ -343,7 +350,8 @@ state = {
 const reduxState = state => ({
   userData: state.user,
   notes: state.notes,
-  moreImage: state.moreImage
+  moreImage: state.moreImage,
+  deleteProduct: state.deleteProduct
   // Dari actionnya yang berhubung ke reducer
 });
 
@@ -351,7 +359,8 @@ const reduxDispatch = dispatch => ({
   saveNotes: data => dispatch(addDataToAPI(data)),
   getNotes: data => dispatch(getDataFromAPI(data)),
   logout: data => dispatch(logOutUser()),
-  showDetailProductImages: data => dispatch(getDetailProductImages(data))
+  showDetailProductImages: data => dispatch(getDetailProductImages(data)),
+  deleteOneProduct : data => dispatch(deleteMainProduct(data))
 });
 
 export default connect(reduxState, reduxDispatch)(Dashboard);
