@@ -42,6 +42,8 @@ class ImageCardList extends Component {
     } = this;
     const classNames = classname('ds-image-card-list', className);
 
+    // console.log("INI DATAKU PROPSKU: ",data);
+
     return (
       <FadeIn>
         <div className={classNames}>

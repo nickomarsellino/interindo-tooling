@@ -18,6 +18,14 @@
 
   &.half{
     height: 600px;
+
+    @include extra-small{
+      height: 450px;
+    }
+  
+    @include iphone{
+      height: 350px;
+    }
   }
 
   &::before {

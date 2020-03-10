@@ -4,7 +4,6 @@ import {
   getDataFromAPI,
   getDetailProductImages
 } from "../../../../config/redux/action";
-import { Icon } from "semantic-ui-react";
 import { connect } from "react-redux";
 import {
   HeroBanner,
@@ -30,6 +29,7 @@ class Product extends Component {
     //get Data From Firebase
     const user = "user";
     this.props.getNotes(user);
+    this.getDetailData(this.props.getNotes(user));
   }
 
   getDetailImages = e => {
@@ -42,6 +42,29 @@ class Product extends Component {
     //handle active tab
     this.setState({ isActive: e.id });
   };
+
+
+  //get Data When Fisrt Render but not dynamic
+  getDetailData = e => {
+    this.setState({ isActive: "Arbor" });
+    const data = {
+      category: "Arbor" 
+    };
+    this.props.showDetailProductImages(data);
+
+    // e.then(function (result) {
+    //   console.log(result.Arbor)
+    // });
+
+    // var first = e[0];
+    // if(e.id !== undefined){
+    //   const data = {
+    //     category: e.id
+    //   };
+    //   this.props.showDetailProductImages(data);
+    //   console.log(e.id)
+    // }
+  }
 
   // render
   render() {
@@ -68,7 +91,7 @@ class Product extends Component {
                         <div
                           className={`item-list ${
                             isActive === `${data.id}` ? "active" : ""
-                          }`}
+                            }`}
                           key={data.id}
                         >
                           <center>
@@ -86,8 +109,8 @@ class Product extends Component {
                     })}
                   </Fragment>
                 ) : (
-                  <p>Loading...</p>
-                )}
+                    <p>Loading...</p>
+                  )}
               </div>
             </div>
 
