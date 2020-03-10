@@ -1,54 +1,59 @@
 import React, { Component } from "react";
-import {
-  Navbar,
-  Button,
-  Form,
-  Nav,
-  NavDropdown,
-  FormControl
-} from "react-bootstrap";
-import { Menu, Segment } from "semantic-ui-react";
+import { Menu } from "semantic-ui-react";
+import PropTypes from 'prop-types';
 import { logOutUser } from "../../../../config/redux/action";
+import { Link } from 'react-router-dom';
 import { connect } from "react-redux";
 
 class NavbarAdmin extends Component {
-  state = { activeItem: "home" };
 
   handleItemClick = (e, { name }) => {
     if (name === "logout") {
       this.props.onLogOutClick();
     }
-    this.setState({
-      activeItem: name
-    });
   };
 
   render() {
-    const { activeItem } = this.state;
+    const {
+      handleItemClick,
+      props: {
+        activeItem
+      }
+    } = this;
     return (
       <div>
         <Menu pointing secondary style={{ fontSize: "20px" }}>
           <Menu.Item
             name="home"
             active={activeItem === "home"}
-            onClick={this.handleItemClick}
-          />
+          >
+            <Link to='/auth/admin/dashboard'>Home</Link>
+          </Menu.Item>
           <Menu.Item
             name="category"
-            active={activeItem === "home"}
-            // onClick={this.handleItemClick}
-          />
+            active={activeItem === "category"}
+          >
+             <Link to='/auth/admin/category'>Category</Link>
+          </Menu.Item>
           <Menu.Menu position="right">
             <Menu.Item
               name="logout"
               active={activeItem === "logout"}
-              onClick={this.handleItemClick}
+              onClick={handleItemClick}
             />
           </Menu.Menu>
         </Menu>
       </div>
     );
   }
+}
+
+NavbarAdmin.propTypes = {
+  activeItem: PropTypes.string
+}
+
+NavbarAdmin.defaultProps = {
+  activeItem: 'home'
 }
 
 const reduxState = state => ({

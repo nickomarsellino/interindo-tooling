@@ -26,9 +26,6 @@ class Category extends Component {
 
   deleteCategory = e => {
     console.log(e);
-    const data = {
-      category: e.id
-    };
     this.setState({
       onConfirmModalShow: "true",
       category: e.id
@@ -46,7 +43,7 @@ class Category extends Component {
     const { notes } = this.props;
     return (
       <div class="container">
-        <NavbarAdmin />
+        <NavbarAdmin activeItem={'category'}/>
         <ConfirmDeleteCategory
           onConfirmModalShow={this.state.onConfirmModalShow}
           onCloseClick={() => this.onCloseClick()}
