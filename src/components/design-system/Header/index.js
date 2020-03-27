@@ -8,8 +8,9 @@ import { Link } from 'react-router-dom';
 import './styles.scss';
 
 // data dummy
-import logoImageFixed from '../../../assets/images/logo/logo-yellow-fixed.png';
-import logoImage from '../../../assets/images/logo/logo.png';
+import logoImageFixed from '../../../assets/images/logo/logo-fixed.png';
+import logoImage from '../../../assets/images/logo/logo-fixed-white.png';
+// logo.png replace with logo-fixed-white.png
 import dataPdf from '../../../assets/files/sample.pdf';
 
 class Header extends Component {

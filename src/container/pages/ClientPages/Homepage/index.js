@@ -1,20 +1,26 @@
-import React, { Component } from 'react';
-import './styles.scss';
+import React, { Component } from "react";
+import "./styles.scss";
 
-import { HeroBanner, ProductCardList, H2 } from '../../../../components';
-import { Header, Footer, ContactUsButton, ImageCardList, ImageCard } from '../../../../components';
+import { HeroBanner, ProductCardList, H2 } from "../../../../components";
+import {
+  Header,
+  Footer,
+  ContactUsButton,
+  ImageCardList,
+  ImageCard,
+  ViewMoreButton
+} from "../../../../components";
+import { Link } from "react-router-dom";
 
 // data dummy
-import productImg1 from '../../../../assets/images/dummy/product-card-1.jpeg';
-import productImg2 from '../../../../assets/images/dummy/product-card-2.jpeg';
+import productImg1 from "../../../../assets/images/dummy/product-card-1.jpeg";
+import productImg2 from "../../../../assets/images/dummy/product-card-2.jpeg";
 class HomePage extends Component {
-  state = {
-  };
+  state = {};
 
   componentDidMount() {
     window.scrollTo(0, 0);
   }
-
 
   // handleClickNavigation = (e) => {
   //   this.props.history.push({
@@ -36,19 +42,30 @@ class HomePage extends Component {
       <div className="p-homepage">
         <ContactUsButton />
         <Header />
-        <HeroBanner bannerTitle="HomePage" className='half'/>
+        <HeroBanner bannerTitle="HomePage" className="half" />
 
-        <div className='about-us-section mt-24 mb-24'>
-          <div className='section-background'  alt='about-us-background'></div>
-          <div className='container'>
-              <H2>About Us</H2>
-              <p>Raven is young initiative command, which includes professionals of his activity. Each member of the commands, is not just an employee, they are something more valuable to us.  Penetrating into a fairly large and modern activity, the company Raven provides each time clearer and perfected solutions for the task.  Every employee of our company has a great experience in working with customers and solving tasks, while keeping unlimited energy and initiative.  Every client, who had come to us, did not left without a well-provided service.  Let us work together - you will not regret!</p>
+        <div className="about-us-section mt-24 mb-24">
+          <div className="section-background" alt="about-us-background"></div>
+          <div className="container">
+            <H2>About Us</H2>
+            <p>
+              Raven is young initiative command, which includes professionals of
+              his activity. Each member of the commands, is not just an
+              employee, they are something more valuable to us.  Penetrating
+              into a fairly large and modern activity, the company Raven
+              provides each time clearer and perfected solutions for the
+              task.  Every employee of our company has a great experience in
+              working with customers and solving tasks, while keeping unlimited
+              energy and initiative.  Every client, who had come to us, did not
+              left without a well-provided service.  Let us work together - you
+              will not regret!
+            </p>
           </div>
         </div>
 
-        <div className='our-product-section'>
-            <div class="curve curve-top"></div>
-            {/* <div className='container'>
+        <div className="our-product-section">
+          <div class="curve curve-top"></div>
+          {/* <div className='container'>
               <div className='header-section'>
                 <li className="jjj" onClick={this.handleClickNavigation}>
                   Our Product With history
@@ -60,18 +77,34 @@ class HomePage extends Component {
               </div>
           </div> */}
 
-          <div className='ds-image-card-list pt-24'>
-            <div className='container'>
-                <ImageCard
-                  imageCard={productImg1}
-                />
-                <ImageCard
-                  imageCard={productImg2}
-                />
-                <ImageCard
-                  imageCard={productImg1}
-                />
+          <div className="ds-image-card-list pt-24">
+            <div className="container">
+              <ImageCard imageCard={productImg1} />
+              <ImageCard imageCard={productImg2} />
+              <ImageCard imageCard={productImg1} />
             </div>
+            <center>
+              <Link
+                to="/our-product"
+                id="our-product"
+                onClick={this.handleClickNavigation}
+              >
+                {" "}
+                <div
+                  style={{
+                    height: 50,
+                    width: 250,
+                    border: "1px solid #bfbfbf",
+                    textAlign: "center",
+                    borderRadius: "6px",
+                    cursor: "pointer",
+                    display: "table"
+                  }}
+                >
+                  <div style={{ marginTop: 7 }}>Click to view more</div>
+                </div>
+              </Link>
+            </center>
           </div>
         </div>
         <Footer />
@@ -80,6 +113,4 @@ class HomePage extends Component {
   }
 }
 
-
 export default HomePage;
-

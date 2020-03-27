@@ -21,6 +21,7 @@ import {
   Button,
   GridColumn
 } from "semantic-ui-react";
+import loadingGif from "../../../../assets/images/loading.gif";
 
 class Dashboard extends Component {
   state = {
@@ -149,7 +150,7 @@ class Dashboard extends Component {
   };
 
   onTrashIconClick = e => {
-    console.log(e);
+    console.log("On trash icon click ",e);
     this.setState({
       onConfirmModalShow: true,
       detailDataUtama: e.data,
@@ -235,8 +236,8 @@ class Dashboard extends Component {
                 </select>
               </Fragment>
             ) : (
-              <p>Loading.....</p>
-            )}
+                <p>Loading...</p>
+              )}
           </div>
           <div class="field">
             <input type="file" onChange={this.handleImageChange} />
@@ -285,7 +286,7 @@ class Dashboard extends Component {
             })}
           </Fragment>
         ) : (
-          <p>Loading...</p>
+                    <img src={loadingGif} alt="isLoadingGif" />
         )}
 
         <hr />

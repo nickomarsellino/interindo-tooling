@@ -11,6 +11,7 @@ class ImageCard extends Component {
       props: {
         className,
         imageId,
+        namaProduct,
         imageCard,
         handleShowPopup
       }
@@ -20,6 +21,7 @@ class ImageCard extends Component {
       <FadeIn>
         <div className={classNames}>
           <div className='image-card-wrapper'>
+          <p className="title">{namaProduct}</p>
             <img className='product-image' src={imageCard} alt={imageId} />
             <a className='click-area' onClick={() => handleShowPopup(false, imageCard)}>{imageId}</a>
           </div>

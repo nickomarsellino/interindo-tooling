@@ -12,6 +12,7 @@ import {
   ContactUsButton,
   ImageCardList
 } from "../../../../components";
+import loadingGif from "../../../../assets/images/loading.gif";
 
 class Product extends Component {
   state = {
@@ -51,19 +52,6 @@ class Product extends Component {
       category: "Arbor" 
     };
     this.props.showDetailProductImages(data);
-
-    // e.then(function (result) {
-    //   console.log(result.Arbor)
-    // });
-
-    // var first = e[0];
-    // if(e.id !== undefined){
-    //   const data = {
-    //     category: e.id
-    //   };
-    //   this.props.showDetailProductImages(data);
-    //   console.log(e.id)
-    // }
   }
 
   // render
@@ -74,6 +62,11 @@ class Product extends Component {
       props: { notes, moreImage }
     } = this;
 
+    // console.log("Product -> ImageCardList -> ImageCard(NOTES) ", notes)
+    console.log("Product -> ImageCardList -> ImageCard(IMAGE) ", moreImage)
+
+
+    
     return (
       <div className="p-product">
         <ContactUsButton />
@@ -109,7 +102,7 @@ class Product extends Component {
                     })}
                   </Fragment>
                 ) : (
-                    <p>Loading...</p>
+                    <img src={loadingGif} alt="isLoadingGif" />
                   )}
               </div>
             </div>

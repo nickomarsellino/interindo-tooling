@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './styles.scss';
 
-import logoImage from '../../../../assets/images/logo/logo-yellow-fixed.png';
+import logoImage from '../../../../assets/images/logo/logo-fixed.png';
 import { HeroBanner, Header, Footer, ContactUsButton, H2 } from '../../../../components';
 import { Icon, Button } from 'semantic-ui-react';
 

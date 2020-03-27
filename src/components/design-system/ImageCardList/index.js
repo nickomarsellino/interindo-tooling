@@ -59,6 +59,7 @@ class ImageCardList extends Component {
                   return (
                     <LazyLoad height={50} debounce={150} offset={50} key={image.data.imageUrl}>
                       <ImageCard
+                        namaProduct={image.data.title}
                         imageCard={image.data.imageUrl}
                         handleShowPopup={handleShowPopup}
                       />

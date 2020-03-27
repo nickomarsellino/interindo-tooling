@@ -5,6 +5,7 @@ import AddCategoryModal from "../AddCategoryModal";
 import { Icon, Table, Button } from "semantic-ui-react";
 import { getDataFromAPI } from "../../../../config/redux/action";
 import { connect } from "react-redux";
+import loadingGif from "../../../../assets/images/loading.gif";
 
 class Category extends Component {
   state = {
@@ -84,7 +85,7 @@ class Category extends Component {
                   })}
                 </div>
               ) : (
-                <p>Loading..</p>
+                    <img src={loadingGif} alt="isLoadingGif" />
               )}
             </Table.Body>
             <Table.Footer>

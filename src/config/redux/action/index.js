@@ -154,10 +154,10 @@ export const getDetailProductImages = data => dispatch => {
 };
 
 export const deleteMainProduct = data => dispatch => {
-  console.log("Deleted product data", data);
+  console.log("Deleted main product data", data);
   // Cannot delete the image when there is only one image left
-  if (data.totalImage == "1") {
-    alert("You must at least have 1 image for each category!");
+  if (data.totalImage == "2") {
+    alert("You must at least have one or more image for each category!");
   } else {
     database.ref("Products/" + data.category + "/" + data.productId).remove();
   }
