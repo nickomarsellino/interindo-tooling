@@ -20,10 +20,10 @@ class ImageCard extends Component {
     return (
       <FadeIn>
         <div className={classNames}>
-          <div className='image-card-wrapper'>
-          <p className="title">{namaProduct}</p>
+          <div className='image-card-wrapper' onClick={() => handleShowPopup(false, imageCard)}>
+            <p className="product-title">{namaProduct}</p>
             <img className='product-image' src={imageCard} alt={imageId} />
-            <a className='click-area' onClick={() => handleShowPopup(false, imageCard)}>{imageId}</a>
+            {/* <a className='click-area'>{imageId}</a> */}
           </div>
         </div>
       </FadeIn>
