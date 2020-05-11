@@ -58,25 +58,25 @@ class Header extends Component {
                     </li>
                     <li className="menu-item display-mobile-only mb-8">
                       <Icon className="menu-icon" fitted name='map marker alternate' />
-                      <a className="item" href="https://www.google.co.id/maps/place/PT+Interindo+Tooling/@-6.212859,106.5796336,12z/data=!4m8!1m2!2m1!1sinternindo+tooling!3m4!1s0x2e69fee3c2ce3e95:0x4f535926c0187aa3!8m2!3d-6.1869721!4d106.5989102">
+                      <a className="item" href="https://www.google.co.id/maps/place/PT+Interindo+Tooling/@-6.212859,106.5796336,12z/data=!4m8!1m2!2m1!1sinternindo+tooling!3m4!1s0x2e69fee3c2ce3e95:0x4f535926c0187aa3!8m2!3d-6.1869721!4d106.5989102" target="_blank">
                         <Button circular icon='external alternate' content='Get Direction' />
                       </a>
                     </li>
                     <li className="menu-item mb-8">
                       <Icon className="menu-icon" fitted name='whatsapp' />
-                      <a className="item" href="http://bit.ly/2RTwvTi">
+                      <a className="item" href="http://bit.ly/2RTwvTi" target="_blank">
                         +62 81213745678
                     </a>
                     </li>
                     <li className="menu-item mb-8">
                       <Icon className="menu-icon" fitted name='fax' />
-                      <a className="item" href="http://bit.ly/2RTwvTi">
-                        (021) 73452996
+                      <a className="item" href="tel:+6281285009028" target="_blank">
+                        (021) 7345299666666
                     </a>
                     </li>
                     <li className="menu-item mb-8">
                       <Icon className="menu-icon" fitted name='mail outline' />
-                      <a className="item" href="mailto:Christian.Irwandi@inphosoft.com">
+                      <a className="item" href="mailto:Christian.Irwandi@inphosoft.com" target="_blank">
                         pt.interindo.tooling@gmail.com
                     </a>
                     </li>

@@ -11,8 +11,12 @@ class AddCategoryModal extends Component {
   componentDidMount() {}
 
   onInputChange = (e, type) => {
+    var str = e.target.value;
+    str = str.toLowerCase().replace(/\b[a-z]/g, function(letter) {
+        return letter.toUpperCase();
+    });
     this.setState({
-      [type]: e.target.value
+      [type]: str
     });
   };
 

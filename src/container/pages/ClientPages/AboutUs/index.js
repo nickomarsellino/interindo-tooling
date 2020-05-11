@@ -44,34 +44,34 @@ class aboutUs extends Component {
               </li>
               <li className='contact-us-item'>
                 <p className='item-title'>Email:</p>
-                <a href="mailto:Christian.Irwandi@inphosoft.com">
+                <a target="_blank" href="mailto:Christian.Irwandi@inphosoft.com">
                   <Icon fitted name='mail outline' /> pt.interindo.tooling@gmail.com
                   <Icon fitted name='external alternate' size='tiny' className='clickable' />
                 </a>
               </li>
               <li className='contact-us-item'>
                 <p className='item-title'>Phone:</p>
-                <a href="tel:02173452996">
+                <a target="_blank" href="tel:+6281285009028">
                   <Icon fitted name='fax' /> (021) 73452996
                   <Icon fitted name='external alternate' size='tiny' className='clickable' />
                 </a>
               </li>
               <li className='contact-us-item'>
                 <p className='item-title'>WhatsApp:</p>
-                <a href="http://bit.ly/2RTwvTi">
+                <a target="_blank" href="http://bit.ly/2RTwvTi">
                   <Icon fitted name='whatsapp' /> +62 81213745678
                   <Icon fitted name='external alternate' size='tiny' className='clickable' />
                 </a>
               </li>
               <li className='contact-us-item'>
                 <p className='item-title'>Our Location:</p>
-                <a href="https://www.google.co.id/maps/place/PT+Interindo+Tooling/@-6.212859,106.5796336,12z/data=!4m8!1m2!2m1!1sinternindo+tooling!3m4!1s0x2e69fee3c2ce3e95:0x4f535926c0187aa3!8m2!3d-6.1869721!4d106.5989102">
+                <a target="_blank" href="https://www.google.co.id/maps/place/PT+Interindo+Tooling/@-6.212859,106.5796336,12z/data=!4m8!1m2!2m1!1sinternindo+tooling!3m4!1s0x2e69fee3c2ce3e95:0x4f535926c0187aa3!8m2!3d-6.1869721!4d106.5989102">
                   Jalan Gatot Subroto Duta MAS Plaza No. G.-14 Cibodas Tangerang,
                   RT.007/RW.010, Sangiang Jaya, Kec. Periuk, Kota Tangerang, Banten 15132
                 </a>
               </li>
               <li className="contact-us-item display-mobile-only">
-                <a className="item" href="https://www.google.co.id/maps/place/PT+Interindo+Tooling/@-6.212859,106.5796336,12z/data=!4m8!1m2!2m1!1sinternindo+tooling!3m4!1s0x2e69fee3c2ce3e95:0x4f535926c0187aa3!8m2!3d-6.1869721!4d106.5989102">
+                <a target="_blank" className="item" href="https://www.google.co.id/maps/place/PT+Interindo+Tooling/@-6.212859,106.5796336,12z/data=!4m8!1m2!2m1!1sinternindo+tooling!3m4!1s0x2e69fee3c2ce3e95:0x4f535926c0187aa3!8m2!3d-6.1869721!4d106.5989102">
                   <Button circular icon='external alternate' color='yellow' content='Get Direction' />
                 </a>
               </li>

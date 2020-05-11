@@ -9,6 +9,7 @@ import {
 import { connect } from "react-redux";
 import { storage } from "../../../../config/firebase";
 // import * as moment from "moment";
+import "./Dashboard.scss";
 import NavbarAdmin from "../NavbarAdmin";
 import ImageModal from "../Modal";
 import ConfirmDeleteModal from "../ConfirmDeleteModal";
@@ -41,7 +42,8 @@ class Dashboard extends Component {
     detailDataUtama: "",
     isLoading: false,
     loadingGif: "ui primary button",
-    data: []
+    data: [],
+    isActive: ""
   };
 
   // const [posts, setPosts] = useState([]);
@@ -143,9 +145,10 @@ class Dashboard extends Component {
     const data = {
       category: e.id
     }  
-    console.log("this.props.notes ", e)
-    console.log("NOTES, ",notes);
-    this.props.deleteOneProduct("-M1UrAGNg0NkVqIlBH5U")
+    this.setState({ isActive: e.id });
+    // console.log("this.props.notes ", e)
+    // console.log("NOTES, ",notes);
+    // this.props.deleteOneProduct("-M1UrAGNg0NkVqIlBH5U")
     this.props.showDetailProductImages(data);
   };
 
@@ -173,12 +176,18 @@ class Dashboard extends Component {
     history.push("/auth/admin/login");
   };
 
+  changeColor = () => {
+    this.setState({black: !this.state.black});
+ }
+
   render() {
     const { title, content, createdDate, image, imageUrl } = this.state;
     const { notes, moreImage } = this.props;
+    const { getDetail, state: { isActive }} = this;
     // console.log("Hasil notes ", notes.length);
     // console.log("Detail product image ", moreImage);
     // console.log("this.state.isLoading ", this.state.isLoading);
+
     return (
       <div className="container">
         <ImageModal
@@ -260,7 +269,10 @@ class Dashboard extends Component {
             {notes.map(bebas => {
               return (
                 <div
-                  className="gridContainer"
+                  // className="gridContainer"
+                  className={`item-list ${
+                    isActive === `${bebas.id}` ? "active" : ""
+                    }`}
                   key={bebas.id}
                   style={{
                     display: "inline-block",
@@ -272,9 +284,10 @@ class Dashboard extends Component {
                     <p
                       style={{
                         cursor: "pointer",
-                        width: "-webkit-max-content" /* Chrome */
+                        width: "-webkit-max-content" /* Chrome */,
                       }}
                       onClick={() => {
+                        console.log("Clicked... ", bebas)
                         this.getDetail(bebas);
                       }}
                     >
@@ -286,7 +299,7 @@ class Dashboard extends Component {
             })}
           </Fragment>
         ) : (
-                    <img src={loadingGif} alt="isLoadingGif" />
+          <img src={loadingGif} alt="isLoadingGif" />
         )}
 
         <hr />
