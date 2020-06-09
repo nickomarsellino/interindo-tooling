@@ -47,7 +47,7 @@ class HomePage extends Component {
         <div className="about-us-section mt-24 mb-24">
           <div className="section-background" alt="about-us-background"></div>
           <div className="container">
-            <H2>About Us</H2>
+            <H2>Dikasih apa teh gitu konsul aja teh</H2>
             <p>
               Raven is young initiative command, which includes professionals of
               his activity. Each member of the commands, is not just an

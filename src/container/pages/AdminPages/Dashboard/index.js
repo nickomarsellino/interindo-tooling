@@ -271,7 +271,7 @@ class Dashboard extends Component {
                 <div
                   // className="gridContainer"
                   className={`item-list ${
-                    isActive === `${bebas.id}` ? "active" : ""
+                    isActive === `${bebas.id}` ? "activeee" : ""
                     }`}
                   key={bebas.id}
                   style={{
@@ -291,7 +291,7 @@ class Dashboard extends Component {
                         this.getDetail(bebas);
                       }}
                     >
-                      {bebas.id}
+                      <span>{bebas.id}</span>
                     </p>
                   </div>
                 </div>
